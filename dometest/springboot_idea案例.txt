@@ -1,0 +1,221 @@
+﻿1.安装idea
+2.配置maven
+3.配置idea的http代理
+4.创建springboot项目
+  选择new-->project-->Spring Initializr
+5.配置application.properties
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8
+spring.datasource.username=root
+spring.datasource.password=root
+spring.thymeleaf.cache=false
+spring.thymeleaf.mode=HTML5
+spring.thymeleaf.encoding=UTF-8
+spring.thymeleaf.content-type=text/html
+
+6.创建包：(com.zl.)mapper,service,entity,controller
+7.配置程序入口类main
+@SpringBootApplication
+public class DemoApplication extends WebMvcConfigurationSupport {
+    //跨域请求重写父类方法
+    @Override
+    protected void addCorsMappings(CorsRegistry registry) {
+        super.addCorsMappings(registry);
+        registry.addMapping("/**")
+                .allowedMethods("*")
+                .allowedOrigins("*")
+                .allowedHeaders("*");
+    }
+
+    //springboot 2.0配置WebMvcConfigurationSupport之后，会导致默认配置被覆盖，
+    // 要访问静态资源需要重写addResourceHandlers方法
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/resources/")
+                .addResourceLocations("classpath:/static/")
+                .addResourceLocations("classpath:/public/");
+        super.addResourceHandlers(registry);
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+
+}
+
+8.创建实体类
+  public class Employee {
+    private int id;
+    private String empname;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEmpname() {
+        return empname;
+    }
+
+    public void setEmpname(String empname) {
+        this.empname = empname;
+    }
+}
+
+9.创建控制器类
+/**
+ * Created by Administrator on 2016/3/14.
+ */
+@Controller
+//@RestController
+
+public class HelloController {
+    @Autowired
+    private IEmployeeSeervice service;
+    @RequestMapping("/hello")
+    public String hello(){
+        String ename=service.find(1);
+        System.out.print("首次进入springboot控制器,找到的用户是："+ename);
+        return "index";
+    }
+
+    @RequestMapping("/list")
+    @ResponseBody
+    public List<Employee> allEmp(){
+        List<Employee> list=service.findAll();
+        for (Employee e:list
+             ) {
+            System.out.print(e.getEmpname());
+        }
+        return list;
+    }
+    @RequestMapping("/add")
+    @ResponseBody
+    public Employee add(@RequestBody Employee emp){
+        System.out.println(emp.getEmpname());
+        service.insertEmp(emp);
+        return emp;
+    }
+}
+10.创建mapper接口
+/**
+ * Created by Administrator on 2016/3/14.
+ */
+/*
+* +-------+-------------------------------
+| Table | Create Table
++-------+-------------------------------
+| emp   | CREATE TABLE `emp2` (
+  `id` int(11) DEFAULT NULL,
+  `empname` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 |
++-------+-------------------------------
+
+drop table if exists emp2;
+create table emp2 (id int not null,empname varchar(20));
+* */
+@Mapper
+public interface EmployeeMapper {
+    @Select("select empname from emp2 where id=#{id}")
+    String findByPramaryKey(@Param("id") Integer id);
+
+    @Select("select * from emp2")
+    List<Employee> findAll();
+
+    @Insert("insert into emp2 values(#{id},#{empname})")
+    void insertEmp(Employee emp);
+}
+11.创建service的接口和实现类
+//接口
+public interface IEmployeeSeervice {
+    String find(int id);
+    List<Employee> findAll();
+    void insertEmp(Employee emp);
+}
+//实现类
+@Service
+public class EmployeeService implements IEmployeeSeervice{
+    @Autowired
+    private EmployeeMapper mapper;
+    @Override
+    /*@Transactional*/
+    public String find(int id){
+        String ename=mapper.findByPramaryKey(id);
+        return ename;
+    }
+    @Override
+    public List<Employee> findAll(){
+        List<Employee> list=mapper.findAll();
+        return list;
+    }
+
+    @Override
+    public void insertEmp(Employee emp){
+        mapper.insertEmp(emp);
+    }
+}
+
+12.前端html及js
+//静态资源放置到
+resources/static/..
+准备好jquery、easyui、js文件夹
+
+/*resources/static/js/hello.js*/
+$(function(){
+    alert("大家好");
+    $('#addemp').click(function(){
+        var eid=$('#id').val();
+        var empname=$('#empname').val();
+        var param={"id":eid,"empname":empname};
+        if(eid&&empname){
+            $.ajax({
+                type: "POST",
+                url: "/add",
+                contentType: 'application/json',
+                data: JSON.stringify(param),
+                dataType: "json",
+                success: function(data){
+                    var div=$('#resText');
+                    $('#resText').html("新增加的员工是："+data.id+":"+data.empname);
+                }
+            });
+        }else{
+            alert("提示：请保证有正确的值");
+        }
+
+    });
+});
+
+//html放置到
+resources/templates/...
+/*resources/templates/index.html*/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script src="/jquery/jquery-1.8.3.js"></script>
+    <script src="/jquery/easyloader.js"></script>
+    <script src="/js/hello.js"></script>
+</head>
+<body>
+<h2>hello,world</h2>
+
+    <div>
+        <label for="id">员工编号:</label>
+        <input class="easyui-validatebox" type="text" id="id" data-options="required:true" />
+    </div>
+    <div>
+        <label for="empname">员工姓名:</label>
+        <input class="easyui-validatebox" type="text" id="empname" data-options="required:true" />
+    </div>
+    <div>
+        <input id="addemp" type="button"  value="提交"/>
+    </div>
+    <div id="resText"></div>
+
+</body>

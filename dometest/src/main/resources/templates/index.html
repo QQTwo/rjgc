@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script src="/jquery/jquery-1.8.3.js"></script>
+    <script src="/jquery/easyloader.js"></script>
+    <script src="/js/hello.js"></script>
+</head>
+<body>
+<h2>hello,world</h2>
+
+<div>
+    <label for="id">员工编号:</label>
+    <input class="easyui-validatebox" type="text" id="id" data-options="required:true"/>
+</div>
+<div>
+    <label for="empname">员工姓名:</label>
+    <input class="easyui-validatebox" type="text" id="empname" data-options="required:true"/>
+</div>
+<div>
+    <input id="addemp" type="button" value="提交"/>
+    <input id="addemp2post" type="button" value="通过$.post提交"/>
+</div>
+<div id="resText"></div>
+
+</body>
+</html>
