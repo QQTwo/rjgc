@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>待办事宜</title>
+<link href="style/styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body  class="body0">
+<div align="center">
+<table class="table_path">
+  <tr> 
+    <td >您当前的位置： 待办事宜 </td>
+    <td align="right" > <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+  </tr>
+</table>
+  <div align="left"><strong>&nbsp;&nbsp;<font size="3" color="#000066"><strong><img src="images/jiang_word.gif" width="25" height="25" align="absmiddle"></strong>发文待办</font></strong></div>
+  <table cellspacing=1 cellpadding=2 class="table1" id="table4">
+    <tr> 
+      <th width="14%" height="25" scope="col">发文标题</th>
+      <th width="12%" scope="col">发送人</th>
+      <th width="21%"  scope="col">发送部门</th>
+      <th width="18%"  scope="col">接收时间</th>
+      <th width="11%"  scope="col">处理类型</th>
+      <th width="24%"  scope="col">操作</th>
+    </tr>
+    <tr  class="tr_s" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_s'"> 
+      <td><a href="common_viewdoc.htm"><font color="#0000FF">标题一</font></a></td>
+      <td>刘得生</td>
+      <td>政策法规处</td>
+      <td>2006-05-16</td>
+      <td align="center">核稿</td>
+      <td align="center"><img src="images/approve.gif" width="20" height="20" style="cursor: hand;" onclick="location='documentmanager/senddoc/waitdeal_deal.htm'" alt="办理"> 
+        &nbsp; <img src="images/icon-lift-calendar-003.gif" width="32" height="32" style="cursor: hand;" onclick="location='documentmanager/senddoc/waitdeal_viewflow.htm'" alt="查看流程"> 
+      </td>
+    </tr>
+  </table>
+  <div align="left"><font color="#000066" size="3"><strong>&nbsp;&nbsp;<img src="images/jiang_word.gif" width="25" height="25" align="absmiddle">收文待办</strong></font></div>
+  <table cellspacing=1 cellpadding=2 class="table1" id="table4">
+    <tr> 
+      <th height="25" scope="col">收文标题</th>
+      <th scope="col">发送人</th>
+      <th  scope="col">发送部门</th>
+      <th  scope="col">接收时间</th>
+      <th  scope="col">操作</th>
+    </tr>
+    <tr  class="tr_s" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_s'"> 
+      <td><a href="documentmanager/inceptdoc/common_viewdoc.htm"><font color="#0000FF">标题一</font></a></td>
+      <td>刘得生</td>
+      <td>政策法规处</td>
+      <td>2006-05-16</td>
+      <td align="center"><img src="images/approve.gif" width="20" height="20" style="cursor: hand;" alt="办理" onclick="location='documentmanager/inceptdoc/waitdeal_deal.htm'"> 
+        &nbsp; <img src="images/icon-lift-calendar-003.gif" width="32" height="32" style="cursor: hand;" onclick="location='documentmanager/inceptdoc/waitdeal_viewflow.htm'" alt="查看流程"> 
+      </td>
+    </tr>
+  </table>
+  <div align="left"><strong><font color="#000066" size="3">&nbsp;&nbsp;<strong><img src="images/jiang_word.gif" width="25" height="25" align="absmiddle"></strong>督查督办</font></strong></div>
+  <table cellSpacing=1 cellPadding=2 class="table1" id="table4">
+    <tr> 
+      <th>字号</th>
+      <th>督查事由</th>
+      <th>下发时间</th>
+      <th>下发人</th>
+      <th>签收</th>
+      <th>批办附件</th>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+      <td align="center" height="15">021</td>
+      <td height="14"><a href="superviseinspect/picture/supervise_zhengxie_edit.htm" target="_blank">关于加强商洛城市建设的建议</a></td>
+      <td height="14">2005-8-01</td>
+      <td align="center" height="15">王五</td>
+      <td height="14"><div align="center">
+          <div align="center"><img src="images/btn_sign.gif" style="cursor: hand;" alt='签收' onclick="location='supervise_signin.htm'"></div>
+        </div></td>
+      <td height="14"><div align="center"><a target="_blank"><img src="images/obrs-t-recycle-g.gif" border="0"></a></div></td>
+    </tr>
+    <tr class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"> 
+      <td align="center" height="15">045</td>
+      <td height="14"><a href="superviseinspect/picture/supervise_lingdao_edit.htm" target="_blank">关于对液态奶生产进行专项整治的通知</a></td>
+      <td height="14">2005-9-20</td>
+      <td align="center" height="15">李四</td>
+      <td height="14"><div align="center">
+          <div align="center"><img src="images/btn_sign.gif" style="cursor: hand;" alt='签收' onclick="location='supervise_signin.htm'"></div>
+        </div></td>
+      <td height="14"><div align="center"><a href="dcd-fj.htm" target="_blank"><img src="images/obrs-t-recycle-c.gif" border="0"></a></div></td>
+    </tr>
+  </table>
+  <div align="left"><font color="#000066" size="3"><strong>&nbsp;&nbsp;<img src="images/jiang_word.gif" width="25" height="25" align="absmiddle">会议纪要</strong></font></div>
+  <table cellSpacing=1 cellPadding=2 class="table1" id="table4">
+    <tr align="center"> 
+      <th scope="col">会议</th>
+      <th width="152" scope="col">会议时间</th>
+      <th width="113"scope="col">操作</th>
+    </tr>
+    <tr class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'" align="center"> 
+      <td>全国人民代表大会</td>
+      <td>2006-8-31</td>
+      <td><img src="images/btn_edit.gif" style="cursor: hand;" alt='编辑' onclick="javascript:location='meetingmanage/summary/summary_edit.htm'"></td>
+    </tr>
+  </table>
+  <div align="left"><font color="#000066" size="3"><strong>&nbsp;&nbsp;<img src="images/jiang_word.gif" width="25" height="25" align="absmiddle">会议议题</strong></font></div>
+  <table cellSpacing=1 cellPadding=2 class="table1" id="table4">
+    <tr align="center"> 
+      <th width="177" scope="col">标题</th>
+      <th scope="col">起草日期</th>
+      <th scope="col">主办单位</th>
+      <th scope="col">起草人</th>
+      <th scope="col">操作</th>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" align="center"> 
+      <td><a href="meetingmanage/discussion/discussion_detail.htm">会议标题</a></td>
+      <td width="193">2006-8-25</td>
+      <td width="163">信息办</td>
+      <td width="151">卡卡</td>
+      <td width="60"><img src="images/btn_edit.gif" style="cursor: hand;" alt='编辑' onclick="javascript:location='meetingmanage/discussion/discussion_send.htm'"></td>
+    </tr>
+    <tr class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'" align="center"> 
+      <td height="36"><a href="meetingmanage/discussion/discussion_detail.htm">会议标题</a></td>
+      <td width="193">2006-8-25</td>
+      <td width="163">信息办</td>
+      <td width="151">卡卡</td>
+      <td width="60"><img src="images/approve.gif" style="cursor: hand;" alt='处理' onclick="javascript:location='meetingmanage/discussion/discussion_check.htm'"></td>
+    </tr>
+  </table>
+  <div align="left">&nbsp;&nbsp;<font size="3" color="#000066"><strong><img src="images/jiang_word.gif" width="25" height="25" align="absmiddle">会议计划</strong></font></div>
+  <table cellSpacing=1 cellPadding=2 class="table1" id="table4">
+    <tr align="center"> 
+      <th width="214" scope="col">会议主题</th>
+      <th scope="col">会议日期</th>
+      <th width="320" scope="col">会议地点</th>
+      <th scope="col">操作</th>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" align="center"> 
+      <td>人代会</td>
+      <td width="139">2005-9-28</td>
+      <td>芝加哥</td>
+      <td width="90"><img src="images/approve.gif" style="cursor: hand;" alt='处理' onclick="javascript:location='meetingmanage/meetingplan/meetingPlan_check.htm'"></td>
+    </tr>
+  </table>
+  <div align="left">&nbsp;&nbsp;<strong><font size="3" color="#000066"><strong><img src="images/jiang_word.gif" width="25" height="25" align="absmiddle"></strong>档案借阅审批</font></strong></div>
+  <table cellSpacing=1 cellPadding=2 class="table1" id="table4">
+    <tr> 
+      <th width="555" scope="col">标题</th>
+      <th scope="col">文号</th>
+      <th scope="col">借阅者</th>
+      <th width="120" scope="col">所在部门</th>
+      <th scope="col">操作</th>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+      <td><a href="#" onClick="javascript:window.open('archive/filemanager/norange_fileinfo.htm','','width=700 height=450 scrollbars=yes resizable=yes')">关于召开全省政府系统秘书长办公室主任会议的通知</a></td>
+      <td width="160">陕办字[2006]1号</td>
+      <td width="88">某某</td>
+      <td>工业处</td>
+      <td width="68"><div align="center"><img src="images/approve.gif" style="cursor: hand;" alt='审批' onclick="javascript:location='archive/lendmanager/noapprove_approve2.htm'"></div></td>
+    </tr>
+    <tr class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"> 
+      <td><a href="#" onClick="javascript:window.open('archive/filemanager/norange_fileinfo.htm','','width=700 height=450 scrollbars=yes resizable=yes')">关于召开全省政府系统秘书长办公室主任会议的通知</a></td>
+      <td width="160">陕办字[2006]2号</td>
+      <td width="88">某某</td>
+      <td>工业处</td>
+      <td width="68"><div align="center"><img src="images/approve.gif" style="cursor: hand;" alt='审批' onclick="javascript:location='archive/lendmanager/noapprove_approve2.htm'"></div></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+  <tr> 
+    <td width="35%">&nbsp; </td>
+    <td width="62%"> <p align="right"><font color="#008080">共</font><font color="#800000"> 
+        1</font><font color="#008080"> 页　 首页　上一页　下一页　尾页&nbsp; 跳转 
+        <input name="text" type="text" size="4">
+        页</font></td>
+    <td width="3%">&nbsp; </td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+  <p  align="center"> &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+  </p>
+</div>
+</body>
+</html>

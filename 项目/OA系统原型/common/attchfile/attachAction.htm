@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0087)http://192.168.1.247:7001/attach/attachAction.do?method=query&code=10735B9505F-5-16EE8B -->
+<HTML><HEAD><TITLE></TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content="MSHTML 6.00.2900.2769" name=GENERATOR>
+<link href="../../style/styles.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY bgColor=#ffffff marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" width="100%"><IFRAME id=w0 src="attachAction.files/upload_i.htm" 
+width="100%" height=0 marginwidth="0" marginheight="0"></IFRAME>
+<TABLE width=560 border=0>
+  <TBODY>
+    <TR height=190> 
+      <TD height="102" class="td2"> 
+        <INPUT type=hidden value=10735B9505F-5-16EE8B name=code>
+        <table width="98%" border="0">
+          <tr>
+            <td width="16%"><span class="body3">
+              <input name="button222" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="添加附件" onClick="addattach()">
+              </span></td>
+            <td width="84%"><span class="body3">
+              <input name="button22" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="上传附件" onClick="alert('上传成功！');">
+              </span></td>
+          </tr>
+        </table>
+        <BR>
+        <BR>
+        <SPAN id=files 
+      style="DISPLAY: none"></SPAN><SPAN id=fns></SPAN> 
+        <DIV id=preview><span class="body3"> </span> </DIV></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<SCRIPT language=javascript type="">
+function save(){
+  syncForm();
+  w0.document.attachActionForm.target="_parent";
+  w0.document.attachActionForm.submit();
+}
+function delold(obj){
+  if(document.all(obj).style.textDecorationLineThrough==false){
+    document.all(obj).style.textDecorationLineThrough=true;
+    document.all(obj+'s').innerText="撤销删除";
+    var textobj=w0.document.createElement("<input name='attachs' value='"+obj+"'>");
+    w0.document.all('dd').appendChild(textobj);
+  }else{
+    document.all(obj).style.textDecorationLineThrough=false;
+    document.all(obj+'s').innerText="删除";
+    var atts=w0.document.attachActionForm.item('attachs');
+    for(var i=0; i<atts.length; i++)
+      if(atts[i].value==obj){
+         w0.document.all('dd').removeChild(atts[i]);
+         break;
+      }
+  }
+}
+var count=new Array(0,0,0,0,0,0,0,0,0,0);
+function addattach(){
+  var i=0;
+  for(; i<10; i++)
+     if(count[i]==0)
+       break;
+  if(i>=10) {
+   alert("一次最多只能上传10个附件！");
+   return;
+  }else{
+    count[i]=i+1;
+    var fileobj=w0.document.createElement("<input id='attach"+count[i]+"'  name='attach"+count[i]+"' type='file' value=''>");
+    w0.document.all("files").appendChild(fileobj);
+    fileobj.click();
+    if(fileobj.value!=''){
+     var labelobj=document.createElement("<label onmouseenter=\"preview('attach"+count[i]+"');\" onmouseout='disappear();' id='lb"+count[i]+"'/>");
+     document.all("fns").appendChild(labelobj);
+     labelobj.innerText=fileobj.value;
+     var labelobj2=document.createElement("<label id='lbl"+count[i]+"' onclick='delattach("+count[i]+")'  style='color:blue;cursor:hand'>");
+     document.all("fns").appendChild(labelobj2);
+     labelobj2.innerHTML="&nbsp;&nbsp;<U>删除</U>";
+     var brobj=document.createElement("<br id='b"+count[i]+"'>");
+     document.all("fns").appendChild(brobj);
+     return;
+    }else{
+      w0.document.all("files").removeChild(fileobj);
+      count[i]=0;
+    }
+  }
+}
+function deleteNode( P, CID)
+{
+    var attas = P.childNodes;
+    var i;
+    for (i=0; i<attas.length; i++ ) {
+        var oChild = P.children(i);
+        if (oChild.id == CID) {
+            P.removeChild(oChild);
+        }
+    }
+}
+function delattach(idx){
+    deleteNode(w0.document.all("files"),'attach'+idx);
+    deleteNode(fns,'lb'+idx);
+    deleteNode(fns,'lbl'+idx);
+    deleteNode(fns,'b'+idx);
+    count[idx-1]=0;
+}
+function syncForm( ) {
+	var srcFrm = document.attachActionForm;
+	var destFrm = w0.document.attachActionForm;
+	destFrm.code.value=srcFrm.code.value;
+//	var actionVars = new Array("code","temp");
+//	for ( var i = 0; i < actionVars.length; i++ ) {
+//		var varName = actionVars[i];
+//		var srcObj = srcFrm.item( varName );
+//		if ( srcObj != null ) {
+//    			destFrm.item(varName).value=srcObj.value;
+//		}
+//	}
+}
+
+function disappear(){
+  //document.all('preview').style.display='none';
+}
+</SCRIPT>
+</BODY></HTML>

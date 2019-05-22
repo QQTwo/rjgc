@@ -1,0 +1,209 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>文件录入</title>
+<link href="../../style/styles.css" rel="STYLESHEET" type="text/css">
+<SCRIPT src="../../images/myweb.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../../egov/js/calendarCN.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../../egov/js/oa_Popup.js"></SCRIPT>
+</head>
+<SCRIPT language=JavaScript src="../../js/calendarCN.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../../js/oa_Popup.js"></SCRIPT>
+<body class="body0">
+<div align="center">
+	<table class="table_path">
+		<tr>
+			
+      <td >您当前的位置：<a href="#"><span class="txtpath">档案管理</span></a> &gt; <a href="#"><span class="txtpath">归档处理</span></a> 
+        &gt; 文件录入</td>
+		    <td align="right" >
+	      <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+		</tr>
+	</table>
+	
+		
+  <table  cellSpacing=1 cellPadding=2 class="table2">
+    <th>文件标题</th>
+    <td colspan="5" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><div align="left"> 
+        <input name="title2" type="text" size="100">
+      </div></td>
+    <tr align=left> 
+      <th width="80">拟稿单位</th>
+      <td width="402" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="draftDept" type="text"> 
+      </td>
+      <th width="80">拟稿人</th>
+      <td width="278" colspan="3" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="dutyPerson" type="text"></td>
+    </tr>
+    <tr align=middle> 
+      <th>签发人</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><div align="left"> 
+          <input name="draft" type="text">
+          <br>
+        </div></td>
+      <th>联系电话</th>
+      <td colspan="3" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+        <div align="left"> 
+          <input name="phone" type="text">
+        </div></td>
+    </tr>
+    <tr align=left> 
+      <th>承办处室</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><select name="dealdept" multiple="multiple" size="4" style="width:170">
+          <option value="205">省质检局</option>
+        </select>
+        <img id="userimg"  style="cursor:hand" border="0" src="../../images/obrs-pic-057.gif" alt="请选择承办处室" onclick=javascript:window.open('../../common/tree/depttree2.htm','thewin','width=440,height=480') class="input001" target="_blank"> 
+        <input name="button" type="button" onClick="clear1();" value="删除选中承办处室"/> 
+      </td>
+      <th>承办人</th>
+      <td colspan="3" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><select name="dealperson" multiple="multiple" size="4" style="width:80">
+          <option value="205">某某</option>
+        </select>
+        <img id="userimg"  style="cursor:hand" border="0" src="../../images/b-03.gif" alt="请选择承办人" onclick=javascript:window.open('../../common/tree/persontree2.htm','thewin','width=440,height=480') class="input001" target="_blank"> 
+        <input name="button2" type="button" onClick="clear1();" value="删除选中承办人"/> 
+      </td>
+    </tr>
+    <tr align=left> 
+      <th>机构</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="department" type="text" value="陕西省政府办公厅">
+        <img id="userimg"  style="cursor:hand" border="0" src="../../images/obrs-pic-057.gif" alt="请选择机构" onclick=javascript:window.open('../../common/tree/depttree1.htm','thewin','width=440,height=480') class="input001" target="_blank"></td>
+      <th>文号</th>
+      <td colspan="3" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+        <input name="zihao" type="text"></td>
+    </tr>
+    <tr align=left> 
+      <th>来文方式</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><select name="comeFileMethod">
+          <option value="0"></option>
+          <option value="1">电子</option>
+          <option value="2">电话</option>
+          <option value="3">传真</option>
+          <option value="4">纸张</option>
+        </select></td>
+      <th>成文日期</th>
+      <td colspan="3" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="formDate" type="text"  readonly="readonly" size="10">
+        <IMG  style="CURSOR: hand" 
+          onclick="fPopUpCalendarDlg(formDate,'../');return false"  alt=请选择时间 src="../../images/datetime.gif" 
+            align=absMiddle width="16" height="16"></td>
+    </tr>
+    <tr align=left> 
+      <th>页数</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="pageCounts" type="text"></td>
+      <th>秘密等级</th>
+      <td colspan="3" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><select name="secret">
+          <option value="0"></option>
+          <option value="1">无</option>
+          <option value="2">秘密</option>
+          <option value="3">机密</option>
+          <option value="4">绝密</option>
+        </select></td>
+    </tr>
+    <tr align=left> 
+      <th>主题词</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="keyWord" type="text"></td>
+      <th>紧急程度</th>
+      <td colspan="3" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><select name="urgen">
+          <option value="0"></option>
+          <option value="1">无</option>
+          <option value="2">平件</option>
+          <option value="3">急件</option>
+          <option value="4">紧急</option>
+          <option value="5">特急</option>
+        </select></td>
+    </tr>
+    <tr align=left> 
+      <th>事由</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="title" type="text">
+        <img id="userimg"  style="cursor:hand" border="0" src="../../images/btn_sign.gif" alt="请选择事由" onclick=javascript:window.open('select_cause.htm','thewin','width=440,height=480') class="input001" target="_blank"></td>
+      <th>份数</th>
+      <td colspan="3" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="amount" type="text"></td>
+    </tr>
+    <tr align=left> 
+      <th height="23">收文日期</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="receiveDate" type="text"  readonly="readonly" size="10">
+        <IMG  style="CURSOR: hand" 
+          onclick="fPopUpCalendarDlg(receiveDate,'../');return false"  alt=请选择时间 src="../../images/datetime.gif" 
+            align=absMiddle width="16" height="16"></td>
+      <th>领导字号</th>
+      <td colspan="3" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="leaderZihao" type="text">
+        <img id="userimg"  style="cursor:hand" border="0" src="../../images/btn_edittemplet.gif" alt="请选领导字号" onclick=javascript:window.open('../../common/select_leader.htm','thewin','width=440,height=480') class="input001" target="_blank"></td>
+    </tr>
+    <tr align=left> 
+      <th>全宗号</th>
+      <td class="tr_s" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_s'"><select name="quanzong">
+	  		<option value=""></option>
+          <option value="Y">001</option>
+        </select></td>
+      <th>重要程度</th>
+      <td colspan="3" class="tr_s" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_s'"><select name="importance">
+          <option value=""></option>
+		  <option value="1">非常重要</option>
+          <option value="2">重要</option>
+          <option value="3">一般</option>
+        </select></td>
+    </tr>
+    <tr align=left> 
+      <th>年度</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="year" type="text"></td>
+      <th>保管期限</th>
+      <td colspan="3" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><select name="saveperiod">
+          <option value="0"></option>
+          <option value="Y">永久</option>
+          <option value="C">长期</option>
+          <option value="D">短期</option>
+        </select></td>
+    </tr>
+    <tr align=left> 
+      <th height="23">扫描附件</th>
+      <td colspan="5" class="tr_s" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_s'"><div align="left"> 
+          <iframe  frameborder="0" height="100%" width="100%" src='../../common/attchfile/attachAction.htm'></iframe>
+        </div></td>
+    </tr>
+    <tr align=middle> 
+      <th>备注</th>
+      <td colspan="5" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><div align="left"> 
+          <textarea name="textarea5" cols="92" rows="6"></textarea>
+        </div></td>
+    </tr>
+  </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+          <tr>
+            <td>
+              <div align="center">
+			  <input name="finish" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="登记完成" onClick="javascript:top.targeturl='../archive/filemanager/register_list.htm';location='../../common/success.htm'">
+        　
+                <input name="save" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="保存" onClick="javascript:top.targeturl='../archive/filemanager/register_list.htm';location='../../common/success.htm'">
+        　
+        <input name="reset" type="reset" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="重置">
+        　
+        <input name="cancel" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="返回" onClick="javascript:location='register_list.htm'">
+            </div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+</div>
+</body>
+</html>

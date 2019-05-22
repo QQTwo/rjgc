@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>:::body:::</title>
+<link href="../../style/styles.css" rel="STYLESHEET" type="text/css">
+<SCRIPT src="../../images/myweb.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../../js/calendarCN.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../../js/oa_Popup.js"></SCRIPT>
+</head>
+
+<body class="body0">
+<div align="center"> 
+  <form action="" method="post" name="form1">
+  <script language="JavaScript">
+  	function chooseRoom(){
+		var roomuse = document.form1.name.value + "|" + 
+					  document.form1.roomid.value + "|" + 
+					  document.form1.startdate.value + "|" + 
+					  document.form1.shour.value + ":" + 
+					  document.form1.smin.value + "|" + 
+					  document.form1.endate.value + "|" + 
+					  document.form1.ehour.value + ":" + 
+					  document.form1.emin.value;
+		parent.returnValue=roomuse;
+		parent.close();
+	}
+  </script>
+    <input name="name" type="hidden" id="name" value="第4会议室">
+    <input name="roomid" type="hidden" id="roomid" value="fourth">
+    <table align="center" cellPadding=2 cellSpacing=1 class="table1" id="table4">
+      <tr> 
+        <th scope="col">会议</th>
+        <th scope="col">使用时间</th>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" align="center"> 
+      <td align="center">1</td>
+        <td> 2006-8-15 15：00 -- 16：00</td>
+    </tr>
+  </table>
+    <table width="75%" cellPadding=2  cellSpacing=1 class="table2">
+      <tr align=middle> 
+        <th>时间</th>
+        <td colspan="7" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><div align="left">
+            <input name="startdate" type="text" id="startdate" size="10" readonly="true">
+            <IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(startdate,'../')" alt=请选择时间
+						src="../../images/datetime.gif" align="absmiddle" width="16"
+						height="16"> 
+            <input name="shour" type="text" id="shour" size="2" maxlength="2">
+            :
+            <input name="smin" type="text" id="smin" size="2" maxlength="2">
+            --
+            <input name="endate" type="text" id="endate" size="10" readonly="true">
+            <IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(endate,'../')" alt=请选择时间
+						src="../../images/datetime.gif" align="absmiddle" width="16"
+						height="16"> 
+            <input name="ehour" type="text" id="ehour" size="2" maxlength="2">
+            :
+            <input name="emin" type="text" id="emin" size="2" maxlength="2">
+          </div></td>
+      </tr>
+    </table>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+          <tr>
+            <td>
+              <div align="center">
+    <input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="保存" onClick="chooseRoom()">
+  　
+  <input name="button22" type="reset" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="重置">
+  　
+  <input name="button32" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="返回" onClick="javascript:history.back()">
+            </div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+  </form>
+</div>
+</body>
+</html>

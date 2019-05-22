@@ -1,0 +1,134 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>内借登记</title>
+<link href="../../style/styles.css" rel="STYLESHEET" type="text/css">
+
+</head>
+<SCRIPT language=JavaScript src="../../js/calendarCN.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../../js/oa_Popup.js"></SCRIPT>
+<body class="body0">
+<div align="center">
+	<table class="table_path">
+		<tr>
+			
+      <td >您当前的位置：<a href="#"><span class="txtpath">档案管理</span></a> &gt; <a href="#"><span class="txtpath">借阅管理</span></a> 
+        &gt; 外借登记</td>
+		    <td align="right" >
+	      <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+		</tr>
+	</table>
+	
+		
+  <table cellSpacing=1 cellPadding=2 class="table2">
+    <tr> 
+      <th scope="row">单位</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="department" type="text" value=""></td>
+    </tr>
+    <tr> 
+      <th scope="row">介绍信编号</th>
+      <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><input name="intruductNo" type="text" value=""></td>
+    </tr>
+    <tr> 
+      <th scope="row">姓名</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="name" type="text" value=""></td>
+    </tr>
+    <tr> 
+      <th scope="row">联系电话</th>
+      <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><input name="telephone" type="text"></td>
+    </tr>
+    <tr> 
+      <th scope="row">所借文件文号</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="zihao" type="text" value=""></td>
+    </tr>
+    <tr> 
+      <th scope="row">密级</th>
+      <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><select name="secret">
+          <option value="0"></option>
+          <option value="1">无</option>
+          <option value="2">秘密</option>
+          <option value="3">机密</option>
+          <option value="4">绝密</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <th scope="row">办理人</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="agreePerson" type="text" value="某某" disabled></td>
+    </tr>
+    <tr> 
+      <th scope="row">借阅时间</th>
+      <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><input name="lendDate" type="text" readonly="readonly" size="10"> 
+        <IMG  style="CURSOR: hand" 
+          onclick="fPopUpCalendarDlg(lendDate,'../');return false"  alt=请选择时间 src="../../images/datetime.gif" 
+            align=absMiddle width="16" height="16"></td>
+    </tr>
+    <tr> 
+      <th scope="row">应还档时间</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="returnDate" type="text" readonly="readonly" size="10"> 
+        <IMG  style="CURSOR: hand" 
+          onclick="fPopUpCalendarDlg(returnDate,'../');return false" 
+            alt=请选择时间 src="../../images/datetime.gif" 
+            align=absMiddle width="16" height="16"> </td>
+    </tr>
+    <tr> 
+      <th scope="row">查档事由</th>
+      <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><textarea name="searchCause" cols="50" rows="5"></textarea> 
+      </td>
+    </tr>
+    <tr> 
+      <th scope="row">档案科意见</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><textarea name="archiveDeptIdea" cols="50" rows="5"></textarea></td>
+    </tr>
+    <tr> 
+      <th scope="row">主管处长意见</th>
+      <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><textarea name="deptHeadIdea" cols="50" rows="5"></textarea></td>
+    </tr>
+    <tr> 
+      <th scope="row">主管厅领导意见</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><textarea name="tingHeadIdea" cols="50" rows="5"></textarea></td>
+    </tr>
+    <tr> 
+      <th scope="row">备注</th>
+      <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><textarea name="remark" cols="50" rows="5"></textarea></td>
+    </tr>
+  </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+          <tr>
+            <td>
+              <div align="center">
+    <input name="save" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="保存" onClick="javascript:top.targeturl='../archive/lendmanager/outsidelend_list.htm';location='../../common/success.htm'">
+  　
+  <input name="reset" type="reset" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="重置">
+  　
+  <input name="cancel" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="返回" onClick="javascript:location='outsidelend_list.htm'">
+            </div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+        </div>
+</body>
+</html>

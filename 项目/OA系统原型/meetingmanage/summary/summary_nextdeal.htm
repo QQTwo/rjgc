@@ -1,0 +1,78 @@
+<link href="../../style/styles.css" rel="stylesheet" type="text/css">
+<body class="body0">
+<div align="center"> 
+  <table class="table_path">
+  <tr> 
+    <td >您当前的位置：<a href="#"><span class="txtpath">公文管理</span></a> &gt; 发文管理 &gt; 
+      待办发文 &gt; 发文办理 &gt; 选择下一步</td>
+    <td align="right" > <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+  </tr>
+</table>
+<table cellSpacing=1 cellPadding=2 class="table1" id="table4">
+  <tr > 
+    <th width="26%" scope="col">选择</th>
+    <th width="33%" scope="col">任务名称</th>
+    <th width="41%" scope="col">操作</th>
+  </tr>
+  <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+    <td height="27"><div align="center"> 
+          <input type="radio" name="radiobutton" value="radiobutton">
+        </div></td>
+    <td>拟稿</td>
+    <td align="center"><input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="指定处理者" onclick="history.go(-1)"></td>
+  </tr>
+  <tr class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"> 
+    <td><div align="center"> 
+          <input type="radio" name="radiobutton" value="radiobutton">
+        </div></td>
+    <td>签批</td>
+    <td align="center"><input name="button52" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="指定处理者" onclick="history.go(-1)"></td>
+  </tr>
+  <tr  class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+    <td><div align="center"> 
+          <input type="radio" name="radiobutton" value="radiobutton">
+        </div></td>
+    <td>盖章</td>
+    <td align="center"><input name="button53" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="指定处理者" onclick="history.go(-1)"></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+  <tr> 
+    <td width="35%"><input name="button" type="button" class=btn_mouseout onmousedown="this.className='btn_mousedown'" onmouseup="this.className='btn_mouseup'" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="提交" onclick="top.targeturl='../meetingmanage/summary/summary_waitlist.htm';window.location='../../common/success.htm'">
+      <input name="button2" type="button" class=btn_mouseout onmousedown="this.className='btn_mousedown'" onmouseup="this.className='btn_mouseup'" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="返回" onclick="history.go(-1)"> 
+    </td>
+    <td width="62%"> <p align="right"><font color="#008080">共</font><font color="#800000"> 
+        1</font><font color="#008080"> 页　 首页　上一页　下一页　尾页&nbsp; 跳转 
+        <input name="text" type="text" size="4">
+        页</font></td>
+    <td width="3%">&nbsp; </td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div>

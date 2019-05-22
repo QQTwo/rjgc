@@ -1,0 +1,1287 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>公务员目录树</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=Pragma content=no-cache>
+<META http-equiv=Cache-Control content=no-cache>
+<META http-equiv=Expires content=0>
+<link href="../../style/styles.css" rel="STYLESHEET" type="text/css">
+<SCRIPT src="js/tree.js"></SCRIPT>
+<SCRIPT language=javascript>
+function popmenu(mode,type,value)
+{
+	var rightedge=document.body.clientWidth-event.clientX
+	var bottomedge=document.body.clientHeight-event.clientY
+	if(mode==0)
+	{
+		if (rightedge<menu_add.clientWidth)
+			menu_add.style.left=document.body.scrollLeft+event.clientX-menu_add.clientWidth
+		else
+			menu_add.style.left=document.body.scrollLeft+event.clientX
+
+		if (bottomedge<menu_add.clientHeight)
+			menu_add.style.top=document.body.scrollTop+event.clientY-menu_add.clientHeight
+		else
+			menu_add.style.top=document.body.scrollTop+event.clientY
+		menu_add.style.visibility="visible"
+		document.all["method"].value="addUseruser"
+	}
+	else
+	{
+		if (rightedge<menu_delete.clientWidth)
+			menu_delete.style.left=document.body.scrollLeft+event.clientX-menu_delete.clientWidth
+		else
+			menu_delete.style.left=document.body.scrollLeft+event.clientX
+
+		if (bottomedge<menu_delete.clientHeight)
+			menu_delete.style.top=document.body.scrollTop+event.clientY-menu_delete.clientHeight
+		else
+			menu_delete.style.top=document.body.scrollTop+event.clientY
+		menu_delete.style.visibility="visible"
+		document.all["method"].value="deleteUseruser";
+	}
+	document.all["useruser"].value = value;
+	document.all["type"].value = type
+}
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.2873" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff onLoad="clickBar(5)">
+
+<TABLE cellSpacing=0 cellPadding=0 width=384 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD height=10></TD></TR>
+  <TR>
+    <TD>
+     
+				
+      <TABLE cellSpacing=0 cellPadding=0 width=384 border=0>
+        <TBODY>
+        <TR>
+          <TD bgColor=#ffffff height=390>
+		  
+		  
+            <TABLE height="100%" cellSpacing=8 cellPadding=0 width="100%" 
+            align=center border=0>
+              <TBODY>
+              <TR>
+                <TD vAlign=top>
+                  <DIV 
+                  style="BORDER-RIGHT: #0099cc 1px solid; PADDING-RIGHT: 5pt; BORDER-TOP: #0099cc 1px solid; PADDING-LEFT: 5pt; PADDING-BOTTOM: 5pt; OVERFLOW: auto; BORDER-LEFT: #0099cc 1px solid; WIDTH: 100%; PADDING-TOP: 5pt; BORDER-BOTTOM: #0099cc 1px solid; HEIGHT: 100%">
+                          <DIV id=CustTree style="DISPLAY: block"> </DIV>
+                  <DIV id=AllTree style="DISPLAY: none">
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG onclick=javascript:clickNode(1,1) height=22 
+                        src="image/node_6.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_001.gif" 
+                        width=24></TD>
+                      <TD>&nbsp;陕西省</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Dis_1 style="DISPLAY: none">
+                  <!--DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_2.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(2,1) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_001.gif" 
+                        width=24></TD>
+                      <TD>&nbsp;西安市</TD></TR></TBODY></TABLE></DIV-->
+                  <DIV id=all_Dis_2 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_2.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(17,2) height=22 
+                        src="image/node_2.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=17|陕西省交通厅运输管理局; name=all_chk_0></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'17')">&nbsp;陕西省交通厅运输管理局</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_17 style="DISPLAY: none">
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(50,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=50|局领导; name=all_chk_1></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'50')">&nbsp;局领导</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_50 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(51,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=51|办公室; name=all_chk_2></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'51')">&nbsp;办公室</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_51 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(52,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=52|综合规划科; name=all_chk_3></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'52')">&nbsp;综合规划科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_52 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(53,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=53|财务科; name=all_chk_4></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'53')">&nbsp;财务科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_53 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(54,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=54|政策法规科; name=all_chk_5></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'54')">&nbsp;政策法规科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_54 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(55,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=55|客运管理科; name=all_chk_6></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'55')">&nbsp;客运管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_55 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(56,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=56|货运管理科; name=all_chk_7></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'56')">&nbsp;货运管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_56 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(57,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=57|维修管理科; name=all_chk_8></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'57')">&nbsp;维修管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_57 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(58,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=58|驾驶员培训管理中心; name=all_chk_9></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'58')">&nbsp;驾驶员培训管理中心</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_58 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(59,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=59|城市客运管理科; name=all_chk_10></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'59')">&nbsp;城市客运管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_59 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(60,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=60|稽查总队; name=all_chk_11></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'60')">&nbsp;稽查总队</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_60 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(61,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=61|信息中心; name=all_chk_12></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'61')">&nbsp;信息中心</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_61 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(62,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=62|企业资质管理办; name=all_chk_13></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'62')">&nbsp;企业资质管理办</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_62 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(63,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=63|纪检监察室（督查室）; name=all_chk_14></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'63')">&nbsp;纪检监察室（督查室）</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_63 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(64,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=64|物业管理中心; name=all_chk_15></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'64')">&nbsp;物业管理中心</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_64 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(65,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=65|道路运输协会; name=all_chk_16></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'65')">&nbsp;道路运输协会</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_65 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(66,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=66|党委办公室; name=all_chk_17></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'66')">&nbsp;党委办公室</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=all_Unit_66 
+                  style="DISPLAY: none"></DIV></DIV></DIV></DIV>
+                  <DIV id=DepartmentTree style="DISPLAY: none">
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG onclick=javascript:clickNode(17,2) height=22 
+                        src="image/node_6.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=17|陕西省交通厅运输管理局; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'17')">&nbsp;陕西省交通厅运输管理局</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_17 style="DISPLAY: none">
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(50,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=50|局领导; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'50')">&nbsp;局领导</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_50 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(51,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=51|办公室; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'51')">&nbsp;办公室</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_51 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(52,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=52|综合规划科; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'52')">&nbsp;综合规划科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_52 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(53,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=53|财务科; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'53')">&nbsp;财务科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_53 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(54,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=54|政策法规科; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'54')">&nbsp;政策法规科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_54 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(55,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=55|客运管理科; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'55')">&nbsp;客运管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_55 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(56,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=56|货运管理科; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'56')">&nbsp;货运管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_56 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(57,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=57|维修管理科; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'57')">&nbsp;维修管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_57 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(58,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=58|驾驶员培训管理中心; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'58')">&nbsp;驾驶员培训管理中心</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_58 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(59,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=59|城市客运管理科; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'59')">&nbsp;城市客运管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_59 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(60,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=60|稽查总队; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'60')">&nbsp;稽查总队</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_60 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(61,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=61|信息中心; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'61')">&nbsp;信息中心</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_61 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(62,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=62|企业资质管理办; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'62')">&nbsp;企业资质管理办</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_62 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(63,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=63|纪检监察室（督查室）; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'63')">&nbsp;纪检监察室（督查室）</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_63 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(64,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=64|物业管理中心; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'64')">&nbsp;物业管理中心</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_64 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(65,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=65|道路运输协会; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'65')">&nbsp;道路运输协会</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_65 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(66,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=66|党委办公室; name=dept_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'66')">&nbsp;党委办公室</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=dept_Unit_66 style="DISPLAY: none"></DIV></DIV></DIV>
+                  <DIV id=UnitTree style="DISPLAY: none">
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG onclick=javascript:clickNode(17,2) height=22 
+                        src="image/node_6.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=17|陕西省交通厅运输管理局; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'17')">&nbsp;陕西省交通厅运输管理局</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_17 style="DISPLAY: none">
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(50,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=50|局领导; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'50')">&nbsp;局领导</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_50 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(51,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=51|办公室; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'51')">&nbsp;办公室</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_51 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(52,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=52|综合规划科; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'52')">&nbsp;综合规划科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_52 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(53,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=53|财务科; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'53')">&nbsp;财务科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_53 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(54,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=54|政策法规科; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'54')">&nbsp;政策法规科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_54 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(55,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=55|客运管理科; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'55')">&nbsp;客运管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_55 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(56,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=56|货运管理科; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'56')">&nbsp;货运管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_56 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(57,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=57|维修管理科; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'57')">&nbsp;维修管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_57 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(58,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=58|驾驶员培训管理中心; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'58')">&nbsp;驾驶员培训管理中心</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_58 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(59,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=59|城市客运管理科; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'59')">&nbsp;城市客运管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_59 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(60,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=60|稽查总队; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'60')">&nbsp;稽查总队</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_60 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(61,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=61|信息中心; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'61')">&nbsp;信息中心</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_61 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(62,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=62|企业资质管理办; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'62')">&nbsp;企业资质管理办</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_62 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(63,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=63|纪检监察室（督查室）; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'63')">&nbsp;纪检监察室（督查室）</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_63 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(64,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=64|物业管理中心; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'64')">&nbsp;物业管理中心</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_64 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(65,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=65|道路运输协会; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'65')">&nbsp;道路运输协会</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_65 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(66,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=66|党委办公室; name=unit_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'66')">&nbsp;党委办公室</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=unit_Unit_66 style="DISPLAY: none"></DIV></DIV></DIV>
+                  <DIV id=PolityTree style="DISPLAY: none">
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG onclick=javascript:clickNode(1,1) height=22 
+                        src="image/node_6.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_001.gif" 
+                        width=24></TD>
+                      <TD>&nbsp;陕西省</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Dis_1 style="DISPLAY: none">
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_2.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(2,1) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_001.gif" 
+                        width=24></TD>
+                      <TD>&nbsp;西安市</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Dis_2 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_2.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(17,2) height=22 
+                        src="image/node_2.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=17|陕西省交通厅运输管理局; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'17')">&nbsp;陕西省交通厅运输管理局</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_17 style="DISPLAY: none">
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(50,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=50|局领导; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'50')">&nbsp;局领导</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_50 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(51,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=51|办公室; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'51')">&nbsp;办公室</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_51 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(52,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=52|综合规划科; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'52')">&nbsp;综合规划科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_52 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(53,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=53|财务科; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'53')">&nbsp;财务科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_53 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(54,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=54|政策法规科; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'54')">&nbsp;政策法规科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_54 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(55,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=55|客运管理科; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'55')">&nbsp;客运管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_55 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(56,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=56|货运管理科; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'56')">&nbsp;货运管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_56 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(57,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=57|维修管理科; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'57')">&nbsp;维修管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_57 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(58,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=58|驾驶员培训管理中心; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'58')">&nbsp;驾驶员培训管理中心</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_58 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(59,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=59|城市客运管理科; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'59')">&nbsp;城市客运管理科</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_59 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(60,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=60|稽查总队; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'60')">&nbsp;稽查总队</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_60 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(61,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=61|信息中心; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'61')">&nbsp;信息中心</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_61 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(62,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=62|企业资质管理办; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'62')">&nbsp;企业资质管理办</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_62 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(63,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=63|纪检监察室（督查室）; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'63')">&nbsp;纪检监察室（督查室）</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_63 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(64,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=64|物业管理中心; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'64')">&nbsp;物业管理中心</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_64 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(65,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=65|道路运输协会; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'65')">&nbsp;道路运输协会</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_65 style="DISPLAY: none"></DIV>
+                  <DIV style="DISPLAY: block">
+                  <TABLE cellSpacing=0 cellPadding=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=22 src="image/line_1.gif" 
+                        width=24></TD>
+                      <TD><IMG height=22 src="image/line_3.gif" 
+                        width=24></TD>
+                      <TD><IMG onclick=javascript:clickNode(66,2) height=22 
+                        src="image/node_1.gif" width=24></TD>
+                      <TD><IMG height=22 src="image/obrs_m_002.gif" 
+                        width=24>
+                      <TD><INPUT onclick=javascript:onlyone.value=this.value; 
+                        type=checkbox value=66|党委办公室; name=polity_chk></TD>
+                      <TD style="CURSOR: hand" 
+                        onclick="popmenu(0,0,'66')">&nbsp;党委办公室</TD></TR></TBODY></TABLE></DIV>
+                  <DIV id=polity_Unit_66 
+                  style="DISPLAY: none"></DIV></DIV></DIV></DIV></DIV></TD></TR></TBODY></TABLE>
+            <TABLE>
+              <TBODY>
+              <TR>
+                <TD align=middle><INPUT type=hidden value=18 name=cont><INPUT 
+                  type=hidden name=onlyone><INPUT type=hidden value=cust 
+                  name=divtype></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+      <TABLE cellSpacing=0 cellPadding=0 width=384 border=0>
+        <TBODY>
+        <TR>
+
+          <TD align=right><input name="save" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" 
+		  onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" 
+		  onMouseOut="this.className='btn_mouseout'" value="确定" 
+		  onClick="javascript:ok(); ">
+                <input name="close" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" 
+		  onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" 
+		  onMouseOut="this.className='btn_mouseout'" value="关闭" 
+		  onClick="javascript:window.close()">
+                &nbsp;&nbsp;</TD>
+            </TR></TBODY></TABLE></TD></TR></TBODY></TABLE><IFRAME 
+name=back src="about:blank" frameBorder=0 height=0></IFRAME>
+</BODY></HTML>

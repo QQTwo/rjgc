@@ -1,0 +1,189 @@
+
+body {
+
+	position: relative;
+	margin-top: 0;
+	padding: 0;
+	background-color: #fff;
+
+}
+.normal {
+	background-color: #8b89cd;
+	border:0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	font-size: 12pt;
+	font-weight: bold;
+	font-style: normal;
+	color: #fff;
+}
+table {
+	border-collapse: collapse;
+	border: 1px solid #000;
+	text-align: center;
+	background-color: #e6e2f6;
+	margin: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: ËÎÌו;
+	font-size: 10pt;
+	color: #000;
+}
+
+td {
+	border: 1px solid #8b89cd;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 27px;
+	height: 20px;
+}
+.tdnormal {
+	border: 1px solid #8b89cd;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 27px;
+	height: 20px;
+}
+.tdhover {
+	font-style: normal;
+	color: #fff;
+	background-color: #BCBFE0;
+	cursor: hand;
+}
+
+th{
+	border: 1px solid;
+	border-color: #313f7f;
+	background-color: #fff;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	padding: 2px;
+	font-style: normal;
+	font-weight: bold;
+	margin: 0px;
+	vertical-align: baseline;
+	width: 27px;
+	height: 20px;
+}
+
+.calendarheading{
+	font-size: 12pt;
+	font-weight: bold;
+	font-style: normal;
+	color: #fff;
+	background-color: #8b89cd;
+//	border-top: 1px solid #000;
+//	border-bottom: 1px solid #000;
+	width: 27px;
+	height: 20px;
+}
+
+
+.thisday {
+	color: #fff;
+	font-style: normal;
+	font-weight: bold;
+	background-color: #8b89cd;
+}
+
+.thisdayhover {
+	background-color: #fff;
+	font-weight: bold;
+	color: #8b89cd;
+	cursor: hand;
+}
+
+.cssleftarrow{
+	display: block;
+	border-style: solid;
+	border-color: #8b89cd #000 #8b89cd #8b89cd;
+	margin: 2px;
+	margin-left: auto;
+	margin-right: auto;
+	width:0px;
+	height:0px;
+	line-height:0px;
+	border-width:10px;
+	border-left-width: 0px;
+	border-right-width: 13px;
+	left: 5px;
+	top:  5px;
+	cursor: pointer;
+}
+
+.cssleftarrow:hover{
+	border-right-color: #fff;
+}
+
+.cssrightarrow{
+	display: block;
+	border-style: solid;
+	border-color: #8b89cd #8b89cd #8b89cd #000;
+	margin: 2px;
+	margin-left: auto;
+	margin-right: auto;
+	width:0px;
+	height:0px;
+	line-height:0px;
+	border-width:10px;
+	border-right-width: 0px;
+	border-left-width: 13px;
+	left: 5px;
+	top:  5px;
+	cursor: pointer;
+}
+
+.cssrightarrow:hover{
+	border-left-color: #fff;
+}
+
+.cssleftstretcharrow{
+	display: block;
+	border-style: solid;
+	border-color: #8b89cd #000 #8b89cd #8b89cd;
+	margin: 2px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 0px;
+	height: 0px;
+	line-height: 0px;
+	border-width: 7px;
+	border-left-width: 0px;
+	border-right-width: 23px;
+	left: 5px;
+	top:  5px;
+	cursor: pointer;
+}
+
+.cssleftstretcharrow:hover{
+	border-right-color: #fff;
+}
+
+.cssrightstretcharrow{
+	display: block;
+	border-style: solid;
+	border-color: #8b89cd #8b89cd #8b89cd #000;
+	margin-left: auto;
+	margin-right: auto;
+	margin: 2px;
+	width: 0px;
+	height: 0px;
+	line-height: 0px;
+	border-width: 7px;
+	border-right-width: 0px;
+	border-left-width: 23px;
+	left: 5px;
+	top:  5px;
+	cursor: pointer;
+}
+
+.cssrightstretcharrow:hover{
+	border-left-color: #fff;
+}
+

@@ -1,0 +1,102 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>内借信息</title>
+<link href="../../style/styles.css" rel="STYLESHEET" type="text/css">
+<SCRIPT src="../../images/myweb.js"></SCRIPT>
+</head>
+
+<body class="body0">
+<div align="center">
+	<table class="table_path">
+		<tr>
+			
+      <td >您当前的位置：<a href="#"><span class="txtpath">档案管理</span></a> &gt; <a href="#"><span class="txtpath">借阅管理</span></a> 
+        &gt; 待审批信息</td>
+		    <td align="right" >
+	      <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+		</tr>
+	</table>
+	
+		<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="table_box">
+          <tr>
+            <td><p>标题： 
+          <input type="text" name="title">
+          文号： 
+          <input type="text" name="dutyPerson">
+		  借阅者：
+		  <input type="text" name="lendPerson" >
+          　 
+          <input type="button" class=btn_mouseout onmousedown="this.className='btn_mousedown'" onmouseup="this.className='btn_mouseup'" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="按条件查询">
+          　 
+          <input type="button" class=btn_mouseout onmousedown="this.className='btn_mousedown'" onmouseup="this.className='btn_mouseup'" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="查询全部">
+        </p>            </td>
+          </tr>
+        </table>
+	
+		
+  <table cellSpacing=1 cellPadding=2 class="table1" id="table4">
+    <tr> 
+      <th width="555" scope="col">标题</th>
+      <th scope="col">文号</th>
+      <th scope="col">借阅者</th>
+      <th width="120" scope="col">所在部门</th>
+      <th scope="col">操作</th>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+      <td><a href="#" onClick="javascript:window.open('../filemanager/norange_fileinfo.htm','','width=700 height=600 scrollbars=yes resizable=yes')">关于召开全省政府系统秘书长办公室主任会议的通知</a></td>
+      <td width="160">陕办字[2006]1号</td>
+      <td width="88">某某</td>
+      <td>工业处</td>
+      <td width="68"><div align="center"><img src="../../images/approve.gif" style="cursor: hand;" alt='审批' onclick="javascript:location='noapprove_approve.htm'"></div></td>
+    </tr>
+    <tr class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"> 
+      <td><a href="#" onClick="javascript:window.open('../filemanager/norange_fileinfo.htm','','width=700 height=600 scrollbars=yes resizable=yes')">关于召开全省政府系统秘书长办公室主任会议的通知</a></td>
+      <td width="160">陕办字[2006]2号</td>
+      <td width="88">某某</td>
+      <td>工业处</td>
+      <td width="68"><div align="center"><img src="../../images/approve.gif" style="cursor: hand;" alt='审批' onclick="javascript:location='noapprove_approve.htm'"></div></td>
+    </tr>
+  </table>
+    
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+				<tr>
+					
+      <td width="35%">&nbsp; </td>
+					<td width="62%">
+					<p align="right"><font color="#008080">共</font><font color="#800000"> 1</font><font color="#008080"> 页　 首页　上一页　下一页　尾页&nbsp; 
+					跳转<input type="text" size="4">
+					页</font></td>
+					<td width="3%">&nbsp; </td>
+				</tr>
+				<tr>
+				  <td>&nbsp;</td>
+				  <td>&nbsp;</td>
+				  <td>&nbsp;</td>
+		  </tr>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>无标题文档</title>
+<link href="/futureoa/style/styles.css" rel="stylesheet" type="text/css">
+
+<script language='javaScript'>
+
+function sel(test){
+  var userStr = //window.showModalDialog("/futureoa/common/tree/persontree1.htm","","dialogwidth:416px;dialogheight:520px;scroll:1;resizable:0;status:0;");
+window.showModalDialog("/futureoa/common/tree/depttree1.htm","","dialogwidth:416px;dialogheight:520px;scroll:1;resizable:0;status:0;");
+  if(userStr!=undefined&&userStr!=""){
+  alert(userStr);
+  var strarray = userStr.split(';');
+var sn;
+var name;
+var finalname="";
+  for(var i=0;i<strarray.length-1;i++){
+  //取编号
+  sn=strarray[i].substring(0,strarray[i].indexOf('|'));
+  alert("编号："+sn);
+  //取名称
+  name=strarray[i].substring(strarray[i].indexOf('|')+1);
+  alert("名称："+name);
+  if(i==0)
+  finalname=name;
+  else
+  finalname+=("  "+name);
+  }
+  if(test.value!="")
+  test.value=(test.value+"\n"+finalname);
+  else
+  test.value=finalname;
+  }else
+ test.value="";
+}
+
+//作用：显示操作状态
+function StatusMsg(mString){
+  //StatusBar.innerText=mString;
+}
+
+//作用：载入iWebOffice
+function Load(){
+  try{
+  //以下属性必须设置，实始化iWebOffice
+  acceptDealForm.WebOffice.WebUrl="http://192.168.1.113:8888/futureoa/documentmanager/senddoc/OfficeServer.jsp";    //WebUrl:系统服务器路径，与服务器文件交互操作，如保存、打开文档，重要文件
+  acceptDealForm.WebOffice.RecordID="1153987733031";   //RecordID:本文档记录编号
+  acceptDealForm.WebOffice.Template="";   //Template:模板编号
+  acceptDealForm.WebOffice.FileName="null";   //FileName:文档名称
+  acceptDealForm.WebOffice.FileType=".doc";   //FileType:文档类型  .doc  .xls  .wps
+  acceptDealForm.WebOffice.UserName="卫立波";   //UserName:操作用户名，痕迹保留需要
+  acceptDealForm.WebOffice.EditType="0,0";   //EditType:编辑类型  方式一、方式二 
+                                                 //第一位可以为0,1,2,3 其中:0不可编辑;1可以编辑,无痕迹;2可以编辑,有痕迹,不能修订;3可以编辑,有痕迹,能修订；
+                                                 //第二位可以为0,1 其中:0不可批注,1可以批注。
+
+  //Start  iWebOffice2006属性  以下属性可以不要
+  acceptDealForm.WebOffice.Language="CH";               //Language:多语言支持显示选择   CH 简体 TW繁体 EN英文
+  acceptDealForm.WebOffice.PenColor="#FF0000";          //PenColor:默认批注颜色
+  acceptDealForm.WebOffice.PenWidth="1";                //PenWidth:默认批注笔宽
+  acceptDealForm.WebOffice.Print="1";                   //Print:默认是否可以打印:1可以打印批注,0不可以打印批注
+  acceptDealForm.WebOffice.ShowToolBar="1";             //ShowToolBar:是否显示工具栏:1显示,0不显示
+
+	
+  acceptDealForm.WebOffice.VisibleTools("新建文件",false);
+  acceptDealForm.WebOffice.VisibleTools("打开文件",false);
+  acceptDealForm.WebOffice.VisibleTools("保存文件",false);
+  acceptDealForm.WebOffice.VisibleTools("重新批注",false);
+  acceptDealForm.WebOffice.VisibleTools("文档清稿",false);
+  acceptDealForm.WebOffice.VisibleTools("手写批注",false);
+  acceptDealForm.WebOffice.VisibleTools("文字批注",false);
+
+  
+  acceptDealForm.WebOffice.ShowMenu="0";
+  acceptDealForm.WebOffice.WebOpen();  	 //打开该文档    交互OfficeServer  调出文档OPTION="LOADFILE"    调出模板OPTION="LOADTEMPLATE"     <参考技术文档>
+  acceptDealForm.WebOffice.ShowType=2;          //文档显示方式  1:表示文字批注  2:表示手写批注  0:表示文档核稿
+  StatusMsg(acceptDealForm.WebOffice.Status);                //状态信息
+  
+  }catch(e){}
+}
+
+//作用：退出iWebOffice
+function UnLoad(){
+  try{
+  if (!acceptDealForm.WebOffice.WebClose()){
+     StatusMsg(acceptDealForm.WebOffice.Status);
+  }else{
+     StatusMsg("关闭文档...")
+  }
+  }catch(e){}
+}
+var num=false;
+function goback(){
+if(num)history.go(-2);
+else history.go(-1);
+}
+</script>
+</head>
+<body class="body0" onload="Load()" unload="UnLoad()">
+ <div align="center">
+ <table class="table_path">
+  <tr> 
+      <td >您当前的位置：<a href="#"><span class="txtpath">公文管理</span></a> &gt; 收文管理 
+        &gt; 查看流程 &gt; 查看处理</td>
+    <td align="right" > <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+  </tr>
+</table>
+<form name="acceptDealForm" method="post" action="/futureoa/documentmanager/acceptDeal.do">
+<input type="hidden" name="code" value="陕西省政府/信息产业厅/weilibo/收文/10CAF127EE9-3-130E55" id="codeid">
+<table width="98%" height="400" border="0">
+  <tr> 
+    <td> <object id="WebOffice" width="100%" height="100%" classid="clsid:8B23EA28-723C-402F-92C4-59BE0E063499" codebase="iWebOffice2006.ocx#version=7,2,6,0">
+        </object></td>
+  </tr>
+</table>
+  <br>
+<table width="98%" border="0" class="table1">
+  <tr> 
+    <th width="100"><div align="center">处理人</div></th>
+    <th><div align="center">处理意见</div></th>
+  </tr>
+  <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'">
+    <td>卫立波</td>
+    <td> 双方都</td>
+  </tr>
+</table>
+  <table width="98%" border="0" class="table1">
+    <tr> 
+      <th width="100"><div align="center">附件列表</div></th>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+      <td><div align="right">
+              <iframe name="attachframe" frameborder="0" height="100%" width="100%" src='/futureoa/common/attachfile/list.jsp'></iframe>
+            </div></td>
+    </tr>
+  </table>
+  </form>
+  <p>
+  <input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="返回" onclick="goback()">
+</p>
+</div>
+<script language=javascript>
+if(document.getElementById("codeid").value!=""){
+num=true;
+	attachframe.location="/futureoa/attachAction.do?method=list&code="+document.getElementById("codeid").value;
+	}
+</script>
+</body>
+</html>

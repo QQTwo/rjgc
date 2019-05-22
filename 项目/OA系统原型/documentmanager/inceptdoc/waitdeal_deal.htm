@@ -1,0 +1,92 @@
+<link href="../../style/styles.css" rel="stylesheet" type="text/css"> 
+<body class="body0">
+<div align="center">
+<table class="table_path">
+  <tr> 
+      <td >您当前的位置：<a href="#"><span class="txtpath">公文管理</span></a> &gt; 收文管理 
+        &gt; 待办收文 &gt; 收文办理</td>
+    <td align="right" > <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+  </tr>
+</table>
+<table width="98%" height="400" border="0">
+  <tr>
+    <td><OBJECT id="WebOffice" width="100%" height="100%" classid="clsid:8B23EA28-723C-402F-92C4-59BE0E063499" codebase="iWebOffice2006.ocx#version= 7,2,6,0">
+  </OBJECT>
+    <script language="javascript">
+WebOffice.ShowToolBar="1"; 
+WebOffice.FileName="moban.doc";
+WebOffice.ShowMenu="0";
+WebOffice.WebOpen();
+</script>
+  </td>
+  </tr>
+</table>
+  <div align="center"> 
+    <table width="98%" border="0" class="table1">
+    <tr> 
+      <th width="100"><div align="center">处理人</div></th>
+      <th><div align="center">处理意见</div></th>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+      <td>张力</td>
+        <td> 
+          <textarea name="textarea" cols="80"></textarea></td>
+    </tr>
+  </table>
+    <div align="center"> 
+      <table width="98%" height="85" border="0" class="table1">
+        <tr> 
+          <th> <div align="center">上传附件</div>
+            <div align="center"></div></th>
+        </tr>
+        <tr class="tr_s" > 
+          <td height="77"> <div align="left"></div>
+            <div align="right"> 
+              <iframe  frameborder="0" height="100%" width="100%" src='../../common/attchfile/attachAction.htm'></iframe>
+            </div></td>
+        </tr>
+      </table>
+    </div>
+    <br>
+  </div>
+  <table width="98%" border="0">
+  <tr> 
+    <td><div align="center">催办时间
+<input name="textfield" type="text" size="6">
+          &nbsp; 
+          <input name="button" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="完成办理" onClick="window.location='waitdeal_nextdeal.htm'">
+        &nbsp; 
+          <input name="button2" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="退回" onClick="top.targeturl='../documentmanager/inceptdoc/waitdeal_list.htm';window.location='../../common/success.htm'">
+          &nbsp;
+<input name="button4" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="启动新流程" onClick="window.location='waitdeal_flowstart.htm'">
+          &nbsp; 
+          <input name="button3" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="终止流程" onClick="top.targeturl='../documentmanager/inceptdoc/waitdeal_list.htm';window.location='../../common/success.htm'">
+          &nbsp;
+<input name="button32" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="结束活动" onClick="window.location='waitdeal_nextdeal.htm'">
+          &nbsp;
+<input name="button22" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="返回" onClick="history.go(-1)">
+        </div></td>
+  </tr>
+</table>
+</div>

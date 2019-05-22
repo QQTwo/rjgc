@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>:::body:::</title>
+<link href="../../style/styles.css" rel="STYLESHEET" type="text/css">
+<SCRIPT src="../../images/myweb.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../../js/calendarCN.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../../js/oa_Popup.js"></SCRIPT>
+</head>
+
+<body class="body0">
+<div align="center">
+			<table class="table_path">
+		<tr>
+			
+      <td >您当前的位置：<a href="#"><span class="txtpath">会议管理</span></a> &gt; <a href="#"><span class="txtpath">会议通知</span></a> 
+        &gt; 修改通知</td>
+		    <td align="right" >
+	      <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+		</tr>
+	</table>
+	
+<form action="" method="post">
+  <table align="center" cellPadding=2 cellSpacing=1 class="table1" id="table4">
+    <tr> 
+      <th scope="col">主办单位</th>
+      <th scope="col">会议议题</th>
+      <th scope="col">详细信息</th>
+      <th scope="col">议题时间</th>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" align="center"> 
+        <td width="122" align="center">信息办</td>
+      <td>项目1号</td>
+      <td width="80"><input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="查看" onClick="javascript:location='../discussion/discussion_detail.htm'"></td>
+      <td width="392"><input name="startdate" type="text" id="startdate" size="12" maxlength="10" readonly="true">
+          <IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(startdate,'../')" alt=请选择时间
+						src="../../images/datetime.gif" align="absmiddle" width="16"
+						height="16"> 
+          <input name="textfield42" type="text" size="2" maxlength="2">
+          :
+<input name="textfield43" type="text" size="2" maxlength="2">
+          -- 
+          <input name="endate" type="text" id="endate" size="12" maxlength="10" readonly="true">
+          <IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(endate,'../')" alt=请选择时间
+						src="../../images/datetime.gif" align="absmiddle" width="16"
+						height="16">
+          <input name="textfield44" type="text" size="2" maxlength="2">
+          :
+          <input name="textfield45" type="text" size="2" maxlength="2"></td>
+    </tr>
+  </table>
+    <table width="75%" cellPadding=2  cellSpacing=1 class="table2">
+      <tr align=middle> 
+        <th width="22%">时间</th>
+        <td width="78%" colspan="7" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><div align="left">
+            <input name="meetingtime" type="text" id="meetingtime" readonly="true">
+            <IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(meetingtime,'../')" alt=请选择时间
+						src="../../images/datetime.gif" align="absmiddle" width="16"
+						height="16"> 
+            <input name="textfield4" type="text" size="2" maxlength="2">
+            时 
+            <input name="textfield5" type="text" size="2" maxlength="2">
+            分
+            <input type="hidden" name="hiddenField">
+          </div></td>
+      </tr>
+      <tr align=middle> 
+        <th height="98">地点</th>
+        <td colspan="7" class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><div align="left"> 
+            <input type="text" name="textfield6" >
+            <input name="button1" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="选择会议室" onClick="window.open('../meetingroom/meetingRoom_choose.htm','','tollbar=no,width=500,height=500');">
+          </div></td>
+      </tr>
+      <tr align=middle> 
+        <th height="98">备注</th>
+        <td colspan="7" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><div align="left"> 
+            <textarea name="textarea" cols="60"></textarea>
+          </div></td>
+      </tr>
+    </table>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+          <tr>
+            <td>
+              <div align="center">
+    <input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="保存" onClick="top.targeturl='../meetingmanage/meetinginform/meetingInform_manage.htm';window.location='../../common/success.htm'">
+  　
+    <input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="发送" onClick="top.targeturl='../meetingmanage/meetinginform/meetingInform_manage.htm';window.location='../../common/success.htm'">
+  　
+  <input name="button22" type="reset" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="重置">
+  　
+  <input name="button32" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="返回" onClick="javascript:history.back()">
+            </div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+  </form>
+</div>
+</body>
+</html>

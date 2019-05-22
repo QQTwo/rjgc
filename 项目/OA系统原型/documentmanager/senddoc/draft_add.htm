@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>无标题文档</title>
+<link href="../../style/styles.css" rel="stylesheet" type="text/css">
+<script language='javaScript'>
+ 
+function sel(test){
+  var userStr = //window.showModalDialog("../../common/tree/persontree1.htm","","dialogwidth:416px;dialogheight:520px;scroll:1;resizable:0;status:0;");
+window.showModalDialog("../../common/tree/depttree1.htm","","dialogwidth:416px;dialogheight:520px;scroll:1;resizable:0;status:0;");
+  if(userStr!=undefined&&userStr!=""){
+  alert(userStr);
+  var strarray = userStr.split(';');
+var sn;
+var name;
+var finalname="";
+  for(var i=0;i<strarray.length-1;i++){
+  //取编号
+  sn=strarray[i].substring(0,strarray[i].indexOf('|'));
+  alert("编号："+sn);
+  //取名称
+  name=strarray[i].substring(strarray[i].indexOf('|')+1);
+  alert("名称："+name);
+  if(i==0)
+  finalname=name;
+  else
+  finalname+=("  "+name);
+  }
+  if(test.value!="")
+  test.value=(test.value+"\n"+finalname);
+  else
+  test.value=finalname;
+  }else
+ test.value="";
+}
+</script>
+</head>
+
+<body  class="body0" >
+<div align="center">
+<table class="table_path">
+  <tr> 
+      <td >您当前的位置：<a href="#"><span class="txtpath">公文管理</span></a> &gt; 发文管理 
+        &gt; 发文拟稿 &gt; 拟稿</td>
+    <td align="right" > <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+  </tr>
+</table>
+  <table   cellSpacing=1 cellPadding=2  class="table2">
+    <tr align=middle> 
+      <th width="94">发文编号</th>
+      <td colspan="3"align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+        <input type="text" name="textfield" readonly="true"> </td>
+      <th width="110"  nowrap >发文标题</th>
+      <td colspan="3" align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" nowrap> 
+        <input type="text" name="textfield2"> </td>
+    </tr>
+    <tr align=middle> 
+      <th nowrap >密级</th>
+      <td width="101" align="left" nowrap class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+        <select name="select" id="secretid">
+          <option value=0>绝密</option>
+          <option value=1>秘密</option>
+          <option value=2>普通</option>
+        </select> </td>
+      <th width="81" align="right" nowrap bgcolor="#66FFFF">保密期限</th>
+      <td width="100" align="left"  nowrap class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+        <span id='yearlimit'> 
+        <input type="text" name="textfield32" size="10">
+        </span> </td>
+      <th nowrap bgcolor="#66FFFF">紧急程度</th>
+      <td width="92" align="left" nowrap class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" > 
+        <select name="select3">
+          <option value="1">紧急</option>
+        </select> </td>
+      <th width="59" nowrap >份数</th>
+      <td width="106" align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" nowrap> 
+        <input type="text" name="textfield3" size="10"> </td>
+    </tr>
+    <tr align=middle> 
+      <th nowrap >主送机关</th>
+      <td colspan="3" align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" nowrap> 
+        <textarea name="maindept"></textarea> <input name="bb" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="选择" onclick="sel(maindept)"> 
+      </td>
+      <th nowrap bgcolor="#66FFFF">抄送机关</th>
+      <td colspan="3" align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" nowrap> 
+        <textarea name="seconddept"></textarea> <input name="button323" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="选择" onclick="sel(seconddept)"> 
+      </td>
+    </tr>
+    <tr align=middle> 
+      <th nowrap bgcolor="#66FFFF">拟稿人</th>
+      <td align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"nowrap>李伟</td>
+      <th align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" nowrap bgcolor="#66FFFF">拟稿日期</th>
+      <td align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" nowrap>2006-04-19</td>
+      <th nowrap bgcolor="#66FFFF">附件说明</th>
+      <td colspan="3" align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" nowrap> 
+        <textarea name="textarea3"></textarea> </td>
+    </tr>
+    <tr align=middle> 
+      <th nowrap bgcolor="#66FFFF">关键词</th>
+      <td colspan="3" align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" nowrap> 
+        <input name="textfield4" type="text" size="40"> </td>
+      <th nowrap bgcolor="#66FFFF">附注</th>
+      <td colspan="3" align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" nowrap> 
+        <textarea name="textarea4"></textarea> </td>
+    </tr>
+    <tr align=middle> 
+      <th nowrap bgcolor="#66FFFF">正文</th>
+      <td colspan="3" align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'" nowrap> 
+        <input type="submit" name="Submit7" value="查看"onclick="window.location='draft_edittext.htm'"> 
+        &nbsp; &nbsp; &nbsp; &nbsp; <input type="button" name="Submit8" value="编辑" onclick="window.location='draft_templet.htm'"> 
+      </td>
+      <th nowrap bgcolor="#66FFFF">文号</th>
+      <td colspan="3" align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+        <input name="textfield5" type="text" size="40"> </td>
+    </tr>
+    <tr align=middle> 
+      <th nowrap >附件列表</th>
+      <td colspan="7" align="left" class="tr_s"  nowrap><div align="left"></div>
+        <div align="right"> 
+          <iframe  frameborder="0" height="100%" width="100%" src='../../common/attchfile/attachAction.htm'></iframe>
+        </div></td>
+    </tr>
+  </table>
+ 
+<tr>   
+  <tr> 
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+      <tr> 
+        <td> <div align="center"> 
+            <input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="保存" onclick="top.targeturl='../documentmanager/senddoc/draft_list.htm';window.location='../../common/success.htm'">
+            　 
+            <input name="button22" type="reset" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="发送" onclick="window.location='draft_flowstart.htm'">
+            　 
+            <input name="button32" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="返回" onclick="history.go(-1)">
+            　 </div></td>
+      </tr>
+      <tr> 
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+</div>
+</body>
+</html>

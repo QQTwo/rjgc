@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>无标题文档</title>
+<SCRIPT src="../../images/myweb.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../../js/calendarCN.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../../js/oa_Popup.js"></SCRIPT>
+<link href="../../style/styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="body0">
+<div align="center">
+<table class="table_path">
+  <tr> 
+    <td >您当前的位置：<a href="#"><span class="txtpath">公文管理</span></a> &gt; 发文查询</td>
+    <td align="right" > <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+  </tr>
+</table>
+<form name="form1" >
+<table width="100%" height="150"  border="0" cellpadding="0" cellspacing="0" class="table_box">
+  <tr> 
+    <td> <table cellspacing=1 cellpadding=2 class="table2">
+        <tr> 
+          <th width="16%" height="35" scope="row">公文标题</th>
+          <td width="27%" class="tr_s" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_s'"> 
+            <input name="textfield22" type="text"></td>
+          <th width="14%" >公文状态</th>
+          <td width="43%" class="tr_s" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_s'"><select name="select">
+                <option value="0">起草</option>
+                <option value="1">未完成</option>
+                <option value="2">已完成</option>
+              </select></td>
+        </tr>
+        <tr> 
+          <th scope="row">拟稿人</th>
+          <td class="tr_d" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_d'"><input name="textfield32" type="text" size="20"></td>
+          <th width="14%" >拟稿日期</th>
+          <td class="tr_d" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_d'"> 
+            <input name="draftdtS" type="text" size="15" readonly> <IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(draftdtS,'../');return false" alt=请选择时间
+						src="../../images/datetime.gif" align="absmiddle" width="16"
+						height="16"> 至 
+            <input name="draftdtE" type="text" id="draftdtE" size="15"readonly> 
+            <IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(draftdtE,'../');return false" alt=请选择时间
+						src="../../images/datetime.gif" align="absmiddle" width="16"
+						height="16"> </td>
+        </tr>
+        <tr> 
+          <th scope="row">当前处理人</th>
+          <td class="tr_s" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_s'"><input name="textfield42" type="text" size="20"></td>
+          <th width="14%" >处理日期</th>
+          <td class="tr_s" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_s'"> 
+            <input name="dealdtS" type="text" id="dealdtS" size="15"readonly> 
+            <IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(dealdtS,'../');return false" alt=请选择时间
+						src="../../images/datetime.gif" align="absmiddle" width="16"
+						height="16"> 至 
+            <input name="dealdtE" type="text" id="dealdtE" size="15"readonly> 
+            <IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(dealdtE,'../');return false" alt=请选择时间
+						src="../../images/datetime.gif" align="absmiddle" width="16"
+						height="16"></td>
+        </tr>
+      </table>
+      <p align="center"> 
+        <input name="button2" type="button" class=btn_mouseout onmousedown="this.className='btn_mousedown'" onmouseup="this.className='btn_mouseup'" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="按条件查询">
+          　 
+          <input name="ff" type="reset" class=btn_mouseout onmousedown="this.className='btn_mousedown'" onmouseup="this.className='btn_mouseup'" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="重置">
+      </p></td>
+  </tr>
+</table>
+</form>
+<table cellspacing=1 cellpadding=2 class="table1" id="table4">
+  <tr> 
+    <th width="73" scope="col">公文标题</th>
+    <th scope="col">拟稿人</th>
+    <th width="94" scope="col">拟稿日期</th>
+    <th scope="col">当前处理人</th>
+    <th scope="col">处理日期</th>
+    <th scope="col">任务类型</th>
+    <th scope="col">公文状态</th>
+    <th scope="col">操作　</th>
+  </tr>
+  <tr class="tr_s" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_s'"> 
+    <td><a href="common_viewdoc.htm"><font color="#0000FF">项目1号</font></a></td>
+    <td width="50">某某</td>
+    <td>　2006-4-28</td>
+    <td width="87">某某</td>
+    <td width="79" align="center">发文</td>
+    <td width="75"><div align="center"><a href="#">审核</a></div></td>
+    <td width="75"><div align="center">起草</div></td>
+    <td width="135" align="center"> <div align="center"><img src="../../images/icon-lift-calendar-003.gif" width="32" height="32" style="cursor: hand;" alt="查看流程" onclick="location='waitdeal_viewflow.htm'"> 
+        </div></td>
+  </tr>
+  <tr class="tr_d" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_d'"> 
+    <td><a href="common_viewdoc.htm"><font color="#0000FF">项目2号</font></a></td>
+    <td width="50">某某</td>
+    <td>　2006-4-28</td>
+    <td width="87">某某</td>
+    <td width="79" align="center">收文</td>
+    <td width="75"><div align="center"><a href="#">签批</a></div></td>
+    <td width="75"><div align="center">已完成</div></td>
+    <td width="135" align="center"> <div align="center"> <img src="../../images/icon-lift-calendar-003.gif" width="32" height="32" style="cursor: hand;" alt="查看流程" onclick="location='waitdeal_viewflow.htm'"> 
+        </div></td>
+  </tr>
+  <tr class="tr_s" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_s'"> 
+    <td><a href="common_viewdoc.htm"><font color="#0000FF">项目3号</font></a></td>
+    <td width="50">某某某</td>
+    <td>　2006-4-28</td>
+    <td width="87">某某某</td>
+    <td width="79" align="center">收文</td>
+    <td width="75"><div align="center"><a href="#">审核</a></div></td>
+    <td width="75"><div align="center">未完成</div></td>
+    <td width="135" align="center"> <div align="center"> <img src="../../images/icon-lift-calendar-003.gif" width="32" height="32" style="cursor: hand;" alt="查看流程" onclick="location='waitdeal_viewflow.htm'"> 
+        </div></td>
+  </tr>
+  <tr class="tr_d" onMouseOver="this.className='tr_o'" onMouseOut="this.className='tr_d'"> 
+    <td><a href="common_viewdoc.htm"><font color="#0000FF">项目4号</font></a></td>
+    <td width="50">某某</td>
+    <td>　2006-4-28</td>
+    <td width="87">某某</td>
+    <td width="79" align="center">发文</td>
+    <td width="75"><div align="center"><a href="#">审核</a></div></td>
+    <td width="75"><div align="center">已完成</div></td>
+    <td width="135" align="center"> <div align="center"> <img src="../../images/icon-lift-calendar-003.gif" width="32" height="32" style="cursor: hand;" alt="查看流程" onclick="location='waitdeal_viewflow.htm'"> 
+        </div></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+  <tr> 
+    <td width="35%">&nbsp; </td>
+    <td width="62%"> <p align="right"><font color="#008080">共</font><font color="#800000"> 
+        1</font><font color="#008080"> 页　 首页　上一页　下一页　尾页&nbsp; 跳转
+        <input name="text" type="text" size="4">
+        页</font></td>
+    <td width="3%">&nbsp; </td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div>
+</body>
+</html>

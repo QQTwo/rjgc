@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>无标题文档</title>
+<link href="../../style/styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="body0">
+<div align="center">
+<table width="101%" class="table_path">
+  <tr> 
+      <td >您当前的位置：<a href="#"><span class="txtpath">公文管理</span></a> &gt; 收文管理 
+        &gt; 收文登记</td>
+    <td align="right" > <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+  </tr>
+</table>
+    <table width="102%" height="30"  border="0" cellpadding="0" cellspacing="0" class="table_box">
+      <tr> 
+        <td width="37%"><p>公文标题： 
+            <input type="text" name="textfield">
+          </p></td>
+        <td width="24%">选择： <select name="select">
+            <option value="0">未发送</option>
+            <option value="1">已发送</option>
+            <option value="2">全部</option>
+          </select></td>
+        <td width="39%"> 
+          <input name="button2" type="button" class=btn_mouseout onmousedown="this.className='btn_mousedown'" onmouseup="this.className='btn_mouseup'" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="按条件查询">
+        </td>
+      </tr>
+    </table>
+  <table cellSpacing=1 cellPadding=2 class="table1" id="table4">
+    <tr > 
+      <th width="23%" scope="col">来文标题</th>
+      <th width="7%" scope="col">文号</th>
+      <th width="12%" scope="col">来文机关</th>
+      <th width="23%" scope="col">登记单位</th>
+      <th width="15%" scope="col">操作</th>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+      <td height="27"><a href="common_viewdoc.htm"><font color="#0000FF">整顿市容</font></a></td>
+      <td>陕44</td>
+      <td>省市容局</td>
+      <td>省环境局</td>
+      <td align="center"><img src="../../images/btn_edit.gif" alt='编辑' width="20" height="20" style="cursor: hand;" onclick="location='draft_update.htm'">　<img src="../../images/btn_del.gif" alt='删除' width="20" height="20" style="cursor: hand;" onclick=confirm("您确定要删除吗？")></td>
+    </tr>
+    <tr class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"> 
+      <td><a href="common_viewdoc.htm"><font color="#0000FF">公安干警素质教育</font></a></td>
+      <td>陕45</td>
+      <td>警队</td>
+      <td>无</td>
+      <td align="center"><img src="../../images/btn_edit.gif" alt='编辑' width="20" height="20" style="cursor: hand;" onclick="location='draft_update.htm'">　<img src="../../images/btn_del.gif" alt='删除' width="20" height="20" style="cursor: hand;" onclick=confirm("您确定要删除吗？")></td>
+    </tr>
+    <tr  class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+      <td><a href="common_viewdoc.htm"><font color="#0000FF">教育普及化</font></a></td>
+      <td>***</td>
+      <td>教育部</td>
+      <td>学校</td>
+      <td align="center"><img src="../../images/btn_edit.gif" alt='编辑' width="20" height="20" style="cursor: hand;" onclick="location='draft_update.htm'">　<img src="../../images/btn_del.gif" alt='删除' width="20" height="20" style="cursor: hand;" onclick=confirm("您确定要删除吗？")></td>
+    </tr>
+    <tr class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"> 
+      <td><a href="common_viewdoc.htm"><font color="#0000FF">经济论坛</font></a></td>
+      <td>###</td>
+      <td>高新区</td>
+      <td>分布</td>
+      <td align="center"><img src="../../images/btn_edit.gif" alt='编辑' width="20" height="20" style="cursor: hand;" onclick="location='draft_update.htm'">　<img src="../../images/btn_del.gif" alt='删除' width="20" height="20" style="cursor: hand;" onclick=confirm("您确定要删除吗？")></td>
+    </tr>
+    <tr  class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+      <td><a href="common_viewdoc.htm"><font color="#0000FF">加薪申请</font></a></td>
+      <td>44</td>
+      <td>人力部</td>
+      <td>开发部</td>
+      <td align="center">已发送</td>
+    </tr>
+  </table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+  <tr> 
+    <td width="35%"><input name="button" type="button" class=btn_mouseout onmousedown="this.className='btn_mousedown'" onmouseup="this.className='btn_mouseup'" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="登记" onclick="window.location='draft_add.htm'"> 
+    </td>
+    <td width="62%"> <p align="right"><font color="#008080">共</font><font color="#800000"> 
+        1</font><font color="#008080"> 页　 首页　上一页　下一页　尾页&nbsp; 跳转 
+        <input name="text" type="text" size="4">
+        页</font></td>
+    <td width="3%">&nbsp; </td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

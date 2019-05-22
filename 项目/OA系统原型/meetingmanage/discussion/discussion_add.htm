@@ -1,0 +1,186 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>:::body:::</title>
+<link href="../../style/styles.css" rel="STYLESHEET" type="text/css">
+<SCRIPT language=JavaScript src="../../js/calendarCN.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../../js/oa_Popup.js"></SCRIPT>
+</head>
+
+<script language="JavaScript">
+//删除部门
+function deletedept()
+{
+  for (var i=0;i<document.haha.dept.length;i++)
+  if (document.haha.dept.options[i].selected==true)
+  {
+    document.haha.dept.remove(i);
+    i--;
+  }
+}
+//选择多部门
+function recieverChooser(){
+	var selectedReciever = window.showModalDialog("../../common/tree/depttree2.htm","",'dialogHeight:535px;dialogWidth:450px');
+	if(selectedReciever){
+		var item=selectedReciever.split(";");
+		var temp_item;
+		if(item && item.length && item.length > 0 ){
+			var recieverOptions = document.haha.dept.options;
+			if(recieverOptions){
+				for(var i=0;i<item.length;i++){
+					if(item[i]){
+						temp_item=item[i].split("|");
+						if(temp_item&&temp_item.length==2){
+							var newReciever=document.createElement("option");
+							newReciever.value=temp_item[0];
+							newReciever.text=temp_item[1];
+							recieverOptions.add(newReciever);
+						}
+					}
+				}
+			}
+		}
+	}
+    for(var i=0; i<document.haha.dept.options.length; i++){
+		for(var j=i+1;j<document.haha.dept.options.length;j++){
+			if(document.haha.dept.options[i].value == document.haha.dept.options[j].value){
+				 document.haha.dept.remove(j);
+                                 j--;
+			}
+		}
+	}
+}
+//选择部门
+function selectdept(){
+	var deptstr = window.showModalDialog("../../common/tree/depttree1.htm","",'dialogHeight:535px;dialogWidth:450px');
+	if(deptstr != undefined && deptstr != ""){
+		var id = deptstr.substring(0,deptstr.indexOf("|"));
+		var name = deptstr.substring(deptstr.indexOf("|") + 1,deptstr.length-1);
+		document.haha.opendeptname.value = name;
+		document.haha.opendeptid.value = id;
+	}
+}
+
+//选择人员
+function selectperson(){
+	var personstr = window.showModalDialog("../../common/tree/persontree1.htm","",'dialogHeight:535px;dialogWidth:450px');
+	if(personstr != undefined && personstr != ""){
+		var id = personstr.substring(0,personstr.indexOf("|"));
+		var name = personstr.substring(personstr.indexOf("|") + 1,personstr.length-1);
+		document.haha.nextname.value = name;
+		document.haha.nextid.value = id;
+	}
+}
+</script>
+<body class="body0">
+<form action="" method="post" enctype="multipart/form-data" name="haha">
+  <div align="center">
+	<table class="table_path">
+		<tr>
+			<td >您当前的位置：<a href="#"><span class="txtpath">会议管理</span></a> &gt; <a href="#"><span class="txtpath">会议议题</span></a> &gt; 起草议题</td>
+		    <td align="right" > <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+		</tr>
+	</table>
+	
+		
+    <table cellPadding=2 cellSpacing=1 class="table2">
+      <tr>
+            
+      <th width="18%" scope="row">议题题目</th>
+            <td width="82%" class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><input name="textfield7" type="text" value="秦岭电厂二期工程" size="40" maxlength="40"></td>
+          </tr>
+          <tr>
+            
+      <th scope="row">起草日期</th>
+            <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'">
+            <input name="draftdate" type="text" value="2005-02-01" size="20" readonly="true">
+          <IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(draftdate,'../')" alt=请选择时间
+						src="../../images/datetime.gif" align="absmiddle" width="16"
+						height="16"></td>
+          </tr>
+          <tr>
+			  <th scope="row">主办单位</th>
+			  <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><input type="text" name="opendeptname" readonly="true">
+          <img src="../../images/obrs-pic-057.gif" style="cursor: hand;" alt='选择部门' onClick="selectdept()"> 
+          <input type="hidden" name="opendeptid"> </td>
+          </tr>
+          <tr>
+            
+      <th scope="row">相关部门</th>
+            
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><select id="dept" name="dept" size="5" multiple="multiple" style="width:150" >
+          </select>
+        <img src="../../images/obrs-pic-057.gif" style="cursor: hand;" alt='选择部门' onClick="recieverChooser()">
+        <input name="button2" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="删除所选部门"  onClick="return deletedept()"></td>
+          </tr>
+          <tr>
+            
+      <th scope="row">议题简介</th>
+            
+      <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><textarea name="textarea" cols="60" ></textarea></td>
+          </tr>
+          <tr>
+            
+      <th scope="row">附件</th>
+            
+        <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input type="file" name="file">
+		<input name="button32" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="更多附件" > 
+        </td>
+          </tr>
+        </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+          <tr>
+            <td>
+              <div align="center">
+    <input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="保存" onClick="top.targeturl='../meetingmanage/discussion/discussion_manage.htm';window.location='../../common/success.htm'">
+  　
+  <input name="button22" type="reset" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="重置">
+  　
+  <input name="button32" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="返回" onClick="javascript:history.back()">
+            </div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+		<table  cellSpacing=1 cellPadding=2 class="table2">
+          <tr align=middle>
+            
+        <th width="173"> 选择处理人</th>
+            <td width="399" align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'">
+            <input name="nextname" type="text" class="input2" value="" size="20">
+          <img src="../../images/obrs-pic-057.gif" style="cursor: hand;" alt='选择人员' onClick="selectperson()">
+          <input type="hidden" name="nextid"></td>
+            
+        <td width="196" align="center" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"  ><input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="提交" onClick="top.targeturl='../meetingmanage/discussion/discussion_manage.htm';window.location='../../common/success.htm'">
+        </td>
+          </tr>
+  </table>    
+
+        </div>
+</form>
+</body>
+</html>

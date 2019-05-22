@@ -1,0 +1,881 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link href="style/styles.css" rel="stylesheet" type="text/css">
+<base target="mainframe">
+<title>目录树</title>
+	<script language=javascript> 
+	<!-- 
+	var old_menu0 = ''; 
+	function menuclick0( submenu0) 
+	{ 
+	if( old_menu0 != submenu0 ){ 
+	if( old_menu0 !='' ){ 
+	old_menu0.style.display = 'none'; 
+	} 
+	submenu0.style.display = 'block'; 
+	old_menu0 = submenu0; 
+
+	}else{ 
+	submenu0.style.display = 'none'; 
+	old_menu0 = ''; 
+	} 
+	} 
+	
+	var old_menu1 = ''; 
+	function menuclick1( submenu1) 
+	{ 
+	if( old_menu1 != submenu1 ){ 
+	if( old_menu1 !='' ){ 
+	old_menu1.style.display = 'none'; 
+	} 
+	submenu1.style.display = 'block'; 
+	old_menu1 = submenu1; 
+
+	}else{ 
+	submenu1.style.display = 'none'; 
+	old_menu1 = '';
+	} 
+	} 
+	
+	function MM_preloadImages(){
+	// v3.0 
+	var d=document; if(d.images){if(!d.MM_p) d.MM_p=new Array(); 
+	var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++) 
+	if (a[i].indexOf("#")!=0){d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}} 
+	} 
+
+	function MM_findObj(n, d){
+	// v3.0 
+	var p,i,x; if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length){ 
+	d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);} 
+	if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n]; 
+	for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); return x; 
+	} 
+
+	function MM_nbGroup(event, grpName){
+	// v3.0 
+	var i,img,nbArr,args=MM_nbGroup.arguments; 
+	if (event == "init" && args.length > 2){ 
+	if ((img = MM_findObj(args[2])) != null && !img.MM_init){ 
+	img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src; 
+	if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array(); 
+	nbArr[nbArr.length] = img; 
+	for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null){ 
+	if (!img.MM_up) img.MM_up = img.src; 
+	img.src = img.MM_dn = args[i+1]; 
+	nbArr[nbArr.length] = img; 
+	}} 
+	}else if (event == "over"){ 
+	document.MM_nbOver = nbArr = new Array(); 
+	for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null){ 
+	if (!img.MM_up) img.MM_up = img.src; 
+	img.src = (img.MM_dn && args[i+2]) ? args[i+2] : args[i+1]; 
+	nbArr[nbArr.length] = img; 
+	} 
+	}else if (event == "out" ){ 
+	for (i=0; i < document.MM_nbOver.length; i++){ 
+	img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up;} 
+	}else if (event == "down"){ 
+	if ((nbArr = document[grpName]) != null) 
+	for (i=0; i < nbArr.length; i++){img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0;} 
+	document[grpName] = nbArr = new Array(); 
+	for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null){ 
+	if (!img.MM_up) img.MM_up = img.src; 
+	img.src = img.MM_dn = args[i+1]; 
+	nbArr[nbArr.length] = img; 
+	}} 
+	} 
+	//--> 
+	</script>
+</head>
+<body topmargin="0" leftmargin="0" style="BACKGROUND: url('images/leftbg.jpg');background-position: bottom;overflow-x:hidden;overflow-y:hidden;">
+	<table border="0" width="180" id="table6" cellspacing="0" cellpadding="0" height="100%">
+		<tr>
+			<td valign="top">
+			
+			<table border="0" width="180" id="table2" cellspacing="5" cellpadding="0">
+	<tr>
+		<td>
+		<div align="center">
+			<table border="0" width="160" id="table3" cellspacing="0" cellpadding="0">
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu0100);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_001.gif" border="0" width="16" height="16" align="absmiddle"> </font>
+					<font color="#000080">
+					<b>公文管理</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="150" cellspacing="0" cellpadding="0"  id="submenu0100">
+						<tr>
+							<td background="images/box_mid.gif"> <p> &nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0101);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+                          发文管理</a><br>
+                          <span id="submenu0101" style="display:none;"> &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/SendDoc/docCreate.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          发文拟稿</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/SendDoc/draftBox.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          草稿箱 </a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/SendDoc/waitSendDoc.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          待送拟稿</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/SendDoc/sendedDraft.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          已送拟稿</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/senddoc/waitdeal_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          待办发文</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/SendDoc/dealDoc.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          发文办理</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/SendDoc/finishDealDoc.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          已办发文</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/SendDoc/refuseDoc.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          拒收发文</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/SendDoc/endDoc.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          撤销发文</a></span><span style="display:none;"><br>
+                          </span> &nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0102);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+                          收文管理</a><br>
+                          <span id="submenu0102" style="display:none;"> &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/InceptDoc/inceptEnrol.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          收文登记</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/InceptDoc/inceptTemp.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          草稿箱</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/InceptDoc/waitOutInceptDoc.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          待送收文</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/InceptDoc/outedInceptDoc.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          已送收文</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/InceptDoc/waitDealIncept.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          待办收文</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/InceptDoc/dealIncept.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          收文办理</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/InceptDoc/dealedIncept.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          已办收文</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/InceptDoc/refuseDealIncept.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          拒收收文</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/InceptDoc/updoIncept.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          撤销收文</a><br>
+                          </span> &nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0103);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+                          公文查询与统计</a><br>
+                          <span id="submenu0103" style="display:none;"> &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/DocStateAndSearch/searchSendDoc.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          公文查询</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/DocStateAndSearch/statSendDoc.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          公文统计</a><br>
+                          </span> &nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0104);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+                          印章管理 </a><br>
+                          <span id="submenu0104" style="display:none;"> &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/sealManage/sealType.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          印章类别</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/sealManage/sealAdd.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          新增印章</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/sealManage/sealmanage.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          印章列表</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/sealManage/accredits.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          印章授权</a><br>
+						  </span> 
+						  &nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1483);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							签字管理</a><br>
+                          <span id="submenu1483" style="display:none;"> &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/signManage/signType.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          签字类别</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/signManage/signAdd.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          新增签字</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/signManage/signmanage.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          签字列表</a><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/signManage/signAccredits.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          签字授权</a><br>
+						  </span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0105);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							缓急管理</a><br>
+                          <span id="submenu0105" style="display:none;"> &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/huanji/huanji.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          缓急维护</a><br>
+						  </span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0106);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							密级管理</a><br>
+                          <span id="submenu0106" style="display:none;"> &nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="documentmanager/miji/miji.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+                          密级维护</a> 
+						  </span> </td>
+						</tr>
+						<tr>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					
+                <td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu0200);" style="cursor:hand;"> 
+                  　<font color="#ffffff"><img src="images/sub1_002.gif" border="0" width="16" height="16" align="absmiddle"> 
+                  </font> <font color="#000080"> <b>督查督办</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table id="submenu0200" style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0" >
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="supervise/dcdb-list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							督办管理</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="supervise/dcdb-transact-all.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							办理情况</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="supervise/dbcx-transact.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							督办查询</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="supervise/feedback-list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							督查督办</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="supervise/dcfk-list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							督查反馈</a><br>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu0300);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_003.gif" border="0" width="16" height="16" align="absmiddle"> </font>
+					<font color="#000080">
+					<b>会议管理</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0"  id="submenu0300">
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0301);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							会议议题</a><br>
+							<span id="submenu0301" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="meetingmanage/addiscussion.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							起草议题</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="meetingmanage/discussions.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							管理议题</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0302);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							会议计划</a><br>
+							<span id="submenu0302" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="meetingmanage/addmeetingplan.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							新建会议计划</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="meetingmanage/manageMeetingPlan.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							管理会议计划</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="meetingmanage/manageMeeting.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							管理会议</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0303);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							会议通知</a><br>
+							<span id="submenu0303" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="meetingmanage/addMeetingInform.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							录入通知</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="meetingmanage/manageMeetingInform.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							管理通知</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="meetingmanage/receiveMeetingInform.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							接收通知</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0304);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							会议纪要</a><br>
+							<span id="submenu0304" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="meetingmanage/addSummary.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							录入纪要</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="meetingmanage/browse_summary.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							管理纪要</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="meetingmanage/receiveSummary.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							接收纪要</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0305);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							会议室</a><br>
+							<span id="submenu0305" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="meetingmanage/disMeetingRoom.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							会议室管理</a>
+							</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu0400);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_004.gif" border="0" width="16" height="16" align="absmiddle"> </font>
+					<font color="#000080">
+					<b>档案管理</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0"  id="submenu0400">
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0401);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							归档处理</a><br>
+							<span id="submenu0401" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/filemanager/noarrange_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							未分类文件</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/filemanager/norange_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							未排列文件</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/filemanager/nonumber_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							未编号文件</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/filemanager/nocatalog_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							未编目文件</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/filemanager/nopigeonhole_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							未装盒文件</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/filemanager/pigeonhole_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							已归档文件</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/boxmanager/box_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							盒  信  息</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0402);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							借阅管理</a><br>
+							<span id="submenu0402" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/lendmanager/insidelend_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							内借信息</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/lendmanager/outsidelend_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							外借信息</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/lendmanager/return_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							已归还信息</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/lendmanager/noapprove_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							待审批信息</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0403);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							在线借阅</a><br>
+							<span id="submenu0403" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/lendinfo/archivesearch_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							档案查阅</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/lendinfo/lendapply_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							查阅申请</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0404);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							基础信息</a><br>
+							<span id="submenu0404" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/baseinfomanager/sort_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							分类信息</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/baseinfomanager/leader_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							领导字号</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/baseinfomanager/quanzong_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							全宗号</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/baseinfomanager/saveperiod_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							保管期限</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/baseinfomanager/comefilemethod_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							来文方式</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="archive/baseinfomanager/cause_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							是由信息</a><br>
+							</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+
+
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu0500);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_005.gif" border="0" width="16" height="16" align="absmiddle"> </font>
+					<font color="#000080">
+					<b>日常办公</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0"  id="submenu0500">
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0501);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							单位通讯录</a><br>
+							<span id="submenu0501" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="dailywork/address_left.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							单位通讯录管理</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0502);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							名片夹</a><br>
+							<span id="submenu0502" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="dailywork/callingcard_rifht.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							名片夹管理</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0503);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							日程管理</a><br>
+							<span id="submenu0503" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="dailywork/dailywork_main.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							日程管理</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0504);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							公告栏</a><br>
+							<span id="submenu0504" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="dailywork/notice_main.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							公告栏管理</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0505);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							政策法规</a><br>
+							<span id="submenu0505" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="dailywork/policy_main.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							政策法规管理</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0506);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							个人信息</a><br>
+							<span id="submenu0506" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="dailywork/personal_manage.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							个人信息管理</a><br>
+							</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+
+				
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu0600);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_006.gif" border="0" width="16" height="16" align="absmiddle"> </font>
+					<font color="#000080">
+					<b>文档资源管理</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0"  id="submenu0600">
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0601);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							文档资源</a><br>
+							<span id="submenu0601" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="resource/uploadResource.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							资源上传</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="resource/disResource.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							文档资源</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0602);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							文档资源管理</a><br>
+							<span id="submenu0602" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="resource/manageResource.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							管理资源</a><br>
+							</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+
+				
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu0700);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_007.gif" border="0" width="16" height="16" align="absmiddle"> </font>
+					<font color="#000080">
+					<b>外出登记</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0"  id="submenu0700">
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;&nbsp;<a style="text-decoration: none;" href="outregister/outregister_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							外出信息</a><br>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+
+
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu0800);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_008.gif" border="0" width="16" height="16" align="absmiddle"> </font>
+					<font color="#000080">
+					<b>授权管理</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0"  id="submenu0800">
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;&nbsp;<a style="text-decoration: none;" href="conferpriviledge/performpriviledge_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							公文办理授权</a><br>
+							&nbsp;&nbsp;<a style="text-decoration: none;" href="conferpriviledge/filepriviledge_list.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							文件浏览授权</a><br>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+
+
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu0900);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_009.gif" border="0" width="16" height="16" align="absmiddle"> </font>
+					<font color="#000080">
+					<b>系统维护</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0"  id="submenu0900">
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0901);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							机构管理</a><br>
+							<span id="submenu0901" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="systemmanager/department_left.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							机构维护</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0902);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							职务管理</a><br>
+							<span id="submenu0902" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="systemmanager/duty_left.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							职务维护</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu0903);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							人员管理</a><br>
+							<span id="submenu0903" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="systemmanager/user_left.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							人员维护</a><br>
+							</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu1000);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_010.gif" border="0" width="16" height="16" align="absmiddle"> </font>
+					<font color="#000080">
+					<b>系统模块十</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0"  id="submenu1000">
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1001);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作1</a><br>
+							<span id="submenu1001" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.3</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1002);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作2</a><br>
+							<span id="submenu1002" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.3</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1003);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作3</a><br>
+							<span id="submenu1003" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.3</a>
+							</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>				
+
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu1100);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_011.gif" border="0" width="16" height="16" align="absmiddle"> </font>
+					<font color="#000080">
+					<b>系统模块十一</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0"  id="submenu1100">
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1101);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作1</a><br>
+							<span id="submenu1101" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.3</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1102);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作2</a><br>
+							<span id="submenu1102" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.3</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1103);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作3</a><br>
+							<span id="submenu1103" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.3</a>
+							</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu1200);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_012.gif" border="0" width="16" height="16" align="absmiddle"> </font>
+					<font color="#000080">
+					<b>系统模块十二</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0"  id="submenu1200">
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1201);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作1</a><br>
+							<span id="submenu1201" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.3</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1202);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作2</a><br>
+							<span id="submenu1202" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.3</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1203);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作3</a><br>
+							<span id="submenu1203" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.3</a>
+							</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>				
+				
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu1300);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_013.gif" border="0" width="16" height="16" align="absmiddle"> </font>
+					<font color="#000080">
+					<b>系统模块十三</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0"  id="submenu1300">
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1301);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作1</a><br>
+							<span id="submenu1301" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.3</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1302);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作2</a><br>
+							<span id="submenu1302" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.3</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1303);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作3</a><br>
+							<span id="submenu1303" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.3</a>
+							</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				<tr>
+					<td height="23" background="images/box_top.gif"  onclick="menuclick0(submenu1400);" style="cursor:hand;">
+					　<font color="#ffffff"><img src="images/sub1_014.gif" border="0" width="16" height="16" align="middle"> </font>
+					<font color="#000080">
+					<b>系统模块十四</b></font></td>
+				</tr>
+				
+				<tr>
+					<td>
+					<table style="display:none;" border="0" width="100%" cellspacing="0" cellpadding="0"  id="submenu1400">
+						<tr>
+							<td background="images/box_mid.gif">
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1401);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作1</a><br>
+							<span id="submenu1401" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作1.3</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1402);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作2</a><br>
+							<span id="submenu1402" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作2.3</a><br>
+							</span>
+							&nbsp;<a style="text-decoration: none;" onclick="menuclick1(submenu1403);" target="_self" href="#"><img border="0" src="images/sub.gif" width="16" height="16"> 
+							操作3</a><br>
+							<span id="submenu1403" style="display:none;">
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_body.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.1</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_edit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.2</a><br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a style="text-decoration: none;" href="demopage_bigedit.htm"><img border="0" src="images/page.gif" width="16" height="16"> 
+							子操作3.3</a>
+							</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+					<img border="0" src="images/box_footer.gif" width="160" height="8"></td>
+						</tr>
+				<tr>
+					<td height="4"> </td>
+				</tr>
+				</table>
+					</td>
+	</tr>
+				
+				<tr>
+					<td>　</td>
+	</tr>
+</table></td>
+		</tr>
+		</table>
+			
+			</td>
+		</tr>
+	</table>
+
+
+
+
+
+</html>

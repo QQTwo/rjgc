@@ -1,0 +1,32 @@
+<html>
+<head>
+<script language="javascript">
+function sel(test){
+  var userStr = //window.showModalDialog("persontree.htm","","dialogwidth:416px;dialogheight:520px;scroll:1;resizable:0;status:0;");
+window.showModalDialog("depttree.htm","","dialogwidth:416px;dialogheight:520px;scroll:1;resizable:0;status:0;");
+  if(userStr!=undefined&&userStr!=""){
+  alert(userStr);
+  var strarray = userStr.split(';');
+var sn;
+var name;
+var finalname="";
+  for(var i=0;i<strarray.length-1;i++){
+  //取编号
+  sn=strarray[i].substring(0,strarray[i].indexOf('|'));
+  alert("编号："+sn);
+  //取名称
+  name=strarray[i].substring(strarray[i].indexOf('|')+1);
+  alert("名称："+name);
+  if(i==0)
+  finalname=name;
+  else
+  finalname+=("  "+name);
+  }
+  test.value=finalname;
+  }else
+ test.value="";
+}
+
+</script>
+</head>
+<textarea name="test"></textarea><input type="button" name="ss" onclick="sel(test)" value="选择">

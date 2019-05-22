@@ -1,0 +1,140 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>密码修改</title>
+<link href="../style/styles.css" rel="STYLESHEET" type="text/css">
+<SCRIPT src="../images/myweb.js"></SCRIPT>
+<script language="JavaScript">
+function myAlert(returnInfo)
+{
+	if (returnInfo == "0")
+	{
+		alert("密码修改成功！");
+		window.close();
+	} else if (returnInfo == "2")
+	{
+		alert("您输入的原密码不正确，无权进行密码修改");
+	} else
+	{
+		alert("密码修改失败！请联系管理员");
+	}	
+}
+
+function mySubmit()
+{
+	if (document.forms[0].old_psd.value == "")
+	{
+		alert("请输入原密码！");
+		document.forms[0].old_psd.focus();
+		return false;
+	}
+	if (document.forms[0].new_psd.value == "")
+	{
+		alert("新密码不能为空，请输入新密码！");
+		document.forms[0].new_psd.focus();
+		return false;
+	}
+	if (document.forms[0].new_psd.value.length < 8)
+	{
+		alert("密码长度至少为8位!");
+		document.forms[0].new_psd.focus();
+		return false;
+	}	
+	if (document.forms[0].new_psd_1.value == "")
+	{
+		alert("请输入确认新密码！");
+		document.forms[0].new_psd_1.focus();
+		return false;
+	}	
+	if (document.forms[0].new_psd.value != document.forms[0].new_psd_1.value)
+	{
+		alert("输入的两次新密码不一致，请重新输入！");
+		document.forms[0].new_psd.focus();
+		return false;
+	}
+	
+	document.forms[0].submit();
+}
+</script>
+</head>
+
+
+<body class="body0">
+<div align="center">
+	<table class="table_path">
+		<tr>
+			<td >您当前的位置：<a href="#"><span class="txtpath">个人信息</span></a> &gt; <a href="#"><span class="txtpath">密码管理</span></a> &gt; 密码修改</td>
+		    <td align="right" >
+	      <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+		</tr>						
+</table>	
+
+<form name="userForm" method="POST" action="personal_manage.htm">
+<table  cellSpacing=1 cellPadding=2 class="table2">
+  <tr>
+    <th scope="row">原密码</div></td>
+    <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'">
+    	<input type="password" name="old_psd">
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">新密码</div></td>
+    <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'">
+    	<input type="password" name="new_psd" title="密码长度至少为8位">
+  </td>
+  </tr>
+  <tr>
+    <th scope="row">确认新密码</div></td>
+    <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'">
+    	<input type="password" name="new_psd_1" title="密码长度至少为8位">
+    </td>
+  </tr>
+</table>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+          <tr>
+            <td>
+              <div align="center">
+                <input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"  onClick="mySubmit();" value="确认">
+        　
+       　
+        <input name="button32" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'"  onClick='window.history.go(-1);' value="取消">
+            </div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+ 
+</form>
+<p>&nbsp;</p>
+</div>
+</body>
+<script language="JavaScript">
+  var returnInfo = "null";
+  if (returnInfo != null && returnInfo != "null" && returnInfo != "")
+  	myAlert(returnInfo);
+</script>
+</html>

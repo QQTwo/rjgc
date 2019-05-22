@@ -1,0 +1,98 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>添加分类信息</title>
+<link href="../../style/styles.css" rel="STYLESHEET" type="text/css">
+
+</head>
+
+<body class="body0">
+<div align="center">
+	<table class="table_path">
+		<tr>
+			
+      <td >您当前的位置：<a href="#"><span class="txtpath">档案管理</span></a> &gt; <a href="#"><span class="txtpath">基础信息</span></a> 
+        &gt; 分类信息</td>
+		    <td align="right" >
+	      <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+		</tr>
+	</table>
+	
+		
+  <table cellSpacing=1 cellPadding=2 class="table2">
+    <tr> 
+      <th scope="row">全宗号</th>
+      <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><select name="quanzong">
+	  	  <option value="0"></option>
+          <option value="1">001</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <th scope="row">字段1</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><select name="field1">
+          <option value="1" selected>年度</option>
+          <option value="2">保管期限</option>
+          <option value="3">机构</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <th scope="row">字段2</th>
+      <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><select name="field2">
+          <option value="1">年度</option>
+          <option value="2" selected>保管期限</option>
+          <option value="3">机构</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <th scope="row">字段3</th>
+      <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><select name="field3">
+          <option value="1">年度</option>
+          <option value="2">保管期限</option>
+          <option value="3" selected>机构</option>
+        </select></td>
+    </tr>
+    <tr> 
+      <th scope="row">备注</th>
+      <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><textarea name="remark" cols="50" rows="5"></textarea></td>
+    </tr>
+  </table>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+          <tr>
+            <td>
+              <div align="center">
+    <input name="save" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="保存" onClick="javascript:top.targeturl='../archive/baseinfomanager/sort_list.htm';location='../../common/success.htm'">
+  　
+  <input name="reset" type="reset" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="重置">
+  　
+  <input name="cancel" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="返回" onClick="javascript:location='sort_list.htm'">
+            </div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+        </div>
+</body>
+</html>

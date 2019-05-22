@@ -1,0 +1,122 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>日常办公</title>
+<link href="../style/styles.css" rel="STYLESHEET" type="text/css">
+<SCRIPT src="../images/myweb.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../js/calendarCN.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../js/oa_Popup.js"></SCRIPT>
+<script language=javascript>
+  function subchoose(){
+        if(document.statuteFileForm.name.value==""||document.statuteFileForm.name.value.replace(/ /g,"")==""){
+			alert("请输入名称！");
+			document.statuteFileForm.name.value="";
+			return false;
+        }
+        if(document.statuteFileForm.type.value=="1"){
+			alert("请选择类型！");
+			return false;
+        }
+        if(document.statuteFileForm.sendDate.value==""){
+			alert("请选择下发日期！");
+			return false;
+        }
+	}
+</script>
+</head>
+<body class="body0">
+<div align="center">
+	<table class="table_path">
+		<tr>
+			<td >您当前的位置：<a href="#"><span class="txtpath">日常办公</span></a> &gt; <a href="#"><span class="txtpath">日程管理</span></a> &gt; 日程维护</td>
+		    <td align="right" >
+	      <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+		</tr>												
+
+</table>
+<form name="statuteFileForm" method="post" action="dailywork_list.htm" onsubmit="return subchoose();">
+	
+<table  cellSpacing=1 cellPadding=2 class="table2">
+<tr>
+					<th scope="row">计划</th>
+					<td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'">
+					<input type="text" name="filenum" value="编码">
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">执行人</th>
+					<td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'">
+					<input type="text" name="filenum" value="Frany">
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">开始日期</th>
+				  <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'">
+					<input type="text" name="sendDate" value="2008-9-0" readonly="readonly">
+					<IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(sendDate);return false" alt=请选择时间
+						src="../images/datetime.gif" align="absmiddle" width="16"
+						height="16">
+      </tr>
+				<tr>
+					<th scope="row">开始时间</th>
+					<td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'">					<div align="left"><span class="tr_s">
+					  <input type="text" name="sendDate2" value="2008-9-0" readonly="readonly">
+                      <IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(sendDate);return false" alt=请选择时间
+						src="../images/datetime.gif" align="absmiddle" width="16"
+						height="16"> </span></div>
+					</td>
+				</tr>				
+
+				
+				<tr>
+					<th scope="row">内容</th>
+					<td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'">
+                      <textarea name="fileContent1" cols="60" rows="10">sdfsdfsdf</textarea>
+</td>
+				</tr>
+				
+			</table>
+	
+	        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+          <tr>
+            <td>
+              <div align="center">
+                <input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" onclick="top.targeturl='../dailywork/dailywork_list.htm';window.location='../common/success.htm'"  value="保存">
+        　
+       　
+        <input name="button32" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" onClick='history.go(-1)' value="返回">
+            </div></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+	
+</form>
+</div>
+</body>
+</html>

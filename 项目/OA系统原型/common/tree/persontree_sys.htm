@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>人员选择树</title>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+<link href="../../style/styles.css" rel="STYLESHEET" type="text/css">
+<script src="js/tree.js"></script>
+<script language="javascript">
+function popmenu(mode,type,value){
+}
+//添加全选按钮-----吴建平
+function allmCheck(){
+	var i=-1;
+	for(i=0;;i++){
+		if(document.all["all_chk"+i] == undefined)break;
+	 if(document.all["all_chk"+i].checked == false){
+		    document.all["all_chk"+i].checked = true;
+		  }
+	}
+	//alert("out");
+}
+</script>
+</head>
+
+<body bgcolor="#EFEBEF">
+<table width="410" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr><td height="10"></td></tr>
+<tr><td>
+<table width="384" border="0" cellspacing="0" cellpadding="0">
+<form name='selectUser'>
+  <tr>
+    <td height="390" bgcolor="ffffff"><table width='100%' height='100%' border='0' align='center' cellpadding='0' cellspacing='8'><tr><td valign='top'><div style='padding:5pt 5pt;border: 1px solid #0099CC;overflow: auto;height:100%;width:100%'><div id='CustTree' style='display:none'></div><div id='AllTree' style='display:block'><div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/node_6.gif' width='24' height='22' onClick='javascript:clickNode(1,1)'></td><td><img src='image/obrs_m_001.gif' width='24' height='22'></td><td>&nbsp;办公业务资源系统</td></tr></table></div><div id='all_Dis_1' style='display:none'><!--div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/line_2.gif' width='24' height='22'></td><td><img src='image/node_1.gif' width='24' height='22' onClick='javascript:clickNode(2,1)'></td><td><img src='image/obrs_m_002.gif' width='24' height='22'></td><td>&nbsp;党工委</td></tr></table></div--><div id='all_Dis_2' style='display:none'></div><div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/line_2.gif' width='24' height='22'></td><td><img src='image/node_2.gif' width='24' height='22' onClick='javascript:clickNode(17,2)'></td><td><img src='image/obrs_m_002.gif' width='24' height='22'><td style='cursor:hand' onclick="popmenu(0,0,'17')">&nbsp;党工委</td></tr></table></div><div id='all_Unit_17' style='display:none'><div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_3.gif' width='24' height='22'></td><td><img src='image/node_1.gif' width='24' height='22' onClick='javascript:clickNode(50,2)'></td><td><img src='image/obrs_m_002.gif' width='24' height='22'><td style='cursor:hand' onclick="popmenu(0,0,'50')">&nbsp;综合办</td></tr></table></div><div id='all_Unit_50' style='display:none'><div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_3.gif' width='24' height='22'></td><td><img src='image/obrs_m_004.gif' width='24' height='22'></td><td><input type='radio' onclick=javascript:onlyone.value=this.value; name='all_chk' value='flr|冯利荣;'></td><td  style='cursor:hand' onclick="popmenu(0,1,'flr')">&nbsp;冯利荣</td></tr></table></div><div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_3.gif' width='24' height='22'></td><td><img src='image/obrs_m_004.gif' width='24' height='22'></td><td><input type='radio' onclick=javascript:onlyone.value=this.value; name='all_chk' value='ldc|吕东昌;'></td><td  style='cursor:hand' onclick="popmenu(0,1,'ldc')">&nbsp;吕东昌</td></tr></table></div><div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_3.gif' width='24' height='22'></td><td><img src='image/obrs_m_004.gif' width='24' height='22'></td><td><input type='radio' onclick=javascript:onlyone.value=this.value; name='all_chk' value='mzd|马志东;'></td><td  style='cursor:hand' onclick="popmenu(0,1,'mzd')">&nbsp;马志东</td></tr></table></div><div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_3.gif' width='24' height='22'></td><td><img src='image/obrs_m_004.gif' width='24' height='22'></td><td><input type='radio' onclick=javascript:onlyone.value=this.value; name='all_chk' value='zxd|张兴东;'></td><td  style='cursor:hand' onclick="popmenu(0,1,'zxd')">&nbsp;张兴东</td></tr></table></div><div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_3.gif' width='24' height='22'></td><td><img src='image/obrs_m_004.gif' width='24' height='22'></td><td><input type='radio' onclick=javascript:onlyone.value=this.value; name='all_chk' value='lkm|李抗美;'></td><td  style='cursor:hand' onclick="popmenu(0,1,'lkm')">&nbsp;李抗美</td></tr></table></div><div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_3.gif' width='24' height='22'></td><td><img src='image/obrs_m_004.gif' width='24' height='22'></td><td><input type='radio' onclick=javascript:onlyone.value=this.value; name='all_chk' value='zyx|张亦欣;'></td><td  style='cursor:hand' onclick="popmenu(0,1,'zyx')">&nbsp;张亦欣</td></tr></table></div><div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_3.gif' width='24' height='22'></td><td><img src='image/obrs_m_004.gif' width='24' height='22'></td><td><input type='radio' onclick=javascript:onlyone.value=this.value; name='all_chk' value='zjh|张江怀;'></td><td  style='cursor:hand' onclick="popmenu(0,1,'zjh')">&nbsp;张江怀</td></tr></table></div><div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_3.gif' width='24' height='22'></td><td><img src='image/obrs_m_004.gif' width='24' height='22'></td><td><input type='radio' onclick=javascript:onlyone.value=this.value; name='all_chk' value='mym|马毅敏;'></td><td  style='cursor:hand' onclick="popmenu(0,1,'mym')">&nbsp;马毅敏</td></tr></table></div><div style='display:block'><table border='0' cellpadding='0' cellspacing='0'><tr><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_1.gif' width='24' height='22'></td><td><img src='image/line_2.gif' width='24' height='22'></td><td><img src='image/obrs_m_004.gif' width='24' height='22'></td><td><input type='radio' onclick=javascript:onlyone.value=this.value; name='all_chk' value='lyq|罗允谦;'></td><td  style='cursor:hand' onclick="popmenu(0,1,'lyq')">&nbsp;罗允谦</td></tr></table></div></div></div></div><div id='DepartmentTree' style='display:none'></div><div id='UnitTree' style='display:none'></div><div id='PolityTree' style='display:none'></div></div></td></tr></table><table><tr><td align='center'><input type='hidden' name='cont' value='101'><input type='hidden' name='onlyone'><input type='hidden' name='divtype' value='all'></td></tr></table></td>
+  </tr>
+ <tr>
+            <td>&nbsp;</td>
+          </tr>
+</form>
+</table>
+<br>
+<table width="384" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="right"><input name="save" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" 
+		  onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" 
+		  onMouseOut="this.className='btn_mouseout'" value="确定" 
+		  onClick="javascript:ok(); ">
+            <input name="close" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" 
+		  onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" 
+		  onMouseOut="this.className='btn_mouseout'" value="关闭" 
+		  onClick="javascript:window.close()">
+            &nbsp;&nbsp;</td>
+  </tr>
+</table>
+</td></tr></table>
+
+</body>
+</html>

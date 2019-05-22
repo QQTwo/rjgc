@@ -1,0 +1,193 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>:::body:::</title>
+<link href="../../style/styles.css" rel="STYLESHEET" type="text/css">
+
+</head>
+<SCRIPT language=JavaScript src="../../js/calendarCN.js"></SCRIPT>
+<SCRIPT language=JavaScript src="../../js/oa_Popup.js"></SCRIPT>
+<body class="body0">
+<form action="" method="post">
+<script language="JavaScript">
+//单选
+function selectperson(control,hidden){
+	var personstr = window.showModalDialog("../../common/tree/persontree1.htm","",'dialogHeight:535px;dialogWidth:450px');
+	if(personstr != undefined && personstr != ""){
+		var id = personstr.substring(0,personstr.indexOf("|"));
+		var name = personstr.substring(personstr.indexOf("|") + 1,personstr.length-1);
+		control.value = name;
+		hidden.value = id;
+	}
+}
+//删除部门
+function deleter(control)
+{
+  for (var i=0;i<control.length;i++)
+  if (control.options[i].selected==true)
+  {
+    control.remove(i);
+    i--;
+  }
+}
+//选择多部门
+function chooser(control,path){
+	var discussions = window.showModalDialog(path,"",'dialogHeight:535px;dialogWidth:450px');
+	if(discussions){
+		var item=discussions.split(";");
+		var temp_item;
+		if(item && item.length && item.length > 0 ){
+			var recieverOptions = control.options;
+			if(recieverOptions){
+				for(var i=0;i<item.length;i++){
+					if(item[i]){
+						temp_item=item[i].split("|");
+						if(temp_item&&temp_item.length==2){
+							var newReciever=document.createElement("option");
+							newReciever.value=temp_item[0];
+							newReciever.text=temp_item[1];
+							recieverOptions.add(newReciever);
+						}
+					}
+				}
+			}
+		}
+	}
+    for(var i=0; i<control.options.length; i++){
+		for(var j=i+1;j<control.options.length;j++){
+			if(control.options[i].value == control.options[j].value){
+				 control.remove(j);
+                                 j--;
+			}
+		}
+	}
+}
+</script>
+<div align="center">
+	<table class="table_path">
+		<tr>
+			<td >您当前的位置：<a href="#"><span class="txtpath">会议管理</span></a> &gt; <a href="#"><span class="txtpath">会议计划</span></a> &gt; 修改会议计划</td>
+		    <td align="right" >
+	      <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+		</tr>
+	</table>
+	
+		
+    <table cellSpacing=1 cellPadding=2 class="table2">
+      <tr> 
+        <th width="18%" scope="row">会议主题</th>
+        <td width="82%" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="textfield7" type="text" value="人民代表大会" size="60"> 
+          <input type="hidden" name="hiddenField"></td>
+      </tr>
+      <tr> 
+        <th scope="row">审议议题</th>
+        <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><select name="discussions" size="5" multiple="multiple" style="width:150">
+          </select> <img src="../../images/obrs-pic-057.gif" style="cursor: hand;" alt='选择议题' onClick="chooser(discussions,'../discussion/discussion_choose.htm')"> 
+          <input name="button2" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="删除所选议题" onClick="deleter(discussions)"></td>
+      </tr>
+      <tr> 
+        <th scope="row">与会人员</th>
+        <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><select name="joiners" size="5" multiple="true" style="width:150">
+          </select> <img src="../../images/obrs-pic-057.gif" style="cursor: hand;" alt='选择人员' onClick="chooser(joiners,'../../common/tree/persontree2.htm')"> 
+          <input name="button2" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="删除所选人"></td>
+      </tr>
+      <tr> 
+        <th scope="row">列席人员</th>
+        <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><select name="attenders" size="5" multiple="true" style="width:150">
+          </select> <img src="../../images/obrs-pic-057.gif" style="cursor: hand;" alt='选择人员' onClick="chooser(attenders,'../../common/tree/persontree2.htm')"> 
+          <input name="button2" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="删除所选人" ></td>
+      </tr>
+      <tr> 
+        <th scope="row">与会部门</th>
+        <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><select name="depts" size="5" multiple="true" style="width:150">
+          </select> <img src="../../images/obrs-pic-057.gif" style="cursor: hand;" alt='选择部门' onClick="chooser(depts,'../../common/tree/depttree2.htm')"> 
+          <input name="button2" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="删除所选人" ></td>
+      </tr>
+      <tr> 
+        <th scope="row">会议时间</th>
+        <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><input name="meetingdate" type="text" id="meetingdate" value="2005-9-8">
+          <IMG style="CURSOR: hand"
+						onclick="fPopUpCalendarDlg(meetingdate,'../')" alt=请选择时间
+						src="../../images/datetime.gif" align="absmiddle" width="16"
+						height="16"></td>
+      </tr>
+      <tr> 
+        <th scope="row">会议地点</th>
+        <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><input name="textfield62" type="text" value="大雁塔"></td>
+      </tr>
+      <tr> 
+        <th scope="row">主持人</th>
+        <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><input name="compere" type="text" value="卡卡">
+          <img src="../../images/obrs-pic-057.gif" style="cursor: hand;" alt='选择部门' onClick="selectperson(compere,compereid)">
+          <input type="hidden" name="compereid"></td>
+      </tr>
+      <tr> 
+        <th rowspan="2" scope="row">会议材料</th>
+        <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><table width="100%" border="0">
+            <tr> 
+              <td width="55%">管理规定.doc</td>
+              <td width="45%"><input name="button32" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="删除" ></td>
+            </tr>
+            <tr> 
+              <td>请假规定处理.doc</td>
+              <td><input name="button32" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="删除" ></td>
+            </tr>
+          </table></td>
+      </tr>
+      <tr> 
+        <td class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"><input type="file" name="file"> 
+          &nbsp; <input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="更多资料" onClick="javascript:location=''"></td>
+      </tr>
+      <tr> 
+        <th scope="row">会议说明</th>
+        <td class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"><textarea name="textarea" cols="60"></textarea></td>
+      </tr>
+    </table>
+		
+    <div align="left"><strong><font size="2">意见列表：</font></strong> </div>
+		<table cellSpacing=1 cellPadding=2 class="table2">
+          <tr>
+      		  <th scope="row" width="21%">A部门：张三</th>
+			  <td class="tr_s" width="79%" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'">我没问题</td>
+          </tr>
+        </table>
+        		
+    <table  cellSpacing=1 cellPadding=2 class="table2">
+      <tr align=middle> 
+        <th width="18%"> 选择处理人</th>
+        <td width="63%" align="left" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+          <input name="nextname" type="text" class="input2" value="" size="20">
+          <img src="../../images/obrs-pic-057.gif" style="cursor: hand;" alt='选择部门' onClick="selectperson(nextname,nextid)">
+          <input type="hidden" name="nextid"></td>
+        <td width="19%" align="center" class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"  ><input name="button5" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="提交" onClick="top.targeturl='../meetingmanage/meetingplan/meetingPlan_manage.htm';window.location='../../common/success.htm'">
+          &nbsp;<input name="button52" type="button" class=btn_mouseout onMouseDown="this.className='btn_mousedown'" onMouseUp="this.className='btn_mouseup'" onMouseOver="this.className='btn_mouseover'" onMouseOut="this.className='btn_mouseout'" value="完成" onClick="top.targeturl='../meetingmanage/meetingplan/meetingPlan_manage.htm';window.location='../../common/success.htm'"> 
+        </td>
+      </tr>
+    </table>    
+
+        </div>
+		</form>
+</body>
+</html>

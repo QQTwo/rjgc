@@ -1,0 +1,201 @@
+BODY {
+	FONT-SIZE: 12px
+}
+TD {
+	FONT-SIZE: 12px
+}
+TR {
+	FONT-SIZE: 12px
+}
+P {
+	FONT-SIZE: 12px
+}
+FORM {
+	FONT-SIZE: 12px
+}
+BR {
+	FONT-SIZE: 12px
+}
+INPUT {
+	FONT-SIZE: 12px
+}
+SELECT {
+	FONT-SIZE: 12px
+}
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.body0 {
+	BACKGROUND: #FFFFFF url(pic/bj.gif) no-repeat fixed right top;
+	margin: 0; 
+	SCROLLBAR-FACE-COLOR: #F3F8FE;
+	scrollbar-arrow-color: #1E87CE;
+	scrollbar-3dlight-color: #DFEBF6;
+	scrollbar-base-color: #F3F8FE;
+	scrollbar-track-color: #E8F2FA;
+	Scrollbar-Shadow-Color:#B0CFEB;
+	Scrollbar-Darkshadow-Color:#FFFFff;
+}
+.txtpath {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #666666;
+	text-decoration: none;
+	line-height: 150%;
+}
+.txt12 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+	line-height: 150%;
+}
+.txt14 {
+	font-family: "宋体";
+	font-size: 14px;
+	color: #000000;
+	text-decoration: none;
+	line-height: 150%;
+}
+.txt_errortitle {
+	font-family: "宋体";
+	font-size: 14px;
+	color: #003366;
+	font-weight: bold;
+	text-decoration: none;
+	line-height: 150%;
+	filter:glow(color=white,strength=2);
+}
+.txt_errorcontent {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+	line-height: 150%;
+}
+input     {
+           background-color: #ffffff;
+           border: 1px solid #669ACC;
+           font-size: 12px;
+           font-style: normal;
+           font-variant: normal;
+           line-height: normal;
+          }
+table     {
+           font-size: 12px;
+           font-family: "宋体";
+           }
+
+
+
+.table_path {
+	width: 98%;
+	BACKGROUND: #FFFFFF url(pic/line.gif) repeat-x bottom;
+	height: 25px;
+	margin-bottom: 6px;
+}
+.table_path td {
+	vertical-align: bottom;
+	font-family: "宋体";
+	font-size: 12px;
+	color: #666666;
+}
+.table_box {
+	width: 98%;
+	border: 1px solid #DFE8F1;
+	background-color: #EFF6FE;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.table0 {
+	width: 98%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.table1 {
+	width: 98%;
+	border: 1px solid #669ACC;
+	background-color: #9BBFE3;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.table1 th {
+	BACKGROUND: url(pic/topBar_bg.gif);
+	height:25;
+	font-size: 14px;
+	font-family: "宋体";
+	font-weight: bold;
+	white-space : nowrap;
+}
+.table1 td {
+	padding-left: 6px;
+	padding-right: 6px;
+}
+.table2 {
+	width: 98%;
+	border: 1px solid #669ACC;
+	background-color: #9BBFE3;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.table2 th {
+	background-color: #D7E9FF;
+	height:23;
+	font-size: 14px;
+	font-family: "宋体";
+	font-weight: bold;
+	color: #223462;
+	padding-left: 6px;
+	padding-right: 6px;
+	text-align:right;
+	white-space : nowrap;
+}
+.table2 td {
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+
+
+
+.tr_s ,.tr_s td{
+	background-color: #ffffff;
+	height:23;
+	font-size: 14px;
+	filter:;
+}
+.tr_d ,.tr_d td{
+	background-color: #EDF4FC;
+	height:23;
+	font-size: 14px;
+	filter:;
+}
+.tr_o ,.tr_o td{
+	background-color: #ffffff;
+	height:23;
+	font-size: 14px;
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#FFFAE6, EndColorStr=#FFF6B9);
+}
+
+
+
+.btn_mouseout {
+ BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#AAC8F0); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid
+} 
+.btn_mouseover {
+ BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#CADDF5); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid
+}
+.btn_mousedown
+{
+ BORDER-RIGHT: #FFE400 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #FFE400 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#AAC8F0, EndColorStr=#ffffff); BORDER-LEFT: #FFE400 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #FFE400 1px solid
+} 
+.btn_mouseup {
+ BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid
+} 

@@ -1,0 +1,153 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>档案查阅列表</title>
+<link href="../../style/styles.css" rel="STYLESHEET" type="text/css">
+<SCRIPT src="../../images/myweb.js"></SCRIPT>
+</head>
+
+<body class="body0">
+<div align="center">
+	<table class="table_path">
+		<tr>
+			
+      <td >您当前的位置：<a href="#"><span class="txtpath">档案管理</span></a> &gt; <a href="#"><span class="txtpath">在线借阅</span></a> 
+        &gt; 查阅申请</td>
+		    <td align="right" >
+	      <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+		</tr>
+	</table>
+	
+		<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="table_box">
+          <tr>
+            <td><p>标题： 
+          <input type="text" name="title">
+          文号： 
+          <input type="text" name="zihao">
+          主题词： 
+          <input type="text" name="keyword">
+          　 
+          <input type="button" class=btn_mouseout onmousedown="this.className='btn_mousedown'" onmouseup="this.className='btn_mouseup'" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="按条件查询">
+          　 
+          <input type="button" class=btn_mouseout onmousedown="this.className='btn_mousedown'" onmouseup="this.className='btn_mouseup'" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="查询全部">
+        </p>            </td>
+          </tr>
+        </table>
+	
+		
+  <table cellSpacing=1 cellPadding=2 class="table1" id="table4">
+    <tr> 
+      <th scope="col">文件标题</th>
+      <th scope="col">文号</th>
+      <th scope="col">责任者</th>
+      <th width="54" scope="col">主题词</th>
+      <th scope="col">申请日期</th>
+      <th scope="col">是否已审批</th>
+      <th scope="col">审批日期</th>
+      <th scope="col">可否查阅</th>
+      <th scope="col">查阅截止日期</th>
+      <th scope="col">操作</th>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+      <td ><a href="#" onclick="javascript:window.open('../filemanager/norange_fileinfo.htm','','width=700 height=600 scrollbars=yes resizable=yes')">关于全民防治禽流感的通知1</a></td>
+      <td >陕办发[1]号</td>
+      <td>陕西省政府办公厅</td>
+      <td>禽流感</td>
+      <td width="70"><div align="center">2006-04-20</div></td>
+      <td><div align="center">是</div></td>
+      <td width="70"><div align="center">2006-04-21</div></td>
+      <td><div align="center">是</div></td>
+      <td width="90"><div align="center">2006-04-30</div></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"> 
+      <td>关于全民防治禽流感的通知2</td>
+      <td>陕办发[2]号</td>
+      <td>陕西省政府办公厅</td>
+      <td>禽流感</td>
+      <td width="70"><div align="center">2006-04-20</div></td>
+      <td><div align="center">是</div></td>
+      <td width="70"><div align="center">2006-04-21</div></td>
+      <td><div align="center">否</div></td>
+      <td>&nbsp;</td>
+      <td><img src="../../images/btn_del.gif" style="cursor: hand;" alt='删除' onclick='javascript:if(confirm("是否确定删除？")) {return true;}'></td>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+      <td><a href="#" onclick="javascript:window.open('../filemanager/norange_fileinfo.htm','','width=700 height=600 scrollbars=yes resizable=yes')">关于全民防治禽流感的通知3</a></td>
+      <td>陕办发[3]号</td>
+      <td>陕西省政府办公厅</td>
+      <td>禽流感</td>
+      <td width="70"><div align="center">2006-04-20</div></td>
+      <td><div align="center">是</div></td>
+      <td width="70"><div align="center">2006-04-21</div></td>
+      <td><div align="center">是</div></td>
+      <td width="80"><div align="center">2006-04-30</div></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"> 
+      <td><a href="#" onclick="javascript:window.open('../filemanager/norange_fileinfo.htm','','width=700 height=600 scrollbars=yes resizable=yes')">关于全民防治禽流感的通知4</a></td>
+      <td>陕办发[4]号</td>
+      <td>陕西省政府办公厅</td>
+      <td>禽流感</td>
+      <td width="70"><div align="center">2006-04-20</div></td>
+      <td><div align="center">是</div></td>
+      <td width="70"><div align="center">2006-04-21</div></td>
+      <td><div align="center">是</div></td>
+      <td width="80"><div align="center">2006-04-30</div></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+      <td>关于全民防治禽流感的通知5</td>
+      <td>陕办发[5]号</td>
+      <td>陕西省政府办公厅</td>
+      <td>禽流感</td>
+      <td width="70"><div align="center">2006-04-20</div></td>
+      <td><div align="center">否</div></td>
+      <td><div align="center"></div></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+    
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+				<tr>
+					
+      <td width="35%">&nbsp; </td>
+					<td width="62%">
+					<p align="right"><font color="#008080">共</font><font color="#800000"> 1</font><font color="#008080"> 页　 首页　上一页　下一页　尾页&nbsp; 
+					跳转<input type="text" size="4">
+					页</font></td>
+					<td width="3%">&nbsp; </td>
+				</tr>
+				<tr>
+				  <td>&nbsp;</td>
+				  <td>&nbsp;</td>
+				  <td>&nbsp;</td>
+		  </tr>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>未分类文件</title>
+<link href="../../style/styles.css" rel="STYLESHEET" type="text/css">
+<SCRIPT src="../../images/myweb.js"></SCRIPT>
+</head>
+
+<body class="body0">
+<div align="center">
+	<table class="table_path">
+		<tr>
+			
+      <td >您当前的位置：<a href="#"><span class="txtpath">档案管理</span></a> &gt; <a href="#"><span class="txtpath">归档处理</span></a> 
+        &gt; 未装盒文件</td>
+		    <td align="right" >
+	      <script language=JavaScript>
+										 today=new Date();
+										 function initArray(){
+										 this.length=initArray.arguments.length
+										 for(var i=0;i<this.length;i++)
+										 this[i+1]=initArray.arguments[i]  }
+										 var d=new initArray(
+											 " 星期日",
+											 " 星期一",
+											 " 星期二",
+											 " 星期三",
+											 " 星期四",
+											 " 星期五",
+											 " 星期六");
+												document.write(
+											 "",
+											 today.getYear(),"年",
+											 today.getMonth()+1,"月",
+											 today.getDate(),"日 ",
+											d[today.getDay()+1],
+											 "" ); 
+									</script></td>
+		</tr>
+	</table>
+	
+		
+  <table width="100%"  border="0" cellpadding="0" cellspacing="0" class="table_box">
+    <tr> 
+      <td><p>年度： 
+          <input type="text" name="year" size="8">
+          保管期限： 
+          <select name="savePeriod">
+            <option value=0""></option>
+            <option value="Y">永久</option>
+            <option value="C">长期</option>
+            <option value="D">短期</option>
+          </select>
+          机构： 
+          <input name="department" type="text" value="">
+          <img id="userimg"  style="cursor:hand" border="0" src="../../images/obrs-pic-057.gif" alt="请选择承办处室" onclick=javascript:window.open('../../common/tree/depttree1.htm','thewin','width=440,height=480') class="input001" target="_blank">　 
+          <input name="button" type="button" class=btn_mouseout onmousedown="this.className='btn_mousedown'" onmouseup="this.className='btn_mouseup'" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="按条件查询">
+          　 
+          <input name="button" type="button" class=btn_mouseout onmousedown="this.className='btn_mousedown'" onmouseup="this.className='btn_mouseup'" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" value="查询全部">
+        </p></td>
+    </tr>
+  </table>
+  <table cellSpacing=1 cellPadding=2 class="table1" id="table4">
+    <tr> 
+      <th width="276" scope="col">年度</th>
+      <th scope="col">保管期限</th>
+      <th scope="col">机构</th>
+      <th scope="col">操作</th>
+    </tr>
+    <tr class="tr_s" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_s'"> 
+      <td>2005</td>
+      <td width="234">长期</td>
+      <td width="303"><div align="center">工业处</div></td>
+      <td width="153"><div align="center"><img src="../../images/btn_preview.gif" style="cursor: hand;" alt='包含文件' onClick="javascript:location='nopigeonhole_list.htm'"></div></td>
+    </tr>
+    <tr class="tr_d" onmouseover="this.className='tr_o'" onmouseout="this.className='tr_d'"> 
+      <td height="26">2005</td>
+      <td width="234">永久</td>
+      <td width="303"><div align="center">工业处</div></td>
+      <td width="153"><div align="center"><img src="../../images/btn_preview.gif" style="cursor: hand;" alt='包含文件' onClick="javascript:location='nopigeonhole_list.htm'"></div></td>
+    </tr>
+  </table>
+    
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table0">
+				<tr>
+					
+      <td width="35%">&nbsp; </td>
+					<td width="62%">
+					<p align="right"><font color="#008080">共</font><font color="#800000"> 1</font><font color="#008080"> 页　 首页　上一页　下一页　尾页&nbsp; 
+					跳转<input type="text" size="4">
+					页</font></td>
+					<td width="3%">&nbsp; </td>
+				</tr>
+				<tr>
+				  <td>&nbsp;</td>
+				  <td>&nbsp;</td>
+				  <td>&nbsp;</td>
+		  </tr>
+  </table>
+</div>
+</body>
+</html>
