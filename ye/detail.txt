@@ -1,0 +1,174 @@
+var detailOrder = {};
+		var detail = [];
+		var arr = $("#dsg").datagrid("getData");
+		$("tr[id*='datagrid-row-r2-2']").each(function (i, e) {
+			var detailOrder = {};
+			detailOrder["serno"] = arr.rows[i].serno;
+			detailOrder["prodid"] = arr.rows[i].prodid;
+			detailOrder["prodname"] = arr.rows[i].prodname;
+			detailOrder["prodsize"] = arr.rows[i].prodsize;
+			detailOrder["sunit"] = arr.rows[i].sunit;
+			detailOrder["squantity"] = arr.rows[i].squantity;
+			detailOrder["oldprice"] = arr.rows[i].oldprice;
+			detailOrder["discount"] = arr.rows[i].discount;
+			detailOrder["sprice"] = arr.rows[i].sprice;
+			detailOrder["amount"] = arr.rows[i].amount;
+			detailOrder["taxrate"] = arr.rows[i].taxrate;
+			detailOrder["taxamt"] = arr.rows[i].taxamt;
+			detailOrder["vftotal"] = arr.rows[i].vftotal;
+			detailOrder["preindate"] = arr.rows[i].preindate;
+			detailOrder["qtyremain"] = arr.rows[i].qtyremain;
+			detailOrder["isgift"] = arr.rows[i].isgift;
+			detailOrder["itemremark"] = arr.rows[i].itemremark;
+			detailOrder["hascombine"] = arr.rows[i].hascombine;
+			detailOrder["trantype"] = arr.rows[i].trantype;
+			detailOrder["fromno"] = arr.rows[i].fromno;
+			detailOrder["ismanu"] = arr.rows[i].ismanu;
+			detailOrder["arrangeno"] = arr.rows[i].arrangeno;
+			detailOrder["manuqty"] = arr.rows[i].manuqty;
+			detail[i] = detailOrder;
+		});
+
+
+
+
+
+
+
+<script type="text/javascript">
+		$.extend($.fn.datagrid.methods, {
+			editCell: function(jq, param) {
+				return jq.each(function() {
+					var opts = $(this).datagrid('options');
+					var fields = $(this).datagrid('getColumnFields', true).concat($(this).datagrid('getColumnFields'));
+					for(var i = 0; i < fields.length; i++) {
+						var col = $(this).datagrid('getColumnOption', fields[i]);
+						col.editor1 = col.editor;
+						if(fields[i] != param.field) {
+							col.editor = null;
+						}
+					}
+					$(this).datagrid('beginEdit', param.index);
+					for(var i = 0; i < fields.length; i++) {
+						var col = $(this).datagrid('getColumnOption', fields[i]);
+						col.editor = col.editor1;
+					}
+				});
+			}
+		});
+
+		var editIndex = undefined;
+
+		function endEditing() {
+			if(editIndex == undefined) {
+				return true
+			}
+			if($('#dsg').datagrid('validateRow', editIndex)) {
+				$('#dsg').datagrid('endEdit', editIndex);
+				editIndex = undefined;
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		function onClickCell(index, field) {
+			if(endEditing()) {
+				$('#dsg').datagrid('selectRow', index)
+					.datagrid('editCell', {
+						index: index,
+						field: field
+					});
+				editIndex = index;
+			}
+		}
+	</script>
+
+	<script>
+		$(function() {
+			//$("#kehu").textbox("setValue","123");
+			//alert($("#kehu").textbox("getValue"));
+			// 
+			$("[name=khbh]").val("qwe");
+			// $("input",$("#kehu").next("span")).val();
+
+			//右键菜单
+			$(document).bind('contextmenu', function(e) {
+				e.preventDefault();
+				$('#mm').menu('show', {
+					left: e.pageX,
+					top: e.pageY
+				});
+			});
+
+			$.post("http://127.0.0.1:8080/getID", function(data) {
+				var date = new Date();
+				//alert(date.getFullYear());
+
+			}, "text");
+
+			//判断是否在前面加0
+			function getNow(s) {
+				return s < 10 ? '0' + s : s;
+			}
+			var myDate = new Date();
+
+			var year = myDate.getFullYear(); //获取当前年
+			var month = myDate.getMonth() + 1; //获取当前月
+			var date = myDate.getDate(); //获取当前日
+
+			var h = myDate.getHours(); //获取当前小时数(0-23)
+			var m = myDate.getMinutes(); //获取当前分钟数(0-59)
+			var s = myDate.getSeconds();
+
+			var now = year + '-' + getNow(month) + "-" + getNow(date) + " " + getNow(h) + ':' + getNow(m) + ":" + getNow(s);
+			$(function(){
+			$("#save").click(function() {
+				alert($("#billnoid").textbox("getValue"));
+				alert($("#billnoid").val());
+				var info = {};
+				info.billno = $("#billnoid").textbox("getValue");
+				info.customerid = $("#customerid").textbox("getValue");
+				info.billnodate = $("#billnodate").textbox("getValue");
+				info.salesouttype = $("#salesouttype").textbox("getValue");
+				info.currid = $("#currid").textbox("getValue");
+				info.wareid = $("#wareid").textbox("getValue");
+				info.exchrate = $("#exchrate").textbox("getValue");
+				info.priceoftax = $("#priceoftax").textbox("getValue");
+				info.salesid = $("#salesid").textbox("getValue");
+				info.departid = $("#departid").textbox("getValue");
+				info.maker = $("#maker").textbox("getValue");
+				info.permitter = $("#permitter").textbox("getValue");
+				info.audittime = now;
+				info.hascheck = 0;
+				info["detail"] = JSON.parse(JSON.stringify(detail));
+				alert(JSON.stringify(info))
+				var detailOrder = {};
+				var detail = [];
+				var arr = $("#dsg").datagrid("getData");
+				$("tr[id*='datagrid-row-r2-2']").each(function(i, e) {
+					var detailOrder = {};
+					detailOrder["billnodetailid"] = arr.rows[i].lh;
+					detailOrder["materielid"] = arr.rows[i].wlbh;
+					detailOrder["unitname"] = arr.rows[i].dwmc;
+					detailOrder["num"] = arr.rows[i].num;
+					detailOrder["discountagoprice"] = arr.rows[i].zkqmc;
+					detailOrder["foldingnumber"] = arr.rows[i].zs;
+					detailOrder["price"] = arr.rows[i].dj;
+					detailOrder["moneys"] = arr.rows[i].je;
+					detailOrder["taxrate"] = arr.rows[i].sl;
+					detailOrder["taxmoney"] = arr.rows[i].se;
+					detailOrder["taxmoneys"] = arr.rows[i].hsje;
+					detailOrder["gift"] = arr.rows[i].zp;
+					detailOrder["entryremarks"] = arr.rows[i].flbz;
+					detailOrder["billonname"] = arr.rows[i].lydb;
+					detailOrder["sourceid"] = arr.rows[i].lydh;
+					detailOrder["remarks"] = "无";
+					detailOrder["billnoid"] = $("#billnoid").textbox("getValue");
+					detail[i] = detailOrder;
+				});
+
+			})
+		})
+			})
+	</script>

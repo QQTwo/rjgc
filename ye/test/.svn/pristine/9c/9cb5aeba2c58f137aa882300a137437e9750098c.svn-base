@@ -1,0 +1,453 @@
+-- Create table  销售退款主表
+
+
+drop table  T_SELL_TUIKUAN;
+create table T_SELL_TUIKUAN
+(
+  BILLNO      VARCHAR2(20) not null,
+  BILLDATE    DATE not null,
+  CUSTID      VARCHAR2(100),
+  ADDRID      NUMBER,
+  PRICEOFTAX  NUMBER,
+  WAREID      NUMBER,
+  ISDEDUCT    NUMBER,
+  SALESID     NUMBER,
+  DEPARTID    NUMBER,
+  PROJECTID   NUMBER,
+  MARKER      VARCHAR2(20),
+  PERMITTER   VARCHAR2(20),
+  REMARK      VARCHAR2(200),
+  CHECKSTATUS NUMBER,
+  CHECKTIME   TIMESTAMP(6)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_SELL_TUIKUAN
+  is '销售退款主表';
+-- Add comments to the columns 
+comment on column T_SELL_TUIKUAN.BILLNO
+  is '单据号码';
+comment on column T_SELL_TUIKUAN.BILLDATE
+  is '单据时间';
+comment on column T_SELL_TUIKUAN.CUSTID
+  is '客户ID';
+comment on column T_SELL_TUIKUAN.ADDRID
+  is '地址';
+comment on column T_SELL_TUIKUAN.PRICEOFTAX
+  is '是否含税';
+comment on column T_SELL_TUIKUAN.WAREID
+  is '仓库';
+comment on column T_SELL_TUIKUAN.ISDEDUCT
+  is '重新出库';
+comment on column T_SELL_TUIKUAN.SALESID
+  is '业务人员';
+comment on column T_SELL_TUIKUAN.DEPARTID
+  is '所属部门';
+comment on column T_SELL_TUIKUAN.PROJECTID
+  is '所属项目';
+comment on column T_SELL_TUIKUAN.MARKER
+  is '制单人员';
+comment on column T_SELL_TUIKUAN.PERMITTER
+  is '复核人员';
+comment on column T_SELL_TUIKUAN.REMARK
+  is '备注';
+comment on column T_SELL_TUIKUAN.CHECKSTATUS
+  is '审核状态';
+comment on column T_SELL_TUIKUAN.CHECKTIME
+  is '审核时间';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_SELL_TUIKUAN
+  add primary key (BILLNO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+
+drop table T_SELL_TUIKUAN_DETAIL;
+-- Create table  销售退款祥表
+create table T_SELL_TUIKUAN_DETAIL
+(
+  BILLNO     VARCHAR2(20) not null,
+  SERNO      NUMBER not null,
+  PRODID     VARCHAR2(100) not null,
+  PRODNAME   VARCHAR2(100) not null,
+  PRODSIZE   VARCHAR2(100),
+  SUNIT      VARCHAR2(100),
+  SQUANTITY  NUMBER,
+  OLDPRICE   NUMBER,
+  DISCOUNT   NUMBER,
+  SPRICE     NUMBER,
+  AMOUNT     NUMBER,
+  TAXRATE    NUMBER,
+  TAXAMT     NUMBER,
+  AMOUNTATAX NUMBER,
+  HAVEBATCH  NUMBER,
+  ISGIFT     NUMBER,
+  ITEMREMARK VARCHAR2(200),
+  TRANTYPE   VARCHAR2(100),
+  FROMNO     VARCHAR2(100)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_SELL_TUIKUAN_DETAIL
+  is '销售退款祥表';
+-- Add comments to the columns 
+comment on column T_SELL_TUIKUAN_DETAIL.BILLNO
+  is '单据号码';
+comment on column T_SELL_TUIKUAN_DETAIL.SERNO
+  is '栏号';
+comment on column T_SELL_TUIKUAN_DETAIL.PRODID
+  is '物料编号';
+comment on column T_SELL_TUIKUAN_DETAIL.PRODNAME
+  is '物料名称';
+comment on column T_SELL_TUIKUAN_DETAIL.PRODSIZE
+  is '规格型号';
+comment on column T_SELL_TUIKUAN_DETAIL.SUNIT
+  is '单位名称 ';
+comment on column T_SELL_TUIKUAN_DETAIL.SQUANTITY
+  is '数量';
+comment on column T_SELL_TUIKUAN_DETAIL.OLDPRICE
+  is '折扣前单价';
+comment on column T_SELL_TUIKUAN_DETAIL.DISCOUNT
+  is '折数';
+comment on column T_SELL_TUIKUAN_DETAIL.SPRICE
+  is '单价';
+comment on column T_SELL_TUIKUAN_DETAIL.AMOUNT
+  is '金额';
+comment on column T_SELL_TUIKUAN_DETAIL.TAXRATE
+  is '税率';
+comment on column T_SELL_TUIKUAN_DETAIL.TAXAMT
+  is '税额';
+comment on column T_SELL_TUIKUAN_DETAIL.AMOUNTATAX
+  is '含税金额';
+comment on column T_SELL_TUIKUAN_DETAIL.HAVEBATCH
+  is '批号';
+comment on column T_SELL_TUIKUAN_DETAIL.ISGIFT
+  is '赠品';
+comment on column T_SELL_TUIKUAN_DETAIL.ITEMREMARK
+  is '分录备注';
+comment on column T_SELL_TUIKUAN_DETAIL.TRANTYPE
+  is '来源单别';
+comment on column T_SELL_TUIKUAN_DETAIL.FROMNO
+  is '来源单号';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_SELL_TUIKUAN_DETAIL
+  add constraint SERNOTUIKUAN primary key (SERNO)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+
+
+
+drop table T_CLIENT_DATA;
+-- Create table  客户主文件表
+create table T_CLIENT_DATA
+(
+  CUSTID            VARCHAR2(20) not null,
+  FUNDSATTRIBUTION  VARCHAR2(100),
+  FULLNAME          VARCHAR2(200),
+  SHORTNAME         VARCHAR2(100),
+  ENGFULLNAME       VARCHAR2(100),
+  ENGSHORTNAME      VARCHAR2(100),
+  CLASSID           NUMBER,
+  AREAID            VARCHAR2(20),
+  CHIEFNAME         VARCHAR2(20),
+  LINKMAN           VARCHAR2(20),
+  TELEPHONE1        VARCHAR2(100),
+  TELEPHONE2        VARCHAR2(100),
+  TELEPHONE3        VARCHAR2(100),
+  MOBILETEL         VARCHAR2(100),
+  BANKACCOUNT       VARCHAR2(100),
+  BANKID            NUMBER,
+  PERSONID          NUMBER,
+  TAXNO             VARCHAR2(100),
+  CAPPITALIZATION   NUMBER,
+  INDUSTRIALCLASS   NUMBER,
+  EMAIL             VARCHAR2(100),
+  WEBADDRESS        VARCHAR2(100),
+  FAXNO             VARCHAR2(100),
+  EARLIESTTRADEDATE DATE,
+  FIRSTTRADEDATE    DATE,
+  LATELYTRADEDATE   DATE,
+  LATELYRETURNDATE  DATE,
+  RATEOFDISCOUNT    NUMBER,
+  PRICERANK         VARCHAR2(20),
+  PRICEOFTAX        NUMBER default 0,
+  BUILDUPDATE       DATE,
+  INVALIDDATE       DATE,
+  AMOUNTQUOTA       NUMBER,
+  REMAINQUOTA       NUMBER,
+  STARTADVRECV      NUMBER,
+  STARTRECEIVABLE   NUMBER,
+  CURADVRECV        NUMBER,
+  CURRECEIVABLE     NUMBER,
+  RECVWAY           VARCHAR2(20),
+  DISTDAYS          NUMBER,
+  DAYOFCLOSE        NUMBER,
+  CREDITLEVEL       VARCHAR2(20),
+  ACCRECEIVABLE     VARCHAR2(50),
+  ACCADVRECV        VARCHAR2(50),
+  MEMO              VARCHAR2(100)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_CLIENT_DATA
+  is '客户主文件表';
+-- Add comments to the columns 
+comment on column T_CLIENT_DATA.CUSTID
+  is '客户编号';
+comment on column T_CLIENT_DATA.FUNDSATTRIBUTION
+  is '账款归属';
+comment on column T_CLIENT_DATA.FULLNAME
+  is '客户全称';
+comment on column T_CLIENT_DATA.SHORTNAME
+  is '客户简称';
+comment on column T_CLIENT_DATA.ENGFULLNAME
+  is '英文全称';
+comment on column T_CLIENT_DATA.ENGSHORTNAME
+  is '英文简称';
+comment on column T_CLIENT_DATA.CLASSID
+  is '类别';
+comment on column T_CLIENT_DATA.AREAID
+  is '地区';
+comment on column T_CLIENT_DATA.CHIEFNAME
+  is '负责人';
+comment on column T_CLIENT_DATA.LINKMAN
+  is '联系人';
+comment on column T_CLIENT_DATA.TELEPHONE1
+  is '联系电话1';
+comment on column T_CLIENT_DATA.TELEPHONE2
+  is '联系电话2';
+comment on column T_CLIENT_DATA.TELEPHONE3
+  is '联系电话3';
+comment on column T_CLIENT_DATA.MOBILETEL
+  is '移动电话';
+comment on column T_CLIENT_DATA.BANKACCOUNT
+  is '银行账号';
+comment on column T_CLIENT_DATA.BANKID
+  is '开户银行';
+comment on column T_CLIENT_DATA.PERSONID
+  is '业务人员';
+comment on column T_CLIENT_DATA.TAXNO
+  is '税务登记号';
+comment on column T_CLIENT_DATA.CAPPITALIZATION
+  is '资本额';
+comment on column T_CLIENT_DATA.INDUSTRIALCLASS
+  is '行业别';
+comment on column T_CLIENT_DATA.EMAIL
+  is '电子邮件';
+comment on column T_CLIENT_DATA.WEBADDRESS
+  is '网址';
+comment on column T_CLIENT_DATA.FAXNO
+  is '传真号码';
+comment on column T_CLIENT_DATA.EARLIESTTRADEDATE
+  is '最初销售出库日';
+comment on column T_CLIENT_DATA.FIRSTTRADEDATE
+  is '最初销售退货日';
+comment on column T_CLIENT_DATA.LATELYTRADEDATE
+  is '最近销售出库日';
+comment on column T_CLIENT_DATA.LATELYRETURNDATE
+  is '最近销售退货日';
+comment on column T_CLIENT_DATA.RATEOFDISCOUNT
+  is '折数';
+comment on column T_CLIENT_DATA.PRICERANK
+  is '售价等级';
+comment on column T_CLIENT_DATA.PRICEOFTAX
+  is '单价是否含税(0:否  1：是)';
+comment on column T_CLIENT_DATA.BUILDUPDATE
+  is '客户建立日期';
+comment on column T_CLIENT_DATA.INVALIDDATE
+  is '终止交易日';
+comment on column T_CLIENT_DATA.AMOUNTQUOTA
+  is '账款额度';
+comment on column T_CLIENT_DATA.REMAINQUOTA
+  is '剩余额度';
+comment on column T_CLIENT_DATA.STARTADVRECV
+  is '期初预收款';
+comment on column T_CLIENT_DATA.STARTRECEIVABLE
+  is '期初应收款';
+comment on column T_CLIENT_DATA.CURADVRECV
+  is '期末预收款';
+comment on column T_CLIENT_DATA.CURRECEIVABLE
+  is '期末应收款';
+comment on column T_CLIENT_DATA.RECVWAY
+  is '收款条件';
+comment on column T_CLIENT_DATA.DISTDAYS
+  is '收款天数';
+comment on column T_CLIENT_DATA.DAYOFCLOSE
+  is '每月结账日';
+comment on column T_CLIENT_DATA.CREDITLEVEL
+  is '信用等级';
+comment on column T_CLIENT_DATA.ACCRECEIVABLE
+  is '应收账款科目';
+comment on column T_CLIENT_DATA.ACCADVRECV
+  is '预收账款科目';
+comment on column T_CLIENT_DATA.MEMO
+  is '备注';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_CLIENT_DATA
+  add constraint CUSTID primary key (CUSTID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+
+ drop table T_CLIENT_TYPE;
+-- Create table  客户类别表
+create table T_CLIENT_TYPE
+(
+  CLASSID   NUMBER not null,
+  CLASSNAME VARCHAR2(50),
+  ENGNAME   VARCHAR2(50),
+  MEMO      VARCHAR2(100)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_CLIENT_TYPE
+  is '客户类别表';
+-- Add comments to the columns 
+comment on column T_CLIENT_TYPE.CLASSID
+  is '类别编号';
+comment on column T_CLIENT_TYPE.CLASSNAME
+  is '类别名称';
+comment on column T_CLIENT_TYPE.ENGNAME
+  is '英文名称';
+comment on column T_CLIENT_TYPE.MEMO
+  is '备注';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_CLIENT_TYPE
+  add constraint CLASSID primary key (CLASSID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+
+drop table T_CLIENT_ADDRESS;
+-- Create table  客户地址表
+create table T_CLIENT_ADDRESS
+(
+  ADDRID      VARCHAR2(20) not null,
+  ADDRESS     VARCHAR2(50),
+  CUSTID      VARCHAR2(20),
+  ZIPCODE     VARCHAR2(20),
+  LINKMAN     VARCHAR2(20),
+  TELEPHONE   VARCHAR2(50),
+  FAXNO       VARCHAR2(50),
+  WALKADDR    VARCHAR2(100),
+  MEMO        VARCHAR2(200),
+  LINKMANPROF VARCHAR2(100)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_CLIENT_ADDRESS
+  is '客户地址表';
+-- Add comments to the columns 
+comment on column T_CLIENT_ADDRESS.ADDRID
+  is '地址编号';
+comment on column T_CLIENT_ADDRESS.ADDRESS
+  is '地址';
+comment on column T_CLIENT_ADDRESS.CUSTID
+  is '客户编号';
+comment on column T_CLIENT_ADDRESS.ZIPCODE
+  is '邮政编码';
+comment on column T_CLIENT_ADDRESS.LINKMAN
+  is '联系人';
+comment on column T_CLIENT_ADDRESS.TELEPHONE
+  is '联系人电话';
+comment on column T_CLIENT_ADDRESS.FAXNO
+  is '传真号码';
+comment on column T_CLIENT_ADDRESS.WALKADDR
+  is '行走路线';
+comment on column T_CLIENT_ADDRESS.MEMO
+  is '备注';
+comment on column T_CLIENT_ADDRESS.LINKMANPROF
+  is '联系人名称';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_CLIENT_ADDRESS
+  add constraint ADDID primary key (ADDRID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+

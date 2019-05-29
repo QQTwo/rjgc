@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>客户主文件（浏览）</title>
+	<link rel="stylesheet" type="text/css" href="../easyUI/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../easyUI/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../easyUI/demo/demo.css">
+	<script type="text/javascript" src="../js/jquery1.8.3-min.js"></script>
+	<script type="text/javascript" src="../easyUI/jquery.easyui.min.js"></script>
+</head>
+<body>
+	<div id="p" class="easyui-panel" title="客户主文件（浏览）"
+    style="width:740px;height:580px;padding:10px;background:#fafafa;"
+    data-options="iconCls:'icon-save',closable:true,
+    collapsible:true,maximizable:true">
+	    <!--<form id="ff" method="post">-->
+	    	<table cellpadding="5">
+	    		<tr>
+	    			<td>客户编号</td>
+	    			<td><input id="kehu" class="easyui-textbox" type="text" name="khbh" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 100px;">账款归属</td>
+	    			<td><input class="easyui-textbox" type="text" name="zkgs" style="width: 200px;height: 20px;"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>客户全称</td>
+	    			<td><input class="easyui-textbox" type="text" name="khqc"  style="width: 200px;height: 20px;"></input></td>
+	    			<td style="padding-left: 100px;">类别</td>
+	    			<td><input class="easyui-textbox" type="text" name="lb"  style="width: 200px; height: 20px;"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>客户简称</td>
+	    			<td>
+	    				<input class="easyui-textbox" type="text" name="khjc" style="width: 200px;height: 20px;"></input>
+	    			</td><!--data-options="required:true"-->
+	    			<td style="padding-left: 100px;">地区</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>英文全称</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 100px;">币别</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>英文简称</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    	</table>
+	   <!-- </form>-->
+	    	<div class="easyui-tabs" style="width:700px;height:320px;">
+	    		<div title="基本资料" style="padding:10px">
+			<table cellpadding="5">
+	    		<tr>
+	    			<td>负责人</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 70px;">业务人员</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>联系人</td>
+	    			<td>
+	    				<input class="easyui-textbox" type="text" name="name"style="width: 200px;height: 20px;"></input>
+	    			</td>
+	    			<td style="padding-left: 70px;">税务登记号</td>
+	    			<td><input class="easyui-textbox" type="text" name="name"  style="width: 200px; height: 20px;"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>联系电话一</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 70px;">资本额</td>
+	    			<td><input value="0.00" class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>联系电话二</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 70px;">行业别</td>
+	    			<td><input  class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>联系电话三</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 70px;">电子邮件</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>移动电话</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 70px;">网址</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>银行账号</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 70px;">传真号码</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>开户银行</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 200px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    	</table>
+		</div>
+		<div title="销售信息" style="padding:10px">
+			<table cellpadding="5">
+	    		<tr>
+	    			<td>最初销售出库日</td>
+	    			<td><input class="easyui-textbox" type="date" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 50px;">折数(%)</td>
+	    			<td><input class="easyui-textbox" value="100.00" type="text" name="name" style="width: 180px;height: 20px;"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>最初销售退货日</td>
+	    			<td>
+	    				<input class="easyui-textbox" type="date" name="name"style="width: 180px;height: 20px;"></input>
+	    			</td>
+	    			<td style="padding-left: 50px;">售价等级</td>
+	    			<td>
+	    				<select class="easyui- easyui-combobox" style="width: 180px;height: 20px;" data-options="editable:false,panelHeight:'auto'">
+	    					<option>建议售价</option>
+	    					<option>售价A</option>
+	    					<option>售价B</option>
+	    					<option>售价C</option>
+	    					<option>售价D</option>
+	    					<option>售价E</option>
+	    				</select>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>最近销售出库日</td>
+	    			<td><input class="easyui-textbox" type="date" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 40px;">单价是否含税</td>
+	    			<td>
+	    				<select class="easyui- easyui-combobox" style="width: 180px;height: 20px;" data-options="editable:false,panelHeight:'auto'">
+	    					<option>未税</option>
+	    					<option>含税</option>
+	    				</select>
+	    			</td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>最近销售退货日</td>
+	    			<td><input class="easyui-textbox" type="date" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 40px;">潜在客户编号</td>
+	    			<td><input disabled  class="easyui-textbox" type="text" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>最近拜访日</td>
+	    			<td><input class="easyui-textbox" type="date" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 40px;">客户建立日期</td>
+	    			<td><input class="easyui-textbox" type="date" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>预约拜访日</td>
+	    			<td><input class="easyui-textbox" type="date" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 40px;">终止交易日</td>
+	    			<td><input class="easyui-textbox" type="date" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    	</table>
+		</div>
+		<div title="收款信息" style="padding:10px">
+			<table cellpadding="5">
+	    		<tr>
+	    			<td>额度设定</td>
+	    			<td><!--<input class="easyui-textbox" type="date" name="name" style="width: 180px;height: 20px;"></input>--></td>
+	    			<td style="padding-left: 50px;">账款信息</td>
+	    			<td><!--<input class="easyui-textbox" value="100.00" type="text" name="name" style="width: 180px;height: 20px;"></input>--></td>
+	    		</tr>
+	    		<tr>
+	    			<td>账款额度</td>
+	    			<td>
+	    				<input class="easyui-textbox" type="text" name="name"style="width: 180px;height: 20px;"></input>
+	    			</td>
+	    			<td style="padding-left: 50px;">期初预收款</td>
+	    			<td>
+	    				<input class="easyui-textbox" disabled value="0.00" type="text" name="name" style="width: 180px;height: 20px;"></input>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>剩余额度</td>
+	    			<td><input class="easyui-textbox" disabled type="text" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 40px;">期初应收款</td>
+	    			<td>
+	    				<input class="easyui-textbox" disabled value="0.00" type="text" name="name" style="width: 180px;height: 20px;"></input>
+	    			</td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>收款条件</td>
+	    			<td><select class="easyui- easyui-combobox" style="width: 80px;height: 20px;" data-options="editable:false,panelHeight:'auto'">
+	    					<option>货到</option>
+	    					<option>次月</option>
+	    					<option>月结</option>
+	    					<option>其他</option>
+	    				</select>
+	    				<input class="easyui-textbox" value="0" type="text" name="email" style="width: 95px;height: 20px;"></input>天</td><!--data-options="required:true"-->
+	    			<td style="padding-left: 40px;">期末预收款</td>
+	    			<td><input disabled  class="easyui-textbox" value="0.00" type="text" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>每月结账日</td>
+	    			<td><input class="easyui-textbox" type="text" value="30" name="name" style="width: 180px;height: 20px;"></input>号</td><!--data-options="required:true"-->
+	    			<td style="padding-left: 40px;">期末应收款</td>
+	    			<td><input class="easyui-textbox" disabled type="text" value="0.00" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>信用等级</td>
+	    			<td>
+	    				<select class="easyui- easyui-combobox" style="width: 180px;height: 20px;" data-options="editable:false,panelHeight:'auto'">
+	    					<option>A</option>
+	    					<option>B</option>
+	    					<option>C</option>
+	    					<option>D</option>
+	    					<option>E</option>
+	    					<option>F</option>
+	    				</select>
+	    			</td><!--data-options="required:true"-->
+	    			<td style="padding-left: 40px;">未开票金额</td>
+	    			<td><input class="easyui-textbox" value="0.00" disabled type="text" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>发票类型</td>
+	    			<td><input class="easyui-textbox" type="text" value="30" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    			<td style="padding-left: 40px;">预收账款科目</td>
+	    			<td><input class="easyui-textbox"  type="text" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    		<tr>
+	    			<td>应收账款科目</td>
+	    			<td><input class="easyui-textbox" type="text" name="name" style="width: 180px;height: 20px;"></input></td><!--data-options="required:true"-->
+	    		</tr>
+	    	</table>
+		</div>
+		<div title="地址" style="padding:10px;position: relative;">
+			<table  class="easyui-datagrid" title="" style="width:680px;height:250px" data-options="singleSelect:true,iconCls:'icon-ok'">
+				<thead>  <!--style="background-color: #31B0D5;"-->
+					<tr>
+						<th data-options="field:'1',width:60,align:'right'">地址编号</th>
+						<th data-options="field:'2',width:100,align:'right'">地址</th>
+						<th data-options="field:'3',width:80,align:'right'">邮政编码</th>
+						<th data-options="field:'4',width:80,align:'right'">联系人</th>
+						<th data-options="field:'5',width:100,align:'right'">联系人职称</th>
+						<th data-options="field:'6',width:120,align:'right'">联系电话</th>
+						<th data-options="field:'7',width:120,align:'right'">传真号码</th>
+						<th data-options="field:'8',width:100,align:'right'">行走路线</th>
+						<th data-options="field:'9',width:100,align:'right'">备注</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>					
+					</tr>
+				</tbody>
+				<tfoot>
+				</tfoot>
+			</table>
+			<div style="position: absolute;left: 10px;bottom: 5px;">总计：</div>
+		</div>
+		<div title="备注" style="padding:10px">
+			<table cellpadding="5">
+	    		
+	    		<tr>
+	    			<td>备注</td>
+	    			<td colspan="3">
+	    				<textarea cols="80" rows="15" style="overflow: auto;"></textarea>
+	    			</td>
+	    		</tr>
+	    	</table>
+		</div>
+	</div>		
+			
+	<div class="easyui-panel" style="padding:5px;width: 280px;border: 0;background-color: #fafafa;">
+		<a href="#" class="easyui-menubutton" data-options="menu:'#mm1',iconCls:'icon-edit'">设定</a>
+		<a href="#" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-help'">功能</a>
+	</div>
+	<div id="mm1" style="width:100px;">
+		<div>期初账款设定</div>
+		<div>原厂物料设定</div>
+	</div>
+	<div id="mm2" style="width:100px;">
+		<div>写信</div>
+		<div>上网</div>
+		<div>历史交易查询</div>
+		<div>账额数据校验</div>
+		<div>新增拜访记录</div>
+		<div>授权用户查询</div>
+	</div>
+	<!--右键菜单-->
+	<div id="mm" class="easyui-menu" style="width:120px;">
+		<div data-options="iconCls:'icon-add'">新增</div>
+		<div data-options="iconCls:'icon-remove'">删除</div>
+		<div data-options="iconCls:'icon-reload'">修改</div>
+		<div data-options="iconCls:'icon-ok'">复核</div> 
+		<div data-options="iconCls:'icon-cancel'">取消复核</div> 
+		<div data-options="iconCls:'icon-save'" onclick="javascript:alert('new')">保存</div>
+		<div data-options="iconCls:'icon-undo'">上一笔</div>
+		<div data-options="iconCls:'icon-redo'">下一笔</div>
+		<div data-options="iconCls:'icon-print',disabled:true">导出</div>
+		<div class="menu-sep"></div>
+		<div>退出</div>
+	</div>
+
+	 </div>
+	
+</body>
+<script>
+	
+	$(function(){
+		//$("#kehu").textbox("setValue","123");
+		//alert($("#kehu").textbox("getValue"));
+		// 
+		$("[name=khbh]").val("qwe");
+		// $("input",$("#kehu").next("span")).val();
+
+		//右键菜单
+		$(document).bind('contextmenu', function (e) {
+			e.preventDefault();
+			$('#mm').menu('show', {
+				left: e.pageX,
+				top: e.pageY
+			});
+		});
+
+
+		$.post("http://127.0.0.1:8080/getID",function(data){
+				var date = new Date();				
+				//alert(date.getFullYear());
+
+
+		},"text");
+
+
+
+	})
+	
+	
+
+
+	
+</script>
+</html>
