@@ -1,0 +1,192 @@
+﻿前奏，先在教室linux虚拟机演示git工具的安装，远程库的配置和操作以机房服务器作为目标。
+      客户端准备在windows上进行，工具下载安装准备。
+本节主要命令：
+      1）git init --bare ***.git
+      2）git init  ***
+      1）git config --global --list
+      2）git config --global --help
+      1）git config --global --add user.name 'xxxxx'
+      2）git config --global --unset user.name
+      3）git add xxx.txt
+      2）git commit xxx.txt
+      1）git remote add origin url
+      2）git remote -v
+      1）git push origin master
+      2）git pull origin master
+      1）git log
+      2）git log remotes/origin/master
+      2）git reset
+      1）git reset --hard HEAD
+      2）git reset --hard HEAD~3
+      2）git reset --hard COMMIT_ID
+      2）git commit -a -m'hello,某次重大修改'
+      2）
+      2）
+      2）
+
+
+1.准备远程git库
+
+ssh git@172.20.0.2
+password:******
+cd ~/gitrepos
+git init --bare test.git
+
+exit
+
+2.准备本地客户端工作目录
+全局配置
+$ git config --global user.name 'rjgcadmin'
+$ git config --global user.email 'rjgcadmin@163.com'
+代理不是必须的，如果需要可以配置：
+$ git config --global http.proxy 'http://rjgc:rjgcadmin@172.20.0.2:3128'
+$ git config --global https.proxy 'http://rjgc:rjgcadmin@172.20.0.2:3128'
+$ git config --global gui.encoding 'utf-8'
+
+设置后，可以通过下面命令查看代理配置信息：
+$ git config --global --list
+user.name=rjgcadmin
+user.email=rjgcadmin@163.com
+https.proxy=http://rjgc:rjgcadmin@172.20.0.114:3128
+http.proxy=http://rjgc:rjgcadmin@172.20.0.114:3128
+gui.encoding=utf-8
+gui.recentrepo=E:/gitlocals/gitrepo1/testing
+core.autocrlf=input
+http.postbuffer=209715200
+
+git config --global --unset user.name
+git config --global --edit
+创建本地工作目录
+>mkdir work
+>cd work
+>git init  [test] //会在本地当前路径初始化一个git仓库
+                 //或初始化一个'test'目录的本地git仓库
+>git clone git@172.20.0.2:/home/git/gitrepos/test.git test1
+				//通过clone的方式初始化test1的一个本地仓库
+
+3.本地init之后，需要添加远程仓库
+git remote      //列出远程仓库名称，如果没有，显示为空
+git remote add origin git@172.20.0.2:/home/git/gitrepos/test1.git
+                //本地仓库增加一个远程仓库关联，并以origin命名
+
+4.本地工作目录创建项目和文件
+vi ok.txt   //随后编辑并保存该文件
+
+git status  //查看本地工作目录的文件状态，新增文件显示为红色字体
+
+git add ok.txt //或git add . 将该文件或所有文件添加到版本管理的缓存中
+
+git status
+
+git rm ok.txt  //提示错误
+git rm --cached ok.txt  //从本地缓存中删除该文件，或使用 -f 参数直接删除
+
+5.从工作目录提交文件到本地仓库，必须写注释
+git commmit .[ok.txt] -m'注释：第一次提交缓存文件到本地仓库'
+
+6.将本地仓库master分支文件push到远程仓库master分支
+git push origin master
+git log
+
+7.创建本地仓库的开发分支
+git branch dev
+
+8.将本地dev分支提交到远程Dev分支
+git checkout dev //切换到dev分支
+git push origin dev  //dev -> dev，本地分支到远程分支
+git push origin :dev //删除远程dev分支，（之后又可以重建）
+等同于
+git push origin --delete master
+
+9.查看本地/远程库的提交日志和提交编号
+git log [-3]
+git log remotes/origin/master   //查看远程分支的提交号
+git reflog  -3 //
+
+10.【本地仓库代码库回滚】：
+git reset --hard commit-id  //根据提交号回滚 :回滚到commit-id，讲commit-id之后提交的commit都去除
+git reset --hard HEAD~3：将最近3次的提交回滚
+
+11.【远程代码库回滚】：
+这个是重点要说的内容，过程比本地回滚要复杂
+应用场景：自动部署系统发布后发现问题，需要回滚到某一个commit，再重新发布
+原理：先将本地分支退回到某个commit，删除远程分支，再重新push本地分支
+
+操作步骤：
+1)、git checkout the_branch
+2)、git pull
+3)、git branch the_branch_backup //备份一下这个分支当前的情况
+4)、git reset --hard the_commit_id //把the_branch本地回滚到the_commit_id
+5)、git push origin :the_branch //删除远程 the_branch
+6)、git push origin the_branch //用回滚后的本地分支重新建立远程分支
+7)、git push origin :the_branch_backup //如果前面都成功了，删除这个备份分支
+
+
+git remote      //列出git远程仓库名称
+git remote -v   //查看本地仓库的远程分支url信息
+git remote show origin  //查询某一个远程分支的详细信息
+git remote rename origin origin1  //重命名本地关联的远程仓库名称
+git remote rm origin   //删除本地关联的远程仓库
+git branch -a   //列出git的本地当前分支和远程仓库/分支
+
+12.补充(当远程分支与本地分支出现冲突时)
+git branch -D dev
+git checkout -b dev origin/dev    //较早的时候已经创建了开发分支dev，或者获取了远程分支dev，当前工作在dev分支
+
+=========================================
+git fetch origin dev:tmp          //关键，获取当前分支dev的远程分支，并创建临时分支tmp，
+git diff tmp                      //比较当前分支与tmp临时分支的区别
+git merge tmp                    //将临时分支合并到当前分支，这是有可能发生冲突，发现冲突文件并手工编辑，去掉文件中========》》》等标记
+git commit -a -m'zling commit'   //退出编辑后，提交冲突解决后的当前分支 -a 此时是关键的参数，--all 即commit all changed files 否则不能提交
+git branch -D tmp                //删除临时分支
+
+实战经验
+项目开中，我们不经意间总是提交了编译工具自动生成的文件，这些文件最容易引起冲突，这时需要取消这些文件的
+版本跟踪。比如idea开发的项目会生成 .idea/ 文件夹：
+先执行 .idea文件备份，担心丢失
+$ git rm -r -f --cached .idea/
+$ git update-index --assume-unchanged .idea/
+
+执行提交和推送
+$ git commit -a -m'zling commit'
+$ git push origin master
+
+
+13.308机房无线网解决网速慢，出现  解决fatal: The remote end hung up unexpectedly
+错误的解决方案：
+打入命令gitconfighttp.postBuffer524288000再重新podinstall就可以了命令作用:调整缓存大小为500M
+git config http.postBuffer 524288000
+
+如果上面还不能解决问题，再执行下面指令：
+
+配置git的最低速度和最低速度时间：
+git config --global http.lowSpeedLimit 0
+git config --global http.lowSpeedTime 999999         单位 秒
+--global配置对当前用户生效，如果需要对所有用户生效，则用--system
+
+
+14.git升级安装
+yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel 
+yum install gcc perl-ExtUtils-MakeMaker
+
+cd /usr/src
+wget https://www.kernel.org/pub/software/scm/git/git-2.7.3.tar.gz ##2.9.5
+tar xzf git-2.7.3.tar.gz
+cd git-2.7.3
+make prefix=/usr/local/git all
+make prefix=/usr/local/git install
+# 创建软连接
+cd /usr/bin
+ln -s  /usr/local/git/bin/git git
+git --version
+15.git对于已经执行add，但没有commit，要命的是后来又执行了reset命令后，add的内容都会丢失
+找回：
+$ git fsck --lost-found   ##这条命令很有用，可以找到add但没有commit的文件
+Checking object directories: 100% (256/256), done.
+Checking objects: 100% (27/27), done.
+dangling blob e50cd671a85046f81fc17c501e5a82bd97f82105
+##然后你就可以在本地项目文件中路径为.git/lost-found/other（楼主亲自试验就是这个路径）中找到它们！
+
+$ git show e50cd671a  ##这里show后面的id号就是上面一行已经add但没有commit的ID号
+$ find .git/objects -type f | xargs ls -lt | sed 60q
+########这个命令，你就可以找到最近被你add到本地仓库的60个文件，综上所述，希望对你有所帮助！

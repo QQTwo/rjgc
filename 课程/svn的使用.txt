@@ -1,0 +1,40 @@
+（Software Configuration Management，SCM）是一种标识、组织和控制修改的技术。软件配置管理应用于整个软件工程过程。
+在软件建立时变更是不可避免的，而变更加剧了项目中软件开发者之间的混乱。SCM活动的目标就是为了标识变更、控制变更、
+确保变更正确实现并向其他有关人员报告变更。从某种角度讲，SCM是一种标识、组织和控制修改的技术，目的是使错误降
+为最小并最有效地提高生产效率。
+https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/3765602?fr=aladdin
+1.what
+  是一个源代码管理工具，类似于FTP工具
+  可以实现文件的共享，上传，下载等
+  有服务器端和客户端工具
+2.why
+   资源共享，代码集体所有，了解其它成员进度
+   团队协同，提高团队的工作效率
+   追索历史版本,时间机器
+   解决版本冲突
+3.how
+   服务器端的安装
+   c:\svn_repository(版本仓库的地址，可以创建多个版本库)
+   启动服务: net start csvnsvnserve
+   创建版本库：svnadmin create c:\svn_repository\rep1
+   修改配置文件：
+    svnserve.conf 上下文和环境配置
+    passwd         用户名和口令配置
+    authz           用户授权配置
+   客户端的安装
+   连接服务器端：
+   url：svn://127.0.0.1/rep1
+
+   import:导入项目文档到svn服务器
+   checkout：检出项目到本地
+   export: 检出项目到本地，但不受版本控制
+   commit:提交（本地提交到服务器）
+   update：更新（从服务器更新到本地）
+   update to reversion:更新到某个历史版本
+   edit conflicts:编辑冲突
+4.when,where
+
+github
+代码托管网站
+
+我们自己也可以在本地安装配置一个这样的类似管理网站
