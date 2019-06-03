@@ -1,0 +1,316 @@
+一、工厂模式主要是为创建对象提供过渡接口，以便将创建对象的具体过程屏蔽隔离起来，达到提高灵活性的目的。
+
+ 
+
+工厂模式在《Java与模式》中分为三类：
+1）简单工厂模式（Simple Factory）：不利于产生系列产品；
+
+2）工厂方法模式（Factory Method）：又称为多形性工厂；
+
+3）抽象工厂模式（Abstract Factory）：又称为工具箱，产生产品族，但不利于产生新的产品；
+             这三种模式从上到下逐步抽象，并且更具一般性。
+             GOF在《设计模式》一书中将工厂模式分为两类：工厂方法模式（Factory Method）与抽象工厂模式（Abstract Factory）。将简单工厂模式（Simple Factory）看为工厂方法模式的一种特例，两者归为一类。
+
+
+二、简单工厂模式
+
+简单工厂模式又称静态工厂方法模式。重命名上就可以看出这个模式一定很简单。它存在的目的很简单：定义一个用于创建对象的接口。
+
+在简单工厂模式中,一个工厂类处于对产品类实例化调用的中心位置上,它决定那一个产品类应当被实例化, 如同一个交通警察站在来往的车辆流中,决定放行那一个方向的车辆向那一个方向流动一样。
+        先来看看它的组成：
+
+         1) 工厂类角色：这是本模式的核心，含有一定的商业逻辑和判断逻辑。在java中它往往由一个具体类实现。
+
+         2) 抽象产品角色：它一般是具体产品继承的父类或者实现的接口。在java中由接口或者抽象类来实现。
+
+         3) 具体产品角色：工厂类所创建的对象就是此角色的实例。在java中由一个具体类实现。
+
+三、工厂方法模式
+
+工厂方法模式是简单工厂模式的进一步抽象化和推广，工厂方法模式里不再只由一个工厂类决定那一个产品类应当被实例化,这个决定被交给抽象工厂的子类去做。
+　　来看下它的组成：
+
+       1)抽象工厂角色： 这是工厂方法模式的核心，它与应用程序无关。是具体工厂角色必须实现的接口或者必须继承的父类。在java中它由抽象类或者接口来实现。
+
+       2)具体工厂角色：它含有和具体业务逻辑有关的代码。由应用程序调用以创建对应的具体产品的对象。
+
+       3)抽象产品角色：它是具体产品继承的父类或者是实现的接口。在java中一般有抽象类或者接口来实现。
+
+       4)具体产品角色：具体工厂角色所创建的对象就是此角色的实例。在java中由具体的类来实现。
+       工厂方法模式使用继承自抽象工厂角色的多个子类来代替简单工厂模式中的“上帝类”。正如上面所说，这样便分担了对象承受的压力；而且这样使得结构变得灵活 起来——当有新的产品（即暴发户的汽车）产生时，只要按照抽象产品角色、抽象工厂角色提供的合同来生成，那么就可以被客户使用，而不必去修改任何已有的代 码。可以看出工厂角色的结构也是符合开闭原则的！
+
+代码：
+//抽象产品角色
+public interface Moveable {
+    void run();
+}
+//具体产品角色
+public class Plane implements Moveable {
+    @Override
+    public void run() {
+        System.out.println("plane....");
+    }
+}
+
+public class Broom implements Moveable {
+    @Override
+    public void run() {
+        System.out.println("broom.....");
+    }
+}
+
+//抽象工厂
+public abstract class VehicleFactory {
+    abstract Moveable create();
+}
+//具体工厂
+public class PlaneFactory extends VehicleFactory{
+    public Moveable create() {
+        return new Plane();
+    }
+}
+public class BroomFactory extends VehicleFactory{
+    public Moveable create() {
+        return new Broom();
+    }
+}
+//测试类
+public class Test {
+    public static void main(String[] args) {
+        VehicleFactory factory = new BroomFactory();
+        Moveable m = factory.create();
+        m.run();
+    }
+}
+
+
+可以看出工厂方法的加入，使得对象的数量成倍增长。当产品种类非常多时，会出现大量的与之对应的工厂对象，这不是我们所希望的。因为如果不能避免这种情 况，可以考虑使用简单工厂模式与工厂方法模式相结合的方式来减少工厂类：即对于产品树上类似的种类（一般是树的叶子中互为兄弟的）使用简单工厂模式来实 现。
+
+四、简单工厂和工厂方法模式的比较
+
+工厂方法模式和简单工厂模式在定义上的不同是很明显的。工厂方法模式的核心是一个抽象工厂类,而不像简单工厂模式, 把核心放在一个实类上。工厂方法模式可以允许很多实的工厂类从抽象工厂类继承下来, 从而可以在实际上成为多个简单工厂模式的综合,从而推广了简单工厂模式。 
+反过来讲,简单工厂模式是由工厂方法模式退化而来。设想如果我们非常确定一个系统只需要一个实的工厂类, 那么就不妨把抽象工厂类合并到实的工厂类中去。而这样一来,我们就退化到简单工厂模式了。
+
+五、抽象工厂模式
+代码：
+//抽象工厂类
+public abstract class AbstractFactory {
+    public abstract Vehicle createVehicle();
+    public abstract Weapon createWeapon();
+    public abstract Food createFood();
+}
+//具体工厂类，其中Food,Vehicle，Weapon是抽象类，
+public class DefaultFactory extends AbstractFactory{
+    @Override
+    public Food createFood() {
+        return new Apple();
+    }
+    @Override
+    public Vehicle createVehicle() {
+        return new Car();
+    }
+    @Override
+    public Weapon createWeapon() {
+        return new AK47();
+    }
+}
+//测试类
+public class Test {
+    public static void main(String[] args) {
+        AbstractFactory f = new DefaultFactory();
+        Vehicle v = f.createVehicle();
+        v.run();
+        Weapon w = f.createWeapon();
+        w.shoot();
+        Food a = f.createFood();
+        a.printName();
+    }
+}
+在抽象工厂模式中，抽象产品 (AbstractProduct) 可能是一个或多个，从而构成一个或多个产品族(Product Family)。 在只有一个产品族的情况下，抽象工厂模式实际上退化到工厂方法模式。
+
+六、总结。
+
+（1）简单工厂模式是由一个具体的类去创建其他类的实例，父类是相同的，父类是具体的。 
+（2）工厂方法模式是有一个抽象的父类定义公共接口，子类负责生成具体的对象，这样做的目的是将类的实例化操作延迟到子类中完成。 
+（3）抽象工厂模式提供一个创建一系列相关或相互依赖对象的接口，而无须指定他们具体的类。它针对的是有多个产品的等级结构。而工厂方法模式针对的是一个产品的等级结构。
+
+
+
+
+
+
+
+
+代理模式
+
+
+一个典型的动态代理创建对象过程可分为以下四个步骤：
+1、通过实现InvocationHandler接口创建自己的调用处理器 IvocationHandler handler = new InvocationHandlerImpl(...);
+2、通过为Proxy类指定ClassLoader对象和一组interface创建动态代理类
+Class clazz = Proxy.getProxyClass(classLoader,new Class[]{...});
+3、通过反射机制获取动态代理类的构造函数，其参数类型是调用处理器接口类型
+Constructor constructor = clazz.getConstructor(new Class[]{InvocationHandler.class});
+4、通过构造函数创建代理类实例，此时需将调用处理器对象作为参数被传入
+Interface Proxy = (Interface)constructor.newInstance(new Object[] (handler));
+为了简化对象创建过程，Proxy类中的newInstance方法封装了2~4，只需两步即可完成代理对象的创建。
+生成的ProxySubject继承Proxy类实现Subject接口，实现的Subject的方法实际调用处理器的invoke方法，而invoke方法利用反射调用的是被代理对象的的方法（Object result=method.invoke(proxied,args)）
+
+
+
+
+
+美中不足
+诚然，Proxy已经设计得非常优美，但是还是有一点点小小的遗憾之处，那就是它始终无法摆脱仅支持interface代理的桎梏，因为它的设计注定了这个遗憾。回想一下那些动态生成的代理类的继承关系图，它们已经注定有一个共同的父类叫Proxy。Java的继承机制注定了这些动态代理类们无法实现对class的动态代理，原因是多继承在Java中本质上就行不通。有很多条理由，人们可以否定对 class代理的必要性，但是同样有一些理由，相信支持class动态代理会更美好。接口和类的划分，本就不是很明显，只是到了Java中才变得如此的细化。如果只从方法的声明及是否被定义来考量，有一种两者的混合体，它的名字叫抽象类。实现对抽象类的动态代理，相信也有其内在的价值。此外，还有一些历史遗留的类，它们将因为没有实现任何接口而从此与动态代理永世无缘。如此种种，不得不说是一个小小的遗憾。但是，不完美并不等于不伟大，伟大是一种本质，Java动态代理就是佐例。
+
+
+
+
+
+单例设计模式
+
+Singleton是一种创建型模式，指某个类采用Singleton模式，则在这个类被创建后，只可能产生一个实例供外部访问，并且提供一个全局的访问点。
+
+
+核心知识点如下：
+
+(1) 将采用单例设计模式的类的构造方法私有化（采用private修饰）。
+
+(2) 在其内部产生该类的实例化对象，并将其封装成private static类型。
+
+(3) 定义一个静态方法返回该类的实例。
+
+
+
+
+/** 
+ * 方法一
+ * 单例模式的实现：饿汉式,线程安全 但效率比较低 
+ */  
+public class SingletonTest {  
+
+    // 定义一个私有的构造方法
+    private SingletonTest() {  
+    }  
+
+    // 将自身的实例对象设置为一个属性,并加上Static和final修饰符
+    private static final SingletonTest instance = new SingletonTest();  
+
+    // 静态方法返回该类的实例
+    public static SingletonTest getInstancei() {  
+        return instance;  
+    }  
+  
+}
+
+
+
+
+java的反射机制原理
+一  反射机制的概念:
+
+指在运行状态中,对于任意一个类,都能够知道这个类的所有属性和方法,对于任意一个对象,都能调用它的任意一个方法.这种动态获取信息,以及动态调用对象方法的功能叫java语言的反射机制.
+
+二  反射机制的应用:
+
+生成动态代理,面向切片编程(在调用方法的前后各加栈帧).
+
+三  反射机制的原理:
+
+1  首先明确的概念: 一切皆对象----类也是对象.
+
+2  然后知道类中的内容 :modifier  constructor  field  method.
+
+3  其次明白加载: 当Animal.class在硬盘中时,是一个文件,当载入到内存中,可以认为是一个对象,是java.lang.class的对象.
+
+
+
+
+一、什么是反射机制 
+        简单的来说，反射机制指的是程序在运行时能够获取自身的信息。在java中，只要给定类的名字， 
+    那么就可以通过反射机制来获得类的所有信息。 
+
+二、哪里用到反射机制 
+        有些时候，我们用过一些知识，但是并不知道它的专业术语是什么，在刚刚学jdbc时用过一行代码， 
+    Class.forName("com.mysql.jdbc.Driver.class").newInstance();但是那时候只知道那行代码是生成 
+    驱动对象实例，并不知道它的具体含义。听了反射机制这节课后，才知道，原来这就是反射，现在很多开 
+    框架都用到反射机制，hibernate、struts都是用反射机制实现的。 
+
+三、反射机制的优点与缺点 
+        为什么要用反射机制？直接创建对象不就可以了吗，这就涉及到了动态与静态的概念， 
+    静态编译：在编译时确定类型，绑定对象,即通过。 
+    动态编译：运行时确定类型，绑定对象。动态编译最大限度发挥了java的灵活性，体现了多 
+    态的应用，有以降低类之间的藕合性。 
+    一句话，反射机制的优点就是可以实现动态创建对象和编译，体现出很大的灵活性，特别是在J2EE的开发中 
+    它的灵活性就表现的十分明显。比如，一个大型的软件，不可能一次就把把它设计的很完美，当这个程序编 
+    译后，发布了，当发现需要更新某些功能时，我们不可能要用户把以前的卸载，再重新安装新的版本，假如 
+    这样的话，这个软件肯定是没有多少人用的。采用静态的话，需要把整个程序重新编译一次才可以实现功能 
+    的更新，而采用反射机制的话，它就可以不用卸载，只需要在运行时才动态的创建和编译，就可以实现该功 
+    能。 
+       它的缺点是对性能有影响。使用反射基本上是一种解释操作，我们可以告诉JVM，我们希望做什么并且它 
+    满足我们的要求。这类操作总是慢于只直接执行相同的操作。 
+
+四、利用反射机制能获得什么信息 
+         一句话，类中有什么信息，它就可以获得什么信息，不过前提是得知道类的名字，要不就没有后文了 
+    首先得根据传入的类的全名来创建Class对象。 
+    Class c=Class.forName("className");注明：className必须为全名，也就是得包含包名，比如，cn.netjava.pojo.UserInfo; 
+    Object obj=c.newInstance();//创建对象的实例 
+    OK，有了对象就什么都好办了，想要什么信息就有什么信息了。   
+    获得构造函数的方法 
+    Constructor getConstructor(Class[] params)//根据指定参数获得public构造器
+
+    Constructor[] getConstructors()//获得public的所有构造器
+
+    Constructor getDeclaredConstructor(Class[] params)//根据指定参数获得public和非public的构造器
+
+    Constructor[] getDeclaredConstructors()//获得public的所有构造器 
+    获得类方法的方法 
+    Method getMethod(String name, Class[] params),根据方法名，参数类型获得方法
+
+    Method[] getMethods()//获得所有的public方法
+
+    Method getDeclaredMethod(String name, Class[] params)//根据方法名和参数类型，获得public和非public的方法
+
+    Method[] getDeclaredMethods()//获得所以的public和非public方法 
+    获得类中属性的方法 
+    Field getField(String name)//根据变量名得到相应的public变量
+
+    Field[] getFields()//获得类中所以public的方法
+
+    Field getDeclaredField(String name)//根据方法名获得public和非public变量
+
+    Field[] getDeclaredFields()//获得类中所有的public和非public方法 
+    常用的就这些，知道这些，其他的都好办…… 
+
+五、用反射机制能干什么事 
+        刚开始在使用jdbc时侯，在编写访问数据库时写到想吐，有八个表，每个表都有增删改查中操作 
+    那时候还不知道有反射机制这个概念，所以就对不同的表创建不同的dao类,这样不仅开发速率地，而且代码 
+    冗余的厉害，最要命的是看着差不多的，然后直接复制修改，由于容易犯各种低级的错误（大小写啊，多一 
+    个或少一个字母啊……）,一个错误就可以让你找半天。 
+        有了java反射机制，什么都好办了，只需要写一个dao类，四个方法，增删改查，传入不同的对象，就OK啦， 
+    无需为每一个表都创建dao类，反射机制会自动帮我们完成剩下的事情，这就是它的好处。说白了，反射机制就是专门 
+    帮我们做那些重复的有规则的事情，所以现在很多的自动生成代码的软件就是运用反射机制来完成的，只要你按照规则 
+    输入相关的参数，所以低级的程序员慢慢的就被抹杀了，为什么？因为代码都不用写了，随便一个人都会开发，还要程 
+    序员干什么啊？所以我们只有一条出路，那就是努力努力再努力，成为高级程序员，专门开发傻瓜软件，让其他程序员  到 一边凉快去，呵呵~ 
+
+六、用反射机制实现对数据库数据的增、查例子 
+    基本原理；保存数据时，把需要保存的对象的属性值全部取出来再拼凑sql语句 
+                 查询时，将查询到的数据全部包装成一个java对象。 
+    游戏规则：俗话说的好，无规矩不成方圆，特别是程序来说，它只能做有规则的事情，没有规则的它干不了，好，那就 
+              先定规则 
+              1）数据库的每一个表对象一个pojo类，表中的每一个字段对应pojo类的中的一个属性。 
+                 并且pojo类的名字和表的名字相同，属性名和字段名相同，大小写没有关系，因为数据库一般不区分大小写  
+              2）为pojo类中的每一个属性添加标准的set和get方法。 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

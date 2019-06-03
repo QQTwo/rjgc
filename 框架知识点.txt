@@ -1,0 +1,800 @@
+
+我们从三个角度理解一下Hibernate：
+ 
+一、Hibernate是对JDBC进一步封装
+       原来没有使用Hiberante做持久层开发时，存在很多冗余，如：各种JDBC语句，connection的管理，所以出现了Hibernate把JDBC封装了一下，我们不用操作数据，直接操作它就行了。
+ 
+二、我们再从分层的角度来看
+       我们知道非常典型的三层架构：表示层，业务层，还有持久层。Hiberante也是持久层的框架，而且持久层的框架还有很多，比如：IBatis，Nhibernate，JDO，OJB，EJB等等。
+ 
+三、Hibernate是开源的一个ORM（对象关系映射）框架。
+      ORM，即Object-Relational Mapping，它的作用就是在关系型数据库和对象之间做了一个映射。从对象（Object）映射到关系（Relation），再从关系映射到对象。这样，我们在操作数据库的时候，不需要再去和复杂SQL打交道，只要像操作对象一样操作它就可以了（把关系数据库的字段在内存中映射成对象的属性）。
+
+
+
+
+ 从上图中，我们可以看出Hibernate六大核心接口，两个主要配置文件，以及他们直接的关系。Hibernate的所有内容都在这了。那我们从上到下简单的认识一下，每个接口进行一句话总结。
+1、Configuration接口:负责配置并启动Hibernate
+2、SessionFactory接口:负责初始化Hibernate
+3、Session接口:负责持久化对象的CRUD操作
+4、Transaction接口:负责事务
+5、Query接口和Criteria接口:负责执行各种数据库查询
+ 
+注意：Configuration实例是一个启动期间的对象，一旦SessionFactory创建完成它就被丢弃了。
+ 
+Hibernate的优/缺点：
+ 
+优点：
+1、更加对象化
+      以对象化的思维操作数据库，我们只需要操作对象就可以了，开发更加对象化。
+2、移植性
+      因为Hibernate做了持久层的封装，你就不知道数据库，你写的所有的代码都具有可复用性。
+3、Hibernate是一个没有侵入性的框架，没有侵入性的框架我们称为轻量级框架。
+      对比Struts的Action和ActionForm，都需要继承，离不开Struts。Hibernate不需要继承任何类，不需要实现任何接口。这样的对象叫POJO对象。
+4、Hibernate代码测试方便。
+5、提高效率，提高生产力。
+ 
+缺点：
+1、使用数据库特性的语句，将很难调优
+2、对大批量数据更新存在问题
+3、系统中存在大量的攻击查询功能
+ 
+
+Hibernate运行过程：
+1.通过Configuration().configure();读取并解析hibernate.cfg.xml配置文件
+
+2.由hibernate.cfg.xml中的<mappingresource="com/xx/User.hbm.xml"/>读取并解析映射信息
+
+3.通过config.buildSessionFactory();//创建SessionFactory
+
+4.sessionFactory.openSession();//打开Sesssion
+
+5.session.beginTransaction();//创建事务Transation
+
+6.persistent operate持久化操作 //一般指Save这个方法
+
+7.session.getTransaction().commit();//提交事务
+
+8.关闭Session
+
+9.关闭SesstionFactory
+
+
+
+
+
+Session接口：
+Session接口 Session 接口对于Hibernate 开发人员来说是一个最重要的接口。然而在Hibernate中，实例化的Session是一个轻量级的类，创建和销毁它都不会占用很多资源。这在实际项目中确实很重要，因为在客户程序中，可能会不断地创建以及销毁Session对象，如果Session 的开销太大，会给系统带来不良影响。但是Session对象是非线程安全的，因此在你的设计中，最好是一个线程只创建一个Session对象。 session可以看作介于数据连接与事务管理一种中间接口。我们可以将session想象成一个持久对象的缓冲区，Hibernate能检测到这些持久对象的改变，并及时刷新数据库。我们有时也称Session是一个持久层管理器，因为它包含这一些持久层相关的操作， 诸如存储持久对象至数据库，以及从数据库从获得它们。需要注意的是，Hibernate的session不同于JSP 应用中的HttpSession。当我们使用session这个术语时，我们指的Hibernate 中的session，而我们以后会将HttpSesion 对象称为用户session。
+
+ 
+
+SessionFactory接口：
+SessionFactroy接口负责初始化Hibernate。它充当数据存储源的代理，并负责创建Session对象。这里用到了工厂模式。需要注意的是SessionFactory并不是轻量级的，因为一般情况下，一个项目通常只需要一个SessionFactory就够，当需要操作多个数据库时，可以为每个数据库指定一个SessionFactory。
+
+ 
+
+Transaction接口
+Transaction接口负责事务相关的操作，一般在Hibernate的增删改中出现，但是使用Hibernate的人一般使用Spring去管理事务。
+
+ 
+
+Query接口
+Query负责执行各种数据库查询。它可以使用HQL语言或SQL语句两种表达方式。它的返回值一般是List。需要自己转换。
+
+ 
+
+Configuration接口：
+Configuration对象用于配置并根启动Hibernate。Hibernate应用通过Configuration实例来指定对象—关系映射文件的位置或者动态配置Hibernate的属性，然后创建SessionFactory实例。我们可以查看Configuration的源代码，它的configure()方法是这样实现的：
+
+
+public Configuration configure() throwsHibernateException {  
+       configure("/hibernate.cfg.xml" );//此处指定了ORM文件的位置  
+       return this;  
+   }  
+ 
+
+我们看到它是在这里指定了ORM文件的位置，这就是为什么Hibernate总是默认到classpath下去寻找hibernate.cfg.xml文件的原因了。实际上我们还可以通过configure(String resource)来动态的指定配置文件，只不过通常我们都是采用的默认设置罢了。这样的话我们的配置文件就都被读取了，同时配置文件中通过<mapping>元素引入的映射文件也被读取了。
+
+
+
+
+
+
+、why（为什么要用Hibernate缓存？）
+
+Hibernate是一个持久层框架，经常访问物理数据库。
+
+为了降低应用程序对物理数据源访问的频次，从而提高应用程序的运行性能。
+
+缓存内的数据是对物理数据源中的数据的复制，应用程序在运行时从缓存读写数据，在特定的时刻或事件会同步缓存和物理数据源的数据。
+
+ 
+
+二、what（Hibernate缓存原理是怎样的？）Hibernate缓存包括两大类：Hibernate一级缓存和Hibernate二级缓存。
+
+1.Hibernate一级缓存又称为“Session的缓存”。
+
+Session内置不能被卸载，Session的缓存是事务范围的缓存（Session对象的生命周期通常对应一个数据库事务或者一个应用事务）。
+
+一级缓存中，持久化类的每个实例都具有唯一的OID。
+
+
+2.Hibernate二级缓存又称为“SessionFactory的缓存”。
+
+由于SessionFactory对象的生命周期和应用程序的整个过程对应，因此Hibernate二级缓存是进程范围或者集群范围的缓存，有可能出现并发问题，因此需要采用适当的并发访问策略，该策略为被缓存的数据提供了事务隔离级别。
+
+第二级缓存是可选的，是一个可配置的插件，默认下SessionFactory不会启用这个插件。
+
+Hibernate提供了org.hibernate.cache.CacheProvider接口,它充当缓存插件与Hibernate之间的适配器。
+
+
+Hibernate缓存原理:
+
+  对于Hibernate这类ORM而言,缓存显的尤为重要,它是持久层性能提升的关键.简单来讲Hibernate就是对JDBC进行封装,以实现内部状态的管理,OR关系的映射等,但随之带来的就是数据访问效率的降低,和性能的下降,而缓存就是弥补这一缺点的重要方法.
+
+     缓存就是数据库数据在内存中的临时容器,包括数据库数据在内存中的临时拷贝,它位于数据库与数据库访问层中间.ORM在查询数据时首先会根据自身的缓存管理策略,在缓存中查找相关数据,如发现所需的数据,则直接将此数据作为结果加以利用,从而避免了数据库调用性能的开销.而相对内存操作而言,数据库调用是一个代价高昂的过程.
+     一般来讲ORM中的缓存分为以下几类:
+         1:事务级缓存:即在当前事务范围内的数据缓存.就Hibernate来讲,事务级缓存是基于Session的生命周期实现的,每个Session内部会存在一个数据缓存,它随着 Session的创建而存在,随着Session的销毁而灭亡,因此也称为Session Level Cache.
+         2:应用级缓存:即在某个应用中或应用中某个独立数据库访问子集中的共享缓存,此缓存可由多个事务共享(数据库事务或应用事务),事务之间的缓存共享策略与应用的事务隔离机制密切相关.在Hibernate中,应用级缓存由SessionFactory实现,所有由一个SessionFactory创建的 Session实例共享此缓存,因此也称为SessionFactory Level Cache.
+         3:分布式缓存:即在多个应用实例,多个JVM间共享的缓存策略.分布式缓存由多个应用级缓存实例组成,通过某种远程机制(RMI,JMS)实现各个缓存实例间的数据同步,任何一个实例的数据修改,将导致整个集群间的数据状态同步.
+
+ 
+
+ 
+
+ 
+
+Hibernate的一，二级缓存策略:
+
+  Hibernate中提供了两级Cache，第一级别的缓存是Session级别的缓存，它是属于事务范围的缓存。这一级别的缓存由hibernate管理的，一般情况下无需进行干预；第二级别的缓存是SessionFactory级别的缓存，它是属于进程范围或群集范围的缓存。这一级别的缓存可以进行配置和更改，并且可以动态加载和卸载，属于多事务级别，要防止事务并发性。
+
+缓存是以map的形式进行存储的(key-id,value-object)
+
+一级缓存(Session):
+
+   事务范围，每个事务(Session)都有单独的第一级缓存.
+
+   一级缓存的管理：当应用程序调用Session的save()、update()、saveOrUpdate()、get()或load()，以及调用查询接口的 list()、iterate()--(用的是n+1次查询，先查id)或filter()方法时，如果在Session缓存中还不存在相应的对象，Hibernate就会把该对象加入到第一级缓存中。当清理缓存时，Hibernate会根据缓存中对象的状态变化来同步更新数据库。 Session为应用程序提供了两个管理缓存的方法： evict(Object obj)：从缓存中清除参数指定的持久化对象。 clear()：清空缓存中所有持久化对象,flush():使缓存与数据库同步。
+
+当查询相应的字段如(name)，而不是对象时，不支持缓存。
+
+二级缓存(SessionFactory):
+
+  Hibernate的二级缓存策略的一般过程如下：
+
+   1:条件查询的时候，总是发出一条select * from table_name where …. （选择所有字段）这样的SQL句查询数据库，一次获得所有的数据对象(这个问题要考虑，如果你查询十万条数据时，内存不是被占用)。
+
+　2:把获得的所有数据对象根据ID放入到第二级缓存中。
+
+　3: 当Hibernate根据ID访问数据对象的时候，首先从Session一级缓存中查；查不到，如果配置了二级缓存，那么从二级缓存中查；查不到，再查询数据库，把结果按照ID放入到缓存。
+
+   4:删除、更新、增加数据的时候，同时更新缓存。
+
+  Hibernate的二级缓存策略，是针对于ID查询的缓存策略，对于条件查询则毫无作用。为此，Hibernate提供了针对条件查询的Query Cache。
+
+ 
+
+Q:什么样的数据适合存放到第二级缓存中？
+
+    1.很少被修改的数据
+
+    2.不是很重要的数据，允许出现偶尔并发的数据
+
+    3.不会被并发访问的数据
+
+    4.参考数据,指的是供应用参考的常量数据，它的实例数目有限，它的实例会被许多其他类的实例引用，实例极少或者从来不会被修改。
+
+　不适合存放到第二级缓存的数据？
+
+    1 经常被修改的数据
+
+    2 财务数据，绝对不允许出现并发
+
+    3 与其他应用共享的数据。
+
+　常用的缓存插件 Hibernater 的二级缓存是一个插件，下面是几种常用的缓存插件：
+
+　　EhCache：可作为进程范围的缓存，存放数据的物理介质可以是内存或硬盘，对Hibernate的查询缓存提供了支持。
+
+　　OSCache：可作为进程范围的缓存，存放数据的物理介质可以是内存或硬盘，提供了丰富的缓存数据过期策略，对Hibernate的查询缓存提供了支持。
+
+　　SwarmCache：可作为群集范围内的缓存，但不支持Hibernate的查询缓存。
+
+　　JBossCache：可作为群集范围内的缓存，支持事务型并发访问策略，对Hibernate的查询缓存提供了支持。
+
+配置二级缓存的主要步骤：
+
+　　1 选择需要使用二级缓存的持久化类，设置它的命名缓存的并发访问策略。这是最值得认真考虑的步骤。
+
+　　2 选择合适的缓存插件，然后编辑该插件的配置文件。
+
+
+Hibernate是如何延迟加载?get与load的区别
+
+1. 对于Hibernate get方法，Hibernate会确认一下该id对应的数据是否存在，首先在session缓存中查找，然后在二级缓存中查找，还没有就查询数据库，数据 库中没有就返回null。
+
+2. Hibernate load方法加载实体对象的时候，根据映射文件上类级别的lazy属性的配置(默认为true)，分情况讨论： 
+
+(1)若为true,则首先在Session缓存中查找，看看该id对应的对象是否存在，不存在则使用延迟加载，返回实体的代理类对象(该代理类为实体类的子类，由CGLIB动态生成)。等到具体使用该对象(除获取OID以外)的时候，再查询二级缓存和数据库，若仍没发现符合条件的记录，则会抛出一个ObjectNotFoundException。
+
+(2)若为false,就跟Hibernateget方法查找顺序一样，只是最终若没发现符合条件的记录，则会抛出一个ObjectNotFoundException。
+
+这里get和load有两个重要区别: 
+
+如果未能发现符合条件的记录，Hibernate get方法返回null，而load方法会抛出一个ObjectNotFoundException。
+
+load方法可返回没有加载实体数据的代 理类实例，而get方法永远返回有实体数据的对象。
+
+总之对于get和load的根本区别，一句话，hibernate对于 load方法认为该数据在数据库中一定存在，可以放心的使用代理来延迟加载，如果在使用过程中发现了问题，只能抛异常；而对于get方 法，hibernate一定要获取到真实的数据，否则返回null。
+
+
+
+
+
+
+
+
+. 临时状态 
+由 new命令开辟内存空间的Java对象,例如：
+
+User user=new User();
+
+临 时对象在内存孤立存在,它是携带信息的载体,不和数据库的数据有任何关联关系.
+
+(a) 如 果没有变量对该对象进行引用,它将被gc回收；
+
+(b) 在Hibernate中,可通过 session的save()或saveOrUpdate()方法将瞬时对象与数据库相关联,并将数据对应的插入数据库中,此时该临时对象转变成持久化对 象.
+
+2. 持久状态 
+处于该状态的对象在数据库中具有对应的记录,并拥有一个持久化标识.通过session的get()、load() 等方法获得的对象都是持久对象。
+
+持久化对象被修改变更后，不会马上同步到数据库，直到数据库事务提交。在同步之前，持久化 对象是脏的（Dirty）。
+
+(a) 如果是用hibernate的delete()方法,对应的持久对象就变成临时对象,因数据库中 的对应数据已被删除,该对象不再与数据库的记录关联.
+
+(b) 当一个session执行close()或 clear()、evict()之后,持久对象变成游离对象,此时该对象虽然具有数据库识别值,但它已不在HIbernate持久层的管理之下.
+
+持久对象具有如下特点:
+
+(1)和session实例关联;
+
+(2)在数据库中有与之关联的记录,并 拥有持久化标识.
+
+3. 游离状态
+当与某持久对象关联的session被关闭后,该持久对象转变为游离对象.当游离对象被重新关联到session上 时,又再次转变成持久对象（在Detached其间的改动将被持久化到数据库中）。 游离对象拥有数据库的识别值,但已不在持久化管理范围之内。
+
+(a) 通 过update()、saveOrUpdate()等方法,游离对象可转变成持久对象.
+
+(b) 如果是用hibernate的delete()方法,对应的游离对象就变成临时对象,因数据库中的 对应数据已被删除,该对象不再与数据库的记录关联.
+
+(c) 在没有任何变量引用它时,它将被gc在适当的 时候回收；
+
+游离对象具有如下特点:
+(1)本质上与瞬时对象相同,在没有任何变量引用它时,JVM会在适当的时候将它回收;
+
+(2)比瞬时对象多了一个数据库记录标识值.
+
+
+
+
+
+
+
+
+
+=======================================================================================================================================================
+mybatis是什么
+　　　　在说mybatis原理之前，我们有必要知道，mybatis到底是个什么东西。mybatis是一个持久层的框架。是一个不完全的ORM框架。因为它需要由程序员自己去写sql语句。但是它也可以将对象和数据库表进行输入和输出映射。
+
+　　　 相对于hibernate框架来说，mybatis学习起来更加的简单，学习成本也相对较低。可以让程序员将自己的精力放在sql语句上，由于在mybatis中sql语句单独存放在xml文件中。对于sql语句的修改和优化也比较方便，适用于需求变化较多的项目。基于国内程序员对于hibernate掌握程度参差不齐的现状，所以互联网电商项目多使用mybatis作为持久层框架。以便于提高数据库访问的速度。
+
+
+
+
+
+
+
+什么是Mybatis
+ 
+       MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAO）。
+      MyBatis参考资料官网：https://mybatis.github.io/mybatis-3/zh/index.html
+官网对Mybatis的介绍更加具有权威性：  
+[java] view plain copy print?
+MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架。MyBatis 避免了几乎所有的 JDBC 代码和手工设置参数以及抽取结果集。MyBatis 使用简单的 XML 或注解来配置和映射基本体，将接口和 Java 的 POJOs(Plain Old Java Objects,普通的 Java对象)映射成数据库中的记录。  
+
+       MyBatis是iBatis的升级版，用法有很多的相似之处，但是MyBatis进行了重要的改进。例如：
+  
+1、Mybatis实现了接口绑定，使用更加方便。
+ 
+      在ibatis2.x中我们需要在DAO的实现类中指定具体对应哪个xml映射文件， 而Mybatis实现了DAO接口与xml映射文件的绑定，自动为我们生成接口的具体实现，使用起来变得更加省事和方便。
+ 
+2、对象关系映射的改进，效率更高
+ 
+3、MyBatis采用功能强大的基于OGNL的表达式来消除其他元素。
+  
+       对于IBatis与MyBatis的区别就不再多说了，感兴趣的朋友可以研究一下。
+ 
+MyBatis的框架架构
+
+           
+        看到Mybatis的框架图，可以清晰的看到Mybatis的整体核心对象，我更喜欢用自己的图来表达Mybatis的整个的执行流程。如下图所示：
+             
+原理详解：
+        MyBatis应用程序根据XML配置文件创建SqlSessionFactory，SqlSessionFactory在根据配置，配置来源于两个地方，一处是配置文件，一处是Java代码的注解，获取一个SqlSession。SqlSession包含了执行sql所需要的所有方法，可以通过SqlSession实例直接运行映射的sql语句，完成对数据的增删改查和事务提交等，用完之后关闭SqlSession。
+  
+MyBatis的优缺点
+  
+优点：
+1、简单易学
+       mybatis本身就很小且简单。没有任何第三方依赖，最简单安装只要两个jar文件+配置几个sql映射文件易于学习，易于使用，通过文档和源代码，可以比较完全的掌握它的设计思路和实现。
+  
+2、灵活
+       mybatis不会对应用程序或者数据库的现有设计强加任何影响。 sql写在xml里，便于统一管理和优化。通过sql基本上可以实现我们不使用数据访问框架可以实现的所有功能，或许更多。
+  
+3、解除sql与程序代码的耦合
+       通过提供DAL层，将业务逻辑和数据访问逻辑分离，使系统的设计更清晰，更易维护，更易单元测试。sql和代码的分离，提高了可维护性。
+ 
+4、提供映射标签，支持对象与数据库的orm字段关系映射
+  
+5、提供对象关系映射标签，支持对象关系组建维护
+ 
+6、提供xml标签，支持编写动态sql。
+ 
+缺点：
+ 
+1、编写SQL语句时工作量很大，尤其是字段多、关联表多时，更是如此。
+  
+2、SQL语句依赖于数据库，导致数据库移植性差，不能更换数据库。
+  
+3、框架还是比较简陋，功能尚有缺失，虽然简化了数据绑定代码，但是整个底层数据库查询实际还是要自己写的，工作量也比较大，而且不太容易适应快速数据库修改。
+  
+4、二级缓存机制不佳
+ 
+总结
+ 
+       mybatis的优点同样是mybatis的缺点，正因为mybatis使用简单，数据的可靠性、完整性的瓶颈便更多依赖于程序员对sql的使用水平上了。sql写在xml里，虽然方便了修改、优化和统一浏览，但可读性很低，调试也非常困难，也非常受限。
+      mybatis没有hibernate那么强大，但是mybatis最大的优点就是简单小巧易于上手，方便浏览修改sql语句。
+ 
+   
+
+
+我们先看看我们最熟悉也是最基础的通过JDBC查询数据库数据，一般需要以下七个步骤：
+
+（1）  加载JDBC驱动
+
+（2）  建立并获取数据库连接
+
+（3）  创建 JDBC Statements 对象
+
+（4）  设置SQL语句的传入参数
+
+（5）  执行SQL语句并获得查询结果
+
+（6）  对查询结果进行转换处理并将处理结果返回
+
+（7）  释放相关资源（关闭Connection，关闭Statement，关闭ResultSet）
+
+
+======================================================================================================================================================
+
+
+       控制：通过图2大家可以看到有一个XML文件Struts-config.xml，与之相关联的是Controller， ，它可以称作为Struts神经中枢。
+
+       视图：主要由JSP生成页面完成视图，Struts提供丰富的JSP 标签库： Html，Bean，Logic，Template等，这有利于分开在Struts中，承担MVC中Controller角色的是一个Servlet，叫ActionServlet。ActionServlet是一个通用的控制组件。这个控制组件提供了处理所有发送到Struts的HTTP请求的入口点。它截取和分发这些请求到相应的动作类（这些动作类都是Action类的子类）。另外控制组件也负责用相应的请求参数填充 Action From（通常称之为FromBean）,并传给动作类（通常称之为ActionBean）。动作类实现核心商业逻辑，它可以访问java bean 或调用EJB。最后动作类把控制权传给后续的JSP 文件，后者生成视图。所有这些控制逻辑利用Struts-config.xml文件来配置。表现逻辑和程序逻辑。
+
+       模型：模型以一个或多个java bean的形式存在。这些bean分为三类：Action Form、Action、JavaBean or EJB。Action Form通常称之为FormBean，封装了来自于Client的用户请求信息，如表单信息。Action通常称之为ActionBean，获取从ActionSevlet传来的FormBean，取出FormBean中的相关信息，并做出相关的处理，一般是调用Java Bean或EJB等。
+
+       流程：在Struts中，用户的请求一般以*.do作为请求服务名，所有的*.do请求均被指向ActionSevlet，ActionSevlet根据Struts-config.xml中的配置信息，将用户请求封装成一个指定名称的FormBean，并将此FormBean传至指定名称的ActionBean，由ActionBean完成相应的业务操作，如文件操作，数据库操作等。每一个*.do均有对应的FormBean名称和ActionBean名称，这些在Struts-config.xml中配置。
+
+ 
+
+       核心：Struts的核心是ActionSevlet，ActionSevlet的核心是Struts-config.xml。
+
+
+
+
+
+优点： 
+      1. 实现MVC模式，结构清晰,使开发者只关注业务逻辑的实现.
+
+     2．有丰富的tag可以用 ,Struts的标记库(Taglib)，如能灵活动用，则能大大提高开发效率
+
+     3. 页面导航
+
+使系统的脉络更加清晰。通过一个配置文件，即可把握整个系统各部分之间的联系，这对于后期的维护有着莫大的好处。尤其是当另一批开发者接手这个项目时，这种优势体现得更加明显。
+
+     4. 提供Exception处理机制 .
+
+     5. 数据库链接池管理
+
+     6. 支持I18N
+
+缺点
+
+一、 转到展示层时，需要配置forward，如果有十个展示层的jsp，需要配置十次struts，而且还不包括有时候目录、文件变更，需要重新修改forward，注意，每次修改配置之后，要求重新部署整个项目，而tomcate这样的服务器，还必须重新启动服务器
+
+二、 二、 Struts 的Action必需是thread－safe方式，它仅仅允许一个实例去处理所有的请求。所以action用到的所有的资源都必需统一同步，这个就引起了线程安全的问题。
+
+三、  测试不方便. Struts的每个Action都同Web层耦合在一起，这样它的测试依赖于Web容器，单元测试也很难实现。不过有一个Junit的扩展工具Struts TestCase可以实现它的单元测试。
+
+四、  类型的转换. Struts的FormBean把所有的数据都作为String类型，它可以使用工具Commons-Beanutils进行类型转化。但它的转化都是在Class级别，而且转化的类型是不可配置的。类型转化时的错误信息返回给用户也是非常困难的。
+
+五、 对Servlet的依赖性过强. Struts处理Action时必需要依赖ServletRequest 和ServletResponse，所有它摆脱不了Servlet容器。
+
+六、  前端表达式语言方面.Struts集成了JSTL，所以它主要使用JSTL的表达式语言来获取数据。可是JSTL的表达式语言在Collection和索引属性方面处理显得很弱。
+
+七、  对Action执行的控制困难. Struts创建一个Action，如果想控制它的执行顺序将会非常困难。甚至你要重新去写Servlet来实现你的这个功能需求。
+
+八、  对Action 执行前和后的处理. Struts处理Action的时候是基于class的hierarchies，很难在action处理前和后进行操作。
+
+九、  对事件支持不够. 在struts中，实际是一个表单Form对应一个Action类(或DispatchAction)，换一句话说：在Struts中实际是一个表单只能 对应一个事件，struts这种事件方式称为application event，application event和component event相比是一种粗粒度的事件
+
+
+
+
+
+
+
+
+
+
+
+Struts2的优点
+Struts2 是一个相当强大的Java Web开源框架，是一个基于POJO的Action的MVC Web框架。它基于当年的Webwork和XWork框架，继承其优点，同时做了相当的改进。Struts2现在在Java Web开发界的地位可以说是大红大紫，从开发人员的角度来分析，Struts2之所以能够如此的深入开发人员之心，与其优良的设计是分不开的。
+
+1、Struts2基于MVC架构,框架结构清晰，开发流程一目了然，开发人员可以很好的掌控开发的过程。
+我在项目开发过程中，一个具体的功能的开发流程是：拿到一个具体的功能需求文档和设计好的前台界面（在开发中我不负责设计页面），分析需要从前台传递哪些参数，确定参数的变量名称，在Action中设置相应的变量，这些参数在前台如何显示，并将页面上的一些控件适当使用Struts2提供的服务器端控件来代替，编写Action对应的方法来完成业务逻辑，最后，做一些与配置文件相关的设置。当然实际的开发比这个过程要复杂，涉及到数据库，验证，异常等处理。但是使用Struts2进行开发，你的关注点绝大部分是在如何实现业务逻辑上，开发过程十分清晰明了。
+
+2、使用OGNL进行参数传递。
+OGNL提供了在Struts2里访问各种作用域中的数据的简单方式，你可以方便的获取Request，Attribute，Application，Session，Parameters中的数据。大大简化了开发人员在获取这些数据时的代码量。
+
+3、强大的拦截器
+Struts2 的拦截器是一个Action级别的AOP，Struts2中的许多特性都是通过拦截器来实现的，例如异常处理，文件上传，验证等。拦截器是可配置与重用的，可以将一些通用的功能如：登录验证，权限验证等置于拦截器中以完成一些Java Web项目中比较通用的功能。在我实现的的一Web项目中，就是使用Struts2的拦截器来完成了系统中的权限验证功能。
+
+4、易于测试
+Struts2的Action都是简单的POJO，这样可以方便的对Struts2的Action编写测试用例，大大方便了Java Web项目的测试。
+
+5、易于扩展的插件机制
+在Struts2添加扩展是一件愉快而轻松的事情，只需要将所需要的Jar包放到WEB-INF/lib文件夹中，在struts.xml中作一些简单的设置就可以实现扩展。常用的Struts2的扩展可以通过这个链接找到：
+http://cwiki.apache.org/S2PLUGINS/home.html
+
+6、模块化
+Struts2已经把模块化作为了体系架构中的基本思想，可以通过三种方法来将应用程序模块化：
+将配置信息拆分成多个文件
+把自包含的应用模块创建为插件
+创建新的框架特性，即将与特定应用无关的新功能组织成插件，以添加到多个应用中去。
+
+7、全局结果与声明式异常
+为应用程序添加全局的Result，和在配置文件中对异常进行处理，这样当处理过程中出现指定异常时，可以跳转到特定页面，这一功能十分实用。
+
+
+Struts2和struts1的比较
+    struts2相对于struts1来说简单了很多，并且功能强大了很多，我们可以从几个方面来看：
+    从体系结构来看：struts2大量使用拦截器来出来请求，从而允许与业务逻辑控制器 与 servlet-api分离，避免了侵入性；而struts1.x在action中明显的侵入了servlet-api.
+    从线程安全分析：struts2.x是线程安全的，每一个对象产生一个实例，避免了线程安全问题；而struts1.x在action中属于单线程。
+    性能方面：struts2.x测试可以脱离web容器，而struts1.x依赖servlet-api，测试需要依赖web容器。
+    请求参数封装对比：struts2.x使用ModelDriven模式，这样我们 直接 封装model对象，无需要继承任何struts2的基类，避免了侵入性。
+    标签的优势：标签库几乎可以完全替代JSTL的标签库，并且 struts2.x支持强大的ognl表达式。
+    当然，struts2和struts1相比，在 文件上传，数据校验 等方面也 方便了好多。在这就不详谈了。
+    
+
+
+工作原理
+
+    Suruts2的工作原理可以用下面这张图来描述，下面我们分步骤介绍一下每一步的核心内容
+
+ （1）  客户端（Client）向Action发用一个请求（Request）
+（2）  Container通过web.xml映射请求，并获得控制器（Controller）的名字
+（3）  容器（Container）调用控制器（StrutsPrepareAndExecuteFilter或FilterDispatcher）。在Struts2.1以前调用FilterDispatcher，Struts2.1以后调用StrutsPrepareAndExecuteFilter
+（4）  控制器（Controller）通过ActionMapper获得Action的信息
+（5）  控制器（Controller）调用ActionProxy
+（6）  ActionProxy读取struts.xml文件获取action和interceptor stack的信息。
+（7）  ActionProxy把request请求传递给ActionInvocation
+（8）  ActionInvocation依次调用action和interceptor
+（9）  根据action的配置信息，产生result
+（10） Result信息返回给ActionInvocation
+（11） 产生一个HttpServletResponse响应
+（12） 产生的响应行为发送给客服端。
+
+
+
+=======singleton bean和singleton模式区别============================= =============================================================================
+1、spring原理 
+
+      内部最核心的就是IOC了，动态注入，让一个对象的创建不用new了，可以自动的生产，这其实就是利用java里的反射，反射其实就是在运行时动态的去创建、调用对象，Spring就是在运行时，跟xml Spring的配置文件来动态的创建对象，和调用对象里的方法的 。  
+      Spring还有一个核心就是AOP这个就是面向切面编程，可以为某一类对象 进行监督和控制（也就是 在调用这类对象的具体方法的前后去调用你指定的 模块）从而达到对一个模块扩充的功能。这些都是通过  配置类达到的。  
+      Spring目的：就是让对象与对象（模块与模块）之间的关系没有通过代码来关联，都是通过配置类说明管理的（Spring根据这些配置 内部通过反射去动态的组装对象）  
+      要记住：Spring是一个容器，凡是在容器里的对象才会有Spring所提供的这些服务和功能。  
+Spring里用的最经典的一个设计模式就是：模板方法模式。(这里我都不介绍了，是一个很常用的设计模式)， Spring里的配置是很多的，很难都记住，但是Spring里的精华也无非就是以上的两点，把以上两点跟理解了 也就基本上掌握了Spring.
+
+
+
+spring 
+项目加载的时候bean（一个bean对应某个类）自动创建（初始化，建一个实例），而后是每次调用bean的时候是注入的（不是重新new。。所有整个系统都是这个实例，，而且是spring自动提供的） 
+
+
+一：对于Spring中实现Singleton模式，是以IOC容器为单位（就是说在这个容器里面bean实现Singleton），换句话说，一个JVM可能有多个IOC容器，而在这个容器里实现了singleton bean， 
+而Java中实现Singleton模式而言，只有一个JVM，jvm中某个class只有一个实例 
+二： 
+singleton模式中，singleton的class在整个JVM中只有一个instance， 
+Spring的Bean，你可以一个class配置多个Bean，这个class就有了多个instance。 
+
+这个singleton是指在spring容器中，这个Bean是单实例的，是线程共享的。所以要求这些类都是线程安全的。也就是说，不能出现修改Bean属性的方法，当然除了设值得那些setter。只要满足线程安全，这些bean都可以用singleton。而且我们在绝大多数使用上，也是这样用的，包括dao,service。 
+Beanfactory是Spring初始以静态方式载入的,Spring的单例IOC是基于容器级的,所以这你都不用担心与考虑.
+ 
+ 
+Spring工作原理 
+ 
+一、 IoC(Inversion of control): 控制反转 
+　　1、IoC： 
+　　概念：控制权由对象本身转向容器；由容器根据配置文件去创建实例并创建各个实例之间的依赖关系 
+　　核心：bean工厂；在Spring中，bean工厂创建的各个实例称作bean 
+二、AOP(Aspect-Oriented Programming): 面向方面编程 
+　　1、 代理的两种方式： 
+　　　　静态代理： 
+　　　　? 针对每个具体类分别编写代理类； 
+　　　　? 针对一个接口编写一个代理类； 
+　　　　动态代理： 
+　　　　针对一个方面编写一个InvocationHandler，然后借用JDK反射包中的Proxy类为各种接口动态生成相应的代理类 
+　　2、 AOP的主要原理：动态代理 
+
+
+        Spring 已经用过一段时间了，感觉Spring是个很不错的框架。内部最核心的就是IOC了， 
+动态注入，让一个对象的创建不用new了，可以自动的生产，这其实就是利用java里的反射 
+反射其实就是在运行时动态的去创建、调用对象，Spring就是在运行时，跟xml  Spring的配置 
+文件来动态的创建对象，和调用对象里的方法的 。 
+     Spring还有一个核心就是AOP这个就是面向切面编程，可以为某一类对象 进行监督和控制（也就是 
+在调用这类对象的具体方法的前后去调用你指定的 模块）从而达到对一个模块扩充的功能。这些都是通过 
+配置类达到的。 
+   Spring目的：就是让对象与对象（模块与模块）之间的关系没有通过代码来关联，都是通过配置类说明 
+管理的（Spring根据这些配置 内部通过反射去动态的组装对象） 
+   要记住：Spring是一个容器，凡是在容器里的对象才会有Spring所提供的这些服务和功能。 
+Spring里用的最经典的一个设计模式就是：模板方法模式。（这里我都不介绍了，是一个很常用的设计模式） 
+  Spring里的配置是很多的，很难都记住，但是Spring里的精华也无非就是以上的两点，把以上两点跟理解了 
+也就基本上掌握了Spring. 
+ 
+各个部分的作用：
+　　1.springmvc请所有的请求都提交给DispatcherServlet,它会委托应用系统的其他模块负责负责对请求进行真正的处理工作。 
+
+　　2.DispatcherServlet查询一个或多个HandlerMapping,找到处理请求的Controller. 
+
+　　3.DispatcherServlet请请求提交到目标Controller 
+
+　　4.Controller进行业务逻辑处理后，会返回一个ModelAndView 
+
+　　5.Dispathcher查询一个或多个ViewResolver视图解析器,找到ModelAndView对象指定的视图对象 
+
+　　6.视图对象负责渲染返回给客户端。 
+
+为什么要使用Spring： 
+
+　　AOP 让开发人员可以创建非行为性的关注点，称为横切关注点，并将它们插入到应用程序代码中。使用 AOP后，公共服务（比如日志、持久性、事务等）就可以分解成方面并应用到域对象上，同时不会增加域对象的对象模型的复杂性。 
+
+　　IOC 允许创建一个可以构造对象的应用环境，然后向这些对象传递它们的协作对象。正如单词 倒置 所表明的，IOC 就像反过来的JNDI。没有使用一堆抽象工厂、服务定位器、单元素（singleton）和直接构造（straightconstruction），每一个对象都是用其协作对象构造的。因此是由容器管理协作对象（collaborator）。 
+
+　　Spring即使一个AOP框架，也是一IOC容器。 Spring 最好的地方是它有助于您替换对象。有了Spring，只要用JavaBean属性和配置文件加入依赖性（协作对象）。然后可以很容易地在需要时替换具有类似接口的协作对象。 
+
+　　Spring 框架是一个分层架构，由 7 个定义良好的模块组成。Spring模块构建在核心容器之上，核心容器定义了创建、配置和管理bean 的方式，如图 1 所示。 
+
+　　组成 Spring 框架的每个模块（或组件）都可以单独存在，或者与其他一个或多个模块联合实现。每个模块的功能如下： 
+
+　　核心容器：核心容器提供 Spring框架的基本功能。核心容器的主要组件是BeanFactory，它是工厂模式的实现。BeanFactory使用控制反转（IOC）模式将应用程序的配置和依赖性规范与实际的应用程序代码分开。 
+
+　　Spring 上下文：Spring 上下文是一个配置文件，向 Spring框架提供上下文信息。Spring上下文包括企业服务，例如 JNDI、EJB、电子邮件、国际化、校验和调度功能。 
+
+　　Spring AOP：通过配置管理特性，Spring AOP 模块直接将面向方面的编程功能集成到了Spring框架中。所以，可以很容易地使 Spring 框架管理的任何对象支持 AOP。Spring AOP 模块为基于Spring的应用程序中的对象提供了事务管理服务。通过使用 Spring AOP，不用依赖EJB组件，就可以将声明性事务管理集成到应用程序中。 
+
+　　Spring  DAO：JDBCDAO抽象层提供了有意义的异常层次结构，可用该结构来管理异常处理和不同数据库供应商抛出的错误消息。异常层次结构简化了错误处理，并且极大地降低了需要编写的异常代码数量（例如打开和关闭连接）。SpringDAO的面向 JDBC 的异常遵从通用的 DAO 异常层次结构。 
+
+　　Spring ORM：Spring 框架插入了若干个 ORM 框架，从而提供了 ORM的对象关系工具，其中包括JDO、Hibernate 和 iBatis SQL Map。所有这些都遵从 Spring 的通用事务和DAO异常层次结构。 
+
+　　Spring Web 模块：Web 上下文模块建立在应用程序上下文模块之上，为基于Web的应用程序提供了上下文。所以，Spring 框架支持与 Jakarta Struts的集成。Web模块还简化了处理多部分请求以及将请求参数绑定到域对象的工作。 
+
+　　Spring MVC 框架：MVC 框架是一个全功能的构建 Web 应用程序的 MVC实现。通过策略接口，MVC框架变成为高度可配置的，MVC 容纳了大量视图技术，其中包括JSP、Velocity、Tiles、iText 和 POI。 
+
+　　Spring 框架的功能可以用在任何 J2EE服务器中，大多数功能也适用于不受管理的环境。Spring的核心要点是：支持不绑定到特定 J2EE服务的可重用业务和数据访问对象。毫无疑问，这样的对象可以在不同 J2EE 环境 （Web或EJB）、独立应用程序、测试环境之间重用。
+
+ 
+AOP核心概念
+
+1、横切关注点
+
+对哪些方法进行拦截，拦截后怎么处理，这些关注点称之为横切关注点
+
+2、切面（aspect）
+
+类是对物体特征的抽象，切面就是对横切关注点的抽象
+
+3、连接点（joinpoint）
+
+被拦截到的点，因为Spring只支持方法类型的连接点，所以在Spring中连接点指的就是被拦截到的方法，实际上连接点还可以是字段或者构造器
+
+4、切入点（pointcut）
+
+对连接点进行拦截的定义
+
+5、通知（advice）
+
+所谓通知指的就是指拦截到连接点之后要执行的代码，通知分为前置、后置、异常、最终、环绕通知五类
+
+6、目标对象
+
+代理的目标对象
+
+7、织入（weave）
+
+将切面应用到目标对象并导致代理对象创建的过程
+
+8、引入（introduction）
+
+在不修改代码的前提下，引入可以在运行期为类动态地添加一些方法或字段
+
+
+5,Spring 及其优点
+大部分项目都少不了spring的身影，为什么大家对他如此青睐，而且对他的追捧丝毫没有减退之势呢
+Spring是什么：
+Spring是一个轻量级的DI和AOP容器框架。
+说它轻量级有一大部分原因是相对与EJB的（虽然本人从没有接触过EJB的应用），重要的是，Spring是非侵入式的，基于spring开发的应用一般不依赖于spring的类。
+
+DI：称作依赖注入(Dependency Injection),和控制反转一个概念，具体的讲，当一个角色需要另外一个角色协助的时候，在传统的程序设计中，通常有调用者来创建被调用者的实例。但是在spring中创建被调用者将不再有调用者完成，因此叫控制反转。创建被调用对象有Spring来完成，在容器实例化对象的时候主动的将被调用者（或者说它的依赖对象）注入给调用对象，因此又叫依赖注入。
+AOP：Spring对面向切面编程提供了强有力的支持，通过它让我们将业务逻辑从应用服务（如事务管理）中分离出来，实现了高内聚开发，应用对象只关注业务逻辑，不再负责其它系统问题（如日志、事务等）。Spring支持用户自定义切面。
+面向切面编程是面向对象编程的有力补充。面向对象编程将程序分成各个层次的对象，面向切面的程序将运行过程分解成各个切面。AOP是从运行程序的角度去考虑程序的结构，提取业务处理过程的切面，OOP是静态的抽象，AOP是动态的抽象，是对应用执行过程的步骤进行抽象，从而获得步骤之间的逻辑划分。
+容器：Spring是个容器，因为它包含并且管理应用对象的生命周期和配置。如对象的创建、销毁、回调等。
+框架：Spring作为一个框架，提供了一些基础功能，（如事务管理，持久层集成等），使开发人员更专注于开发应用逻辑。
+ 
+看完了Spring是什么，再来看看Spring有哪些优点
+1.使用Spring的IOC容器，将对象之间的依赖关系交给Spring，降低组件之间的耦合性，让我们更专注于应用逻辑
+2.可以提供众多服务，事务管理，WS等。
+3.AOP的很好支持，方便面向切面编程。
+4.对主流的框架提供了很好的集成支持，如hibernate,Struts2,JPA等
+5.Spring DI机制降低了业务对象替换的复杂性。
+6.Spring属于低侵入，代码污染极低。
+7.Spring的高度可开放性，并不强制依赖于Spring，开发者可以自由选择Spring部分或全部
+
+
+
+看完了Spring是什么，再来看看Spring有哪些优点
+1.使用Spring的IOC容器，将对象之间的依赖关系交给Spring，降低组件之间的耦合性，让我们更专注于应用逻辑
+2.可以提供众多服务，事务管理，WS等。
+3.AOP的很好支持，方便面向切面编程。
+4.对主流的框架提供了很好的集成支持，如hibernate,Struts2,JPA等
+5.Spring DI机制降低了业务对象替换的复杂性。
+6.Spring属于低侵入，代码污染极低。
+7.Spring的高度可开放性，并不强制依赖于Spring，开发者可以自由选择Spring部分或全部
+
+        再来看看Spring有哪些缺点
+        1.jsp中要写很多代码、控制器过于灵活，缺少一个公用控制器
+        2.Spring不支持分布式，这也是EJB仍然在用的原因之一。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================================================================================================================
+
+
+
+
+
+
+4，Spring MVC优点
+
+1、简单易用，以提高开发效率。使小部分的精力在框架上，大部分的精力放在业务上。
+2、性能优秀，这是一个最能吸引眼球的话题。
+3、尽量使用大众的框架（避免使用小众的、私有的框架），新招聘来的开发人员有一些这方面技术积累，减低人员流动再适应的影响。
+
+
+
+
+
+
+
+spring 框架提供了构建 Web 应用程序的全功能 MVC 模块。使用 Spring 可插入的 MVC 架构，可以选择是使用内置的 Spring Web 框架还是 Struts 这样的 Web 框架。通过策略接口，Spring 框架是高度可配置的，而且包含多种视图技术，例如 JavaServer Pages（JSP）技术、Velocity、Tiles、iText 和 POI。Spring MVC 框架并不知道使用的视图，所以不会强迫您只使用 JSP 技术。
+        Spring MVC 分离了控制器、模型对象、分派器以及处理程序对象的角色，这种分离让它们更容易进行定制。
+ Spring的MVC框架主要由DispatcherServlet、处理器映射、处理器(控制器)、视图解析器、视图组成。
+
+
+
+SpringMVC接口解释
+DispatcherServlet接口：
+Spring提供的前端控制器，所有的请求都有经过它来统一分发。在DispatcherServlet将请求分发给Spring Controller之前，需要借助于Spring提供的HandlerMapping定位到具体的Controller。
+HandlerMapping接口：
+能够完成客户请求到Controller映射。
+Controller接口：
+需要为并发用户处理上述请求，因此实现Controller接口时，必须保证线程安全并且可重用。
+Controller将处理用户请求，这和Struts Action扮演的角色是一致的。一旦Controller处理完用户请求，则返回ModelAndView对象给DispatcherServlet前端控制器，ModelAndView中包含了模型（Model）和视图（View）。
+从宏观角度考虑，DispatcherServlet是整个Web应用的控制器；从微观考虑，Controller是单个Http请求处理过程中的控制器，而ModelAndView是Http请求过程中返回的模型（Model）和视图（View）。
+ViewResolver接口：
+Spring提供的视图解析器（ViewResolver）在Web应用中查找View对象，从而将相应结果渲染给客户。
+
+
+
+SpringMVC运行原理
+客户端请求提交到DispatcherServlet
+由DispatcherServlet控制器查询一个或多个HandlerMapping，找到处理请求的Controller
+DispatcherServlet将请求提交到Controller
+Controller调用业务逻辑处理后，返回ModelAndView
+DispatcherServlet查询一个或多个ViewResoler视图解析器，找到ModelAndView指定的视图
+视图负责将结果显示到客户端
+DispatcherServlet是整个Spring MVC的核心。它负责接收HTTP请求组织协调Spring MVC的各个组成部分。其主要工作有以下三项：
+截获符合特定格式的URL请求。
+初始化DispatcherServlet上下文对应的WebApplicationContext，并将其与业务层、持久化层的WebApplicationContext建立关联。
+初始化Spring MVC的各个组成组件，并装配到DispatcherServlet中。
+
+
+
+Spring工作流程描述
+      1. 用户向服务器发送请求，请求被Spring 前端控制Servelt DispatcherServlet捕获；
+      2. DispatcherServlet对请求URL进行解析，得到请求资源标识符（URI）。然后根据该URI，调用HandlerMapping获得该Handler配置的所有相关的对象（包括Handler对象以及Handler对象对应的拦截器），最后以HandlerExecutionChain对象的形式返回；
+      3. DispatcherServlet 根据获得的Handler，选择一个合适的HandlerAdapter。（附注：如果成功获得HandlerAdapter后，此时将开始执行拦截器的preHandler(...)方法）
+       4.  提取Request中的模型数据，填充Handler入参，开始执行Handler（Controller)。 在填充Handler的入参过程中，根据你的配置，Spring将帮你做一些额外的工作：
+      HttpMessageConveter： 将请求消息（如Json、xml等数据）转换成一个对象，将对象转换为指定的响应信息
+      数据转换：对请求消息进行数据转换。如String转换成Integer、Double等
+      数据根式化：对请求消息进行数据格式化。 如将字符串转换成格式化数字或格式化日期等
+      数据验证： 验证数据的有效性（长度、格式等），验证结果存储到BindingResult或Error中
+      5.  Handler执行完成后，向DispatcherServlet 返回一个ModelAndView对象；
+      6.  根据返回的ModelAndView，选择一个适合的ViewResolver（必须是已经注册到Spring容器中的ViewResolver)返回给DispatcherServlet ；
+      7. ViewResolver 结合Model和View，来渲染视图
+      8. 将渲染结果返回给客户端。
+
+
+Spring MVC和Struts2的区别：
+
+机制：spring mvc的入口是servlet，而struts2是filter（这里要指出，filter和servlet是不同的。以前认为filter是 servlet的一种特殊），这样就导致了二者的机制不同，这里就牵涉到servlet和filter的区别了。
+
+性能：spring会稍微比struts快。spring mvc是基于方法的设计，而sturts是基于类，每次发一次请求都会实例一个action，每个action都会被注入属性，而spring基于方法，粒度更细，但要小心把握像在servlet控制数据一样。spring3 mvc是方法级别的拦截，拦截到方法后根据参数上的注解，把request数据注入进去，在spring3 mvc中，一个方法对应一个request上下文。而struts2框架是类级别的拦截，每次来了请求就创建一个Action，然后调用setter getter方法把request中的数据注入；struts2实际上是通过setter getter方法与request打交道的；struts2中，一个Action对象对应一个request上下文。
+
+参数传递：struts是在接受参数的时候，可以用属性来接受参数，这就说明参数是让多个方法共享的。
+
+设计思想上：struts更加符合oop的编程思想， spring就比较谨慎，在servlet上扩展。
+
+intercepter的实现机制：struts有以自己的interceptor机制，spring mvc用的是独立的AOP方式。这样导致struts的配置文件量还是比spring mvc大，虽然struts的配置能继承，所以我觉得论使用上来讲，spring mvc使用更加简洁，开发效率Spring MVC确实比struts2高。spring mvc是方法级别的拦截，一个方法对应一个request上下文，而方法同时又跟一个url对应，所以说从架构本身上spring3 mvc就容易实现restful url。struts2是类级别的拦截，一个类对应一个request上下文；实现restful url要费劲，因为struts2 action的一个方法可以对应一个url；而其类属性却被所有方法共享，这也就无法用注解或其他方式标识其所属方法了。spring3 mvc的方法之间基本上独立的，独享request response数据，请求数据通过参数获取，处理结果通过ModelMap交回给框架方法之间不共享变量，而struts2搞的就比较乱，虽然方法之间也是独立的，但其所有Action变量是共享的，这不会影响程序运行，却给我们编码，读程序时带来麻烦。
+
+
+hibernate优点、（面向HQL）
+
+ 1，hibernate是个封装完善,严谨的ORM框架。dao层的开发效率高
+ 2，hibernate不特定的针对某一个数据库，移植性很好
+ 3，hibernate缓存机制做得很好，要多使用lazy加载。可以使用其他的第三方缓存
+ 4，Hibernate是一个没有侵入性的框架，没有侵入性的框架我们称为轻量级框架。不需要继承其他的类。
+
+缺点
+ 1，hibernate是封装的JDBC性能没有Mybatis那么快，MyBatis是原生的JDBC。
+ 2，hibernate不适合做大批量的增加修改
+ 3，hibernate存在很多查询攻击语句
+ 4，hibernate不适合表结构比较复杂的数据库。特定的查询语句难以调优
+ 
+
+MyBatis（面向SQL）
+  
+优点、
+
+ 1,MyBatis是一个原生态的JDBC。速度天生就快
+ 2，MyBatis易学，使团队的成员更好的进行开发，hibernate学习的门槛高
+ 3，MyBatis灵活，返回结果可控，支持各种的复杂查询,可以更好的进行调优
+ 4，MyBatis解除sql与程序代码的耦合
+       通过提供DAL层，将业务逻辑和数据访问逻辑分离，使系统的设计更清晰，更易维护，更易单元测试。sql和代码的分离，提高了可维护性。
+ 5，提供xml标签，支持编写动态sql。
+ 6，虽然不完善。但是Mybatis提供很多丰富的插件
+
+缺点、
+ 
+1、编写SQL语句时工作量很大，尤其是字段多、关联表多时，更是如此。
+  
+2、SQL语句依赖于数据库，导致数据库移植性差，不能更换数据库。
+  
+3、框架还是比较简陋，功能尚有缺失，虽然简化了数据绑定代码，但是整个底层数据库查询实际还是要自己写的，工作量也比较大，而且不太容易适应快速数据库修改。
+  
+4、二级缓存机制不佳
+
+
+

@@ -1,0 +1,74 @@
+Struts原理
+ （1）  客户端（Client）向Action发用一个请求（Request）
+（2）  Container通过web.xml映射请求，并获得控制器（Controller）的名字
+（3）  容器（Container）调用控制器（StrutsPrepareAndExecuteFilter或FilterDispatcher）。在Struts2.1以前调用FilterDispatcher，Struts2.1以后调用StrutsPrepareAndExecuteFilter
+（4）  控制器（Controller）通过ActionMapper获得Action的信息
+（5）  控制器（Controller）调用ActionProxy
+（6）  ActionProxy读取struts.xml文件获取action和interceptor stack的信息。
+（7）  ActionProxy把request请求传递给ActionInvocation
+（8）  ActionInvocation依次调用action和interceptor
+（9）  根据action的配置信息，产生result
+（10） Result信息返回给ActionInvocation
+（11） 产生一个HttpServletResponse响应
+（12） 产生的响应行为发送给客服端。
+
+SpringMVC运行原理
+客户端请求提交到DispatcherServlet
+由DispatcherServlet控制器查询一个或多个HandlerMapping，找到处理请求的Controller
+DispatcherServlet将请求提交到Controller
+Controller调用业务逻辑处理后，返回ModelAndView
+DispatcherServlet查询一个或多个ViewResoler视图解析器，找到ModelAndView指定的视图
+视图负责将结果显示到客户端
+DispatcherServlet是整个Spring MVC的核心。它负责接收HTTP请求组织协调Spring MVC的各个组成部分。其主要工作有以下三项：
+截获符合特定格式的URL请求。
+初始化DispatcherServlet上下文对应的WebApplicationContext，并将其与业务层、持久化层的WebApplicationContext建立关联。
+初始化Spring MVC的各个组成组件，并装配到DispatcherServlet中。
+
+
+
+Spring工作流程描述
+      1. 用户向服务器发送请求，请求被Spring 前端控制Servelt DispatcherServlet捕获；
+      2. DispatcherServlet对请求URL进行解析，得到请求资源标识符（URI）。然后根据该URI，调用HandlerMapping获得该Handler配置的所有相关的对象（包括Handler对象以及Handler对象对应的拦截器），最后以HandlerExecutionChain对象的形式返回；
+      3. DispatcherServlet 根据获得的Handler，选择一个合适的HandlerAdapter。（附注：如果成功获得HandlerAdapter后，此时将开始执行拦截器的preHandler(...)方法）
+       4.  提取Request中的模型数据，填充Handler入参，开始执行Handler（Controller)。 在填充Handler的入参过程中，根据你的配置，Spring将帮你做一些额外的工作：
+      HttpMessageConveter： 将请求消息（如Json、xml等数据）转换成一个对象，将对象转换为指定的响应信息
+      数据转换：对请求消息进行数据转换。如String转换成Integer、Double等
+      数据根式化：对请求消息进行数据格式化。 如将字符串转换成格式化数字或格式化日期等
+      数据验证： 验证数据的有效性（长度、格式等），验证结果存储到BindingResult或Error中
+      5.  Handler执行完成后，向DispatcherServlet 返回一个ModelAndView对象；
+      6.  根据返回的ModelAndView，选择一个适合的ViewResolver（必须是已经注册到Spring容器中的ViewResolver)返回给DispatcherServlet ；
+      7. ViewResolver 结合Model和View，来渲染视图
+      8. 将渲染结果返回给客户端。
+
+
+Spring MVC和Struts2的区别：
+
+机制：spring mvc的入口是servlet，而struts2是filter（这里要指出，filter和servlet是不同的。以前认为filter是 servlet的一种特殊），这样就导致了二者的机制不同，这里就牵涉到servlet和filter的区别了。
+
+性能：spring会稍微比struts快。spring mvc是基于方法的设计，而sturts是基于类，每次发一次请求都会实例一个action，每个action都会被注入属性，而spring基于方法，粒度更细，但要小心把握像在servlet控制数据一样。spring3 mvc是方法级别的拦截，拦截到方法后根据参数上的注解，把request数据注入进去，在spring3 mvc中，一个方法对应一个request上下文。而struts2框架是类级别的拦截，每次来了请求就创建一个Action，然后调用setter getter方法把request中的数据注入；struts2实际上是通过setter getter方法与request打交道的；struts2中，一个Action对象对应一个request上下文。
+
+参数传递：struts是在接受参数的时候，可以用属性来接受参数，这就说明参数是让多个方法共享的。
+
+设计思想上：struts更加符合oop的编程思想， spring就比较谨慎，在servlet上扩展。
+
+intercepter的实现机制：struts有以自己的interceptor机制，spring mvc用的是独立的AOP方式。这样导致struts的配置文件量还是比spring mvc大，虽然struts的配置能继承，所以我觉得论使用上来讲，spring mvc使用更加简洁，开发效率Spring MVC确实比struts2高。spring mvc是方法级别的拦截，一个方法对应一个request上下文，而方法同时又跟一个url对应，所以说从架构本身上spring3 mvc就容易实现restful url。struts2是类级别的拦截，一个类对应一个request上下文；实现restful url要费劲，因为struts2 action的一个方法可以对应一个url；而其类属性却被所有方法共享，这也就无法用注解或其他方式标识其所属方法了。spring3 mvc的方法之间基本上独立的，独享request response数据，请求数据通过参数获取，处理结果通过ModelMap交回给框架方法之间不共享变量，而struts2搞的就比较乱，虽然方法之间也是独立的，但其所有Action变量是共享的，这不会影响程序运行，却给我们编码，读程序时带来麻烦。
+
+
+代理模式
+
+
+一个典型的动态代理创建对象过程可分为以下四个步骤：
+1、通过实现InvocationHandler接口创建自己的调用处理器 IvocationHandler handler = new InvocationHandlerImpl(...);
+2、通过为Proxy类指定ClassLoader对象和一组interface创建动态代理类
+Class clazz = Proxy.getProxyClass(classLoader,new Class[]{...});
+3、通过反射机制获取动态代理类的构造函数，其参数类型是调用处理器接口类型
+Constructor constructor = clazz.getConstructor(new Class[]{InvocationHandler.class});
+4、通过构造函数创建代理类实例，此时需将调用处理器对象作为参数被传入
+Interface Proxy = (Interface)constructor.newInstance(new Object[] (handler));
+为了简化对象创建过程，Proxy类中的newInstance方法封装了2~4，只需两步即可完成代理对象的创建。
+生成的ProxySubject继承Proxy类实现Subject接口，实现的Subject的方法实际调用处理器的invoke方法，而invoke方法利用反射调用的是被代理对象的的方法（Object result=method.invoke(proxied,args)）
+
+
+美中不足
+诚然，Proxy已经设计得非常优美，但是还是有一点点小小的遗憾之处，那就是它始终无法摆脱仅支持interface代理的桎梏，因为它的设计注定了这个遗憾。回想一下那些动态生成的代理类的继承关系图，它们已经注定有一个共同的父类叫Proxy。Java的继承机制注定了这些动态代理类们无法实现对class的动态代理，原因是多继承在Java中本质上就行不通。有很多条理由，人们可以否定对 class代理的必要性，但是同样有一些理由，相信支持class动态代理会更美好。接口和类的划分，本就不是很明显，只是到了Java中才变得如此的细化。如果只从方法的声明及是否被定义来考量，有一种两者的混合体，它的名字叫抽象类。实现对抽象类的动态代理，相信也有其内在的价值。此外，还有一些历史遗留的类，它们将因为没有实现任何接口而从此与动态代理永世无缘。如此种种，不得不说是一个小小的遗憾。但是，不完美并不等于不伟大，伟大是一种本质，Java动态代理就是佐例。
+

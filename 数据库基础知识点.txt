@@ -1,0 +1,780 @@
+一、建表指令
+
+比如创建一个学生表student，它由学号Sno，姓名Sname，性别Ssex，年龄Sage，所在系Sdept五个属性组成。其中学号不能为空，值是唯一的，并且姓名取值也唯一。
+
+CREATE TABLE Student
+
+(Sno    CHAR(10) NOT NULL UNIQUE,
+
+ Sname  CHAR(20) UNIQUE,
+
+ Ssex    char(2),
+
+Sage    INT,
+
+Sdept  char(15)
+
+)
+
+ 
+
+二、增加列、删除列、修改列
+
+1、增加列Stel
+
+Alter table Student ADD Stel Char(12)
+
+2、删除列Stel
+
+Alter Table Student DROP COLUMN Stel
+
+3、修改列Sdept
+
+ALTER  Table  Student  ALTER  COLUMN  Sdept  CHAR(8)  Sno CHAR(8)
+
+ 
+
+三、建立与删除索引
+
+1、在表Student中建立按年龄Sage升序建立索引
+
+建立索引：Create  INDEX  S_INDEX  ON  Student(Sage)
+
+2、删除索引
+
+DROP  INDEX  Student  S_INDEX
+
+ 
+
+四、连接查询。
+
+在对表进行连接时，最常用的连接条件是等值连接，也就是使两个表中对应列相等所进行的连接，通常一个列是所在表的主键，另一个列是所在表的主键或外键，只有这样的等值连接才有意义。
+
+比如说有两张表分别为courses表（cno，cname，credit）和enrolls表（sno，cno，grade）。
+
+查询所有学生所选的课程名称：
+
+Select  sno,  enrolls.cno, cname, grade  from  enrolls, courses WHERE enrolls.cno = courses.cno
+
+ 
+
+五、单表查询时，去掉重复行
+
+比如查询Student表中所有系的名称，去掉重复行
+
+Select  distinct  department  From  student
+
+ 
+
+六、常用条件表达式运算符IN,NOT IN；between,and,not like.
+
+在上面的Student表和enrolls表中，查询成绩在80分以上的的学号和姓名。
+
+Select  sno,  sname  From  Student WHERE  sno  IN (select sno FROM enrolls Where grade > 80)
+
+上面的SQL语句也是嵌套查询。
+
+ 
+
+七、有个需用到having字句的，具体题目忘了。
+
+Having子句，筛选出只满足指定条件的组。注意的是，该子句只能同GROUP BY子句配合使用，筛选出符合条件的分组信息。
+
+类似题目如下：查询Student表中每个系有三个以上的学生的所在系。
+
+Select  department  From  Student  Group  BY department  Having  COUNT(*) >= 3。
+
+ 
+
+八、插入数据
+
+1、单行插入，比如在上面的Student表中插入学生王强的信息。
+
+Insert  into  Student(Sno,Sname,Ssex,Sage,Sdept)
+
+Values(‘2005012’,’王强’,’男’,18,’计算机’)
+
+2、多行插入，比如每个学生都要修操作系统c2这门课，将选课信息加入表enrolls中。
+
+INSERT  INTTO  enrolls(sno,cno)
+
+SELECT  Sno, ‘c2’  FROM  Student
+
+ 
+
+九、修改数据
+
+比如给enrolls这个表中选修了操作系统这门课的学生的成绩修改为60分。
+
+UPDATE enrolls
+
+SET grade = 60
+
+WHER cno IN
+
+(SELECT  cno  FROM  courses  WHERE  cname  = ‘操作系统’)
+
+ 
+
+十、删除数据
+
+比如删除Student表中年龄在20岁以上的学生
+
+Delete   from  Student   where  Sage > 20
+
+删除整张表的数据 delete from Student
+
+ 
+
+十一、存储过程（两个参数，根据输入的参数查询好数据后返回给输出的参数）
+
+比如创建一个存储过程procGetDepName，它带有1个输入参数@sno，还带有1个输出参数@DepartmentName，功能：根据输入的学号，找到该生所在的院系，输出院系名称。
+
+create procedure procGetDepName
+
+@sno nvarchar(10),
+
+@DepartmentName nvarchar(20) output
+
+as
+
+begin
+
+select @DepartmentName = DepartmentName
+
+from Department d, Student s
+
+where d.DepartmentID = s.DepartmentID and
+
+s.sno = @sno
+
+end
+
+
+
+十二、数据库常用数据类型和作用。
+
+第一大类:整数数据
+
+bit:bit数据类型代表0，1或NULL,就是表示true,false.占用1byte.
+
+int:以4个字节来存储正负数。可存储范围为:-2^31至2^31-1。
+
+smallint:以2个字节来存储正负数。存储范围为:-2^15至2^15-1。
+
+tinyint: 是最小的整数类型，仅用1字节,范围:0至此^8-1。
+
+ 
+
+第二大类:精确数值数据
+
+numeric:表示的数字可以达到38位,存储数据时所用的字节数目会随着使用权用位数的多少变化。
+
+decimal:和numeric差不多。
+
+ 
+
+第三大类:近似浮点数值数据
+
+float:用8个字节来存储数据.最多可为53位。范围为:-1.79E+308至1.79E+308。
+
+real:位数为24，用4个字节，数字范围:-3.04E+38至3.04E+38。
+
+ 
+
+第四大类:日期时间数据
+
+datatime:表示时间范围可以表示从1753/1/1至9999/12/31，时间可以表示到3.33/1000秒.使用8个字节。
+
+smalldatetime:表示时间范围可以表示从1900/1/1至2079/12/31，使用4个字节。
+
+ 
+
+第五大类:字符串数据
+
+char:长度是设定的，不可变的。最短为1字节,最长为8000个字节.不足的长度会用空白补上。
+
+varchar:长度是可变的。最短为1字节,最长为8000个字节，尾部的空白会去掉。
+
+text:长宽也是设定的，最长可以存放2G的数据。
+
+ 
+
+第六大类:Unincode字符串数据
+
+nchar:长度是设定的，最短为1字节,最长为4000个字节。不足的长度会用空白补上，储存一个字符需要2个字节。
+
+nvarchar:长度是设定的，可变的。最短为1字节，最长为4000个字节.尾部的空白会去掉。储存一个字符需要2个字节。
+
+ntext:长度是设定的,最短为1字节,最长为2G.尾部的空白会去掉,储存一个字符需要2个字节。
+
+ 
+
+第七大类:货币数据类型
+
+money:记录金额范围为:-92233720368577.5808至92233720368577.5807.需要8 个字节。
+
+smallmoney:记录金额范围为:-214748.3648至214748.36487.需要4个字节。
+
+ 
+
+第八大类:标记数据
+
+timestamp:该数据类型在每一个表中是唯一的!当表中的一个记录更改时,该记录的timestamp字段会自动更新.
+
+uniqueidentifier:用于识别数据库里面许多个表的唯一一个记录.
+
+ 
+
+第九大类:二进制码字符串数据
+
+binary:固定长度的二进制码字符串字段,最短为1,最长为8000。
+
+varbinary:与binary差异为数据尾部是00时,varbinary会将其去掉。
+
+image:为可变长度的二进制码字符串,最长2G。
+
+
+十三、C的内容
+
+主要考C的内存分配，for循环的局部性等基础知识，主要是林锐那本高质量C/C++里面后面的习题。
+
+
+十四、C++
+
+基本不会，因为应聘的是C++，也因为这个，被笔试给鄙视掉了。
+
+
+======================================================================================================================================
+1. 数据库三范式是什么?
+第一范式：表中每个字段都不能再分。
+
+第二范式：满足第一范式并且表中的非主键字段都依赖于主键字段。
+
+第三范式：满足第二范式并且表中的非主键字段必须不传递依赖于主键字段。
+
+2. 什么是数据库事务？
+事务具有四大特性：一致性、原子性、隔离性、持久性。
+
+数据库事务是指：几个SQL语句，要么全部执行成功，要么全部执行失败。比如银行转账就是事务的典型场景。
+
+数据库事务的三个常用命令：Begin Transaction、Commit Transaction、RollBack Transaction。
+
+3. 什么是视图？
+视图实际上是在数据库中通过Select查询语句从多张表中提取的多个表字段所组成的虚拟表。
+
+l 视图并不占据物理空间，所以通过视图查询出的记录并非保存在视图中，而是保存在原表中。
+
+l 通过视图可以对指定用户隐藏相应的表字段，起到保护数据的作用。
+
+l 在满足一定条件时，可以通过视图对原表中的记录进行增删改操作。
+
+l 创建视图时，只能使用单条select查询语句。
+
+4. 什么是索引？
+索引是对数据库表中一列或多列的值进行排序的一种结构，使用索引可快速访问数据库表中的特定信息。
+
+l 索引分为：聚集索引、非聚集索引、唯一索引等。
+
+l 一张表可以有多个唯一索引和非聚集索引，但最多只能有一个聚集索引。
+
+l 索引可以包含多列。
+
+l 合理的创建索引能够提升查询语句的执行效率，但降低了新增、删除操作的速度，同时也会消耗一定的数据库物理空间。
+
+5. 什么是存储过程？
+存储过程是一个预编译的SQL语句，优点是允许模块化的设计，就是说只需创建一次，以后在该程序中就可以调用多次。如果某次操作需要执行多次SQL，使用存储过程比单纯SQL语句执行要快。
+
+6. 什么是触发器？
+触发器是一中特殊的存储过程，主要是通过事件来触发而被执行的。它可以强化约束，来维护数据的完整性和一致性，可以跟踪数据库内的操作从而不允许未经许可的更新和变化。可以联级运算。如，某表上的触发器上包含对另一个表的数据操作，而该操作又会导致该表触发器被触发。
+
+7. 写出一条Sql语句：取出表A中第31到第40记录 （MS-SQLServer）
+解1：select top 10 * from A where id not in (select top 30 id from A)
+
+解2：select top 10 * from A where id > (select max(id) from (select top 30 id from A )as A)
+
+解3：select * from (select *, Row_Number() OVER (ORDER BY id asc) rowid FROM A) as A where rowid between 31 and 40
+
+8. 写出一条Sql语句：取出表A中第31到第40记录 （Mysql）
+select * from A limit 30, 10
+
+9. 写出一条Sql语句：取出表A中第31到第40记录 （Oracle）
+select *
+
+from (select A.*,
+
+   row_number() over (order by id asc) rank
+
+    FROM A)   
+
+where rank >=31 AND rank<=40;
+
+10. 在关系型数据库中如何描述多对多的关系?
+在关系型数据库中描述多对多的关系,需要建立第三张数据表。比如学生选课,需要在学生信息表和课程信息表的基础上,再建立选课信息表,该表中存放学生Id和课程Id。
+
+11. 什么是数据库约束,常见的约束有哪几种?
+数据库约束用于保证数据库表数据的完整性（正确性和一致性）。可以通过定义约束\索引\触发器来保证数据的完整性。
+
+总体来讲,约束可以分为:
+
+主键约束：primary key；
+
+外键约束：foreign key；
+
+唯一约束：unique；
+
+检查约束：check；
+
+空值约束：not null；
+
+默认值约束：default；
+
+12. 列举几种常用的聚合函数?
+Sum:求和\ Avg:求平均数\ Max:求最大值\ Min:求最小值\ Count:求记录数
+
+13. 什么是内联接、左外联接、右外联接？
+l 内联接（Inner Join）：匹配2张表中相关联的记录。
+
+l 左外联接（Left Outer Join）：除了匹配2张表中相关联的记录外，还会匹配左表中剩余的记录，右表中未匹配到的字段用NULL表示。
+
+l 右外联接（Right Outer Join）：除了匹配2张表中相关联的记录外，还会匹配右表中剩余的记录，左表中未匹配到的字段用NULL表示。
+
+在判定左表和右表时，要根据表名出现在Outer Join的左右位置关系。
+
+14. 如何在删除主表记录时，一并删除从表相关联的记录？
+如果两张表存在主外键关系，那么在删除主键表的记录时，如果从表有相关联的记录，那么将导致删除失败。
+
+在定义外键约束时，可以同时指定3种删除策略：一是将从表记录一并删除（级联删除）；二是将从表记录外键字段设置为NULL；三是将从表记录外键字段设置为默认值。
+
+级联删除示例：
+
+alter table 从表名
+
+add constraint 外键名
+
+foreign key(字段名) references 主表名(字段名)
+
+on delete cascade
+
+15. 什么是游标？
+游标实际上是一种能从包括多条数据记录的结果集中每次提取一条记录进行处理的机制。
+
+游标的使用步骤：
+
+定义游标：declare cursor 游标名称 for  select查询语句 [for {readonly|update}]
+打开游标：open cursor
+从游标中操作数据：fetch... ...   current of cursor
+关闭游标：close cursor
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+ 
+
+常用SQL代码整理（MS-SQLServer）
+
+1. 创建数据库
+/*创建数据库libraryDB*/
+
+CREATE DATABASE libraryDB
+
+ON
+
+(
+
+/*数据库文件的详细描述*/
+
+NAME = 'libraryDB_mdf', --主数据库文件的逻辑名
+
+FILENAME = 'E:\library\libraryDB_mdf.mdf', --主数据文件的物理名
+
+SIZE = 3MB, --初始大小
+
+FILEGROWTH = 20% --增长率
+
+)
+
+LOG ON
+
+(
+
+/*日志文件的详细描述*/
+
+NAME = 'libraryDB_ldf', --日志文件的逻辑名
+
+FILENAME = 'E:\library\libraryDB_ldf.ldf', --日志文件的物理名
+
+SIZE = 1MB, --初始大小
+
+MAXSIZE = 15MB, --最大值
+
+FILEGROWTH = 10% --增长率
+
+)
+
+GO
+
+2. 数据表（创建|修改|删除）
+--判断BookType表是否存在，存在则删除
+
+if exists (select 1 from sysobjects where [name]='BookType')
+
+ begin
+
+   drop table BookType
+
+ end
+
+--创建图书类型表：BookType
+
+create table BookType
+
+(
+
+TypeId int not null identity(1,1) primary key,   --图书类型编号（主键、标识列、从1开始、每次增加1）
+
+TypeName varchar(50) not null,        --图书类型名称
+
+Remark varchar(100)    --备注信息
+
+)
+
+--修改BookType表，增加备注字段
+
+alter table BookType
+
+alter column Remark varchar(100)
+
+--删除表BookType
+
+drop table BookType
+
+3. 创建主键
+--为表添加主键
+
+alter table productinfo
+
+add constraint PK_ProductInfo_ProductId primary key(ProductId)
+
+--删除主键只需要将add替换为drop
+
+4. 创建外键
+--为表添加外键
+
+alter table productpromotion
+
+add constraint FK_Promotion_Product foreign key (ProductId) references ProductInfo(ProductId)
+
+--删除外键只需要将add替换为drop
+
+5. 检查约束
+--创建检查约束（商品编号的长度大于2）
+
+alter table productinfo
+
+add constraint CK_Product_Number check(len(ProductNumber)>2)--删除外键只需要将add替换为drop
+
+--创建检查约束（性别为男或者女）
+
+--check(Gender in ('男', '女'))
+
+6. 惟一约束
+--创建唯一约束（商品编号唯一）
+
+alter table productinfo
+
+add constraint UQ_Product_Number unique (ProductNumber)
+
+7. T-SQL编程（定义变量、为变量赋值）
+--T-SQL中定义变量
+
+declare @sum int;
+
+declare @i int;
+
+--set赋值（一次只能为一个变量赋值）
+
+set @sum = 0;
+
+--select赋值（一次可以为多个变量赋值）
+
+select @sum=0,@i=1;
+
+8. T-SQL编程（if-else循环）
+--if实例
+
+declare @i int;
+
+set @i=7;
+
+if(@i%2 = 0)
+
+  print '偶数'
+
+else
+
+  print '奇数'
+
+go
+
+9. T-SQL编程（while）
+--请输出1-10之间的数字
+
+declare @i int;
+
+set @i = 1;
+
+while (@i<=10)
+
+begin
+
+  print @i;
+
+  set @i = @i + 1;
+
+end
+
+10. T-SQL编程（case）
+--case的第一种语法格式（使用case将0显示为：空闲   1显示为：使用中）
+
+select intComputerId,
+
+        'State'=case
+
+        when intInUse=0 then '空闲'
+
+        when intInUse=1 then '使用中'
+
+        end,
+
+        chvComputerName,chvDescription
+
+from tblcomputer;
+
+--case的第二种语法格式
+
+select intComputerId,
+
+        'State'=case intInUse
+
+        when 0 then '空闲'
+
+        when 1 then '使用中'
+
+        end,
+
+        chvComputerName,chvDescription
+
+from tblcomputer
+
+11. 视图
+--创建视图的语法示例
+
+create view view_RecordDetail
+
+as
+
+  select  cp.chvComputerName, ci.chvUserName, ri.dtmStart, ri.dtmEnd, ri.mnyFee
+
+  from TblRecordInfo as ri--as为表取别名
+
+  inner join TblCardInfo as ci on ri.intCardId=ci.intCardId--内连接用inner join，同时应该为两张表指定连接字段
+
+  inner join TblComputer as cp on ri.intComputerId=cp.intComputerId
+
+--使用视图（和表很相似）
+
+Select * from view_RecodDetail
+
+12. 存储过程（无参数）
+--创建不带参数的存储过程
+
+create procedure pro_ComputerUseState
+
+as
+
+begin
+
+  select * from tblcomputer;
+
+end
+
+--调用不带参数的存储过程
+
+exec pro_ComputerUseState;
+
+ 
+
+13. 存储过程（含输入参数）
+--如何创建有输入参数的存储过程
+
+create procedure pro_getComputerState
+
+@state int=0--参数默认为输入参数
+
+as
+
+begin
+
+  select intComputerId,
+
+'intInUse'=case intInuse
+
+when 0 then '未使用'
+
+when 1 then '以使用'
+
+end,
+
+    chvComputerName,
+
+    chvDescription
+
+  from tblcomputer
+
+  where intInuse=@state
+
+end
+
+go
+
+--调用带有输入参数的存储过程
+
+declare @state int;
+
+set @state = 1;
+
+exec pro_getComputerState @state;
+
+14. 存储过程（含输入参数、输出参数）
+--创建带有输入参数和输出参数的存储过程，多个参数之间用逗号,隔开，最后一个参数后无需逗号
+
+create proc pro_getComputerStateById
+
+@intComputerId int,
+
+@state int output
+
+as
+
+begin
+
+  select @state = intInUse
+
+  from tblcomputer
+
+  where intcomputerid=@intComputerId
+
+end
+
+--调用带输出参数的存储过程，调用时一定要在输出参数后加关键字output
+
+declare @state int, @computerId int;
+
+set @computerId = 7;
+
+exec pro_getComputerStateById @computerId,@state output
+
+select @state;
+
+15. 触发器
+--判断触发器是否存在，存在则删除触发器
+
+if exists (select * from sys.sysobjects where name = 'tr_insertRecord')
+
+  drop trigger tr_insertRecord
+
+go
+
+--如何定义|创建一个触发器
+
+create trigger tr_insertRecord
+
+on TblRecordInfo
+
+for insert--for等价于after,表示当新增完记录之后才会执行触发器
+
+as
+
+begin
+
+  declare @cardid int, @startTime datetime;
+
+  select @cardid = intcardid, @startTime = dtmStart from inserted;
+
+  select '卡号：'+convert(nvarchar(5), @cardid);
+
+  select '上机开始时间：'+convert(nvarchar(20), @startTime);
+
+end
+
+16. 事务处理
+--定义变量@sumError用于记录事务过程中发生错误的次数
+
+declare @sumError int;
+
+set @sumError = 0;
+
+begin transaction
+
+update tblaccount set mnycurrentmoney = mnycurrentmoney + 200000 where chvAccountName='宝钢集团'
+
+--通过系统变量@@error可以获取上次被执行的sql是否执行成功，如果执行成功@@error的值为0，否则为1
+
+set @sumError = @sumError + @@error
+
+update tblaccount set mnycurrentmoney = mnycurrentmoney - 200000 where chvAccountName='安钢集团'
+
+set @sumError = @sumError + @@error
+
+--判断是否在执行过程中出现错误
+
+if(@sumError<>0)
+
+begin
+
+print '事务执行失败，即将回滚'
+
+rollback transaction
+
+end
+
+else
+
+begin
+
+print '事务执行成功，即将提交'
+
+commit transaction
+
+end
+
+
+
+
+
+========================================================================================================================
+
+
+
+
+
+
+
+
+
